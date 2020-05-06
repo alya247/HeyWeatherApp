@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LaunchScreenView" customModule="HeyWeatherApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0DB-tq-XiE">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background" translatesAutoresizingMaskIntoConstraints="NO" id="FGF-5c-1Mr">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HeyWeatherApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLl-PF-8mY">
+                    <rect key="frame" x="94.5" y="430" width="225" height="36"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="FGF-5c-1Mr" firstAttribute="top" secondItem="0DB-tq-XiE" secondAttribute="top" id="0qL-gd-9HL"/>
+                <constraint firstItem="OLl-PF-8mY" firstAttribute="centerY" secondItem="0DB-tq-XiE" secondAttribute="centerY" id="gIC-kL-QGm"/>
+                <constraint firstItem="OLl-PF-8mY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mtb-AL-mEX" secondAttribute="leading" constant="10" id="pGg-ta-k6s"/>
+                <constraint firstItem="FGF-5c-1Mr" firstAttribute="trailing" secondItem="mtb-AL-mEX" secondAttribute="trailing" id="r3A-hl-Osp"/>
+                <constraint firstItem="FGF-5c-1Mr" firstAttribute="leading" secondItem="mtb-AL-mEX" secondAttribute="leading" id="scb-sB-doo"/>
+                <constraint firstItem="OLl-PF-8mY" firstAttribute="centerX" secondItem="0DB-tq-XiE" secondAttribute="centerX" id="tXm-aS-m7S"/>
+                <constraint firstAttribute="bottom" secondItem="FGF-5c-1Mr" secondAttribute="bottom" id="ua8-L4-i53"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="mtb-AL-mEX"/>
+            <point key="canvasLocation" x="-72.463768115942031" y="88.392857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="launch_background" width="375" height="812"/>
+    </resources>
+</document>
