@@ -19,7 +19,7 @@ protocol WeatherPresenterInterface: class {
 
 class WeatherPresenter {
 
-  var view: WeatherViewInterface!
+  unowned var view: WeatherViewInterface!
 
 }
 

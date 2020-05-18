@@ -11,20 +11,21 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
+  var coordinator: AppCoordinator?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-    guard let _ = (scene as? UIWindowScene) else { return }
-    setupDependencies()
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+    
+    window = UIWindow(windowScene: windowScene)
+    window?.rootViewController = UIViewController()
+    window?.makeKeyAndVisible()
+    setupCoordinator(with: window!.rootViewController!)
   }
 
-  private func setupDependencies() {
-    if let rootController = window?.rootViewController as? WeatherController {
-      let presenter = WeatherPresenter()
-      let interactor = WeatherInteractor(presenter: presenter)
-      presenter.view = rootController
-      rootController.interactor = interactor
-    }
+  private func setupCoordinator(with rootViewController: UIViewController) {
+    coordinator = AppCoordinator(rootController: rootViewController)
+    coordinator?.start()
   }
 
 }

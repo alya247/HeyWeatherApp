@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Launch Screen Controller-->
+        <scene sceneID="L4R-gg-K0z">
+            <objects>
+                <viewController storyboardIdentifier="LaunchScreenController" id="FPf-ME-Ske" customClass="LaunchScreenController" customModule="HeyWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eeL-q5-5v1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background" translatesAutoresizingMaskIntoConstraints="NO" id="rlI-xy-Iui">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HeyWeatherApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKX-NM-6ZI">
+                                <rect key="frame" x="94.5" y="430" width="225" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rlI-xy-Iui" firstAttribute="top" secondItem="eeL-q5-5v1" secondAttribute="top" id="2K7-7r-J5L"/>
+                            <constraint firstItem="eKK-cA-5KG" firstAttribute="trailing" secondItem="rlI-xy-Iui" secondAttribute="trailing" id="8Oe-Py-9Ef"/>
+                            <constraint firstItem="LKX-NM-6ZI" firstAttribute="centerX" secondItem="eeL-q5-5v1" secondAttribute="centerX" id="WTo-sn-i4d"/>
+                            <constraint firstItem="rlI-xy-Iui" firstAttribute="leading" secondItem="eeL-q5-5v1" secondAttribute="leading" id="dDo-UW-Wf8"/>
+                            <constraint firstAttribute="bottom" secondItem="rlI-xy-Iui" secondAttribute="bottom" id="ik6-u7-1JI"/>
+                            <constraint firstItem="LKX-NM-6ZI" firstAttribute="centerY" secondItem="eeL-q5-5v1" secondAttribute="centerY" id="wfw-WK-MqH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eKK-cA-5KG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6t-SB-GKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3" y="99"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch_background" width="375" height="812"/>
+    </resources>
+</document>

@@ -24,6 +24,16 @@ class WeatherManager {
   private var weekWeather: WeatherDaysModel?
   private var twoWeeksWeather: WeatherDaysModel?
 
+  private var weatherLoader: WeatherLoader!
+
+  func setupLoader() {
+    weatherLoader = WeatherLoader(weatherManager: self)
+  }
+
+  func loadWeather(completion: @escaping ((Bool) -> ())) {
+    weatherLoader.loadWeather(completion: completion)
+  }
+
   // MARK:- Setters
 
   func setCurrentWeather(_ weather: WeatherModel?) {

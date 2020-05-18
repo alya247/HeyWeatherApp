@@ -28,11 +28,10 @@ class WeatherController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    setupLaunchScreen()
     periodSelectorView.applySelectors([.current, .week, .twoWeeks])
     periodSelectorView.delegate = self
     barChartView.delegate = self
-    interactor.loadWeather()
+    interactor.getWeather(for: .current)
   }
 
 }
@@ -42,7 +41,6 @@ class WeatherController: UIViewController {
 extension WeatherController: WeatherViewInterface {
 
   func weatherDidLoad() {
-    removeLaunchScreen()
     interactor.getWeather(for: .current)
   }
 
@@ -95,18 +93,6 @@ extension WeatherController {
     currentWeatherView.isHidden = !isCurrent
     daysWeatherView.isHidden = isCurrent
     barChartView.isHidden = isCurrent
-  }
-
-  private func setupLaunchScreen() {
-    let screen = LaunchScreenView(frame: view.bounds)
-    view.addSubview(screen)
-  }
-
-  private func removeLaunchScreen() {
-    for subview in view.subviews {
-      guard subview is LaunchScreenView else { continue }
-      subview.removeFromSuperview()
-    }
   }
 
 }

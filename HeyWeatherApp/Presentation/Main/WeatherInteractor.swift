@@ -10,7 +10,6 @@ import Foundation
 
 protocol WeatherInteractorInterface: class {
 
-  func loadWeather()
   func getWeather(for period: PeriodSelectorType)
   func getChartValues(for period: PeriodSelectorType) -> [BarChartValue]
 }
@@ -19,50 +18,23 @@ class WeatherInteractor {
 
   private let presenter: WeatherPresenterInterface
   private var weatherManager: WeatherManager
+  private let errorWasOccurred: Bool
 
-  init(presenter: WeatherPresenterInterface) {
+  init(presenter: WeatherPresenterInterface, weatherManager: WeatherManager = WeatherManager(), errorWasOccurred: Bool = false) {
     self.presenter = presenter
-    weatherManager = WeatherManager()
+    self.weatherManager = weatherManager
+    self.errorWasOccurred = errorWasOccurred
   }
 
 }
 
 extension WeatherInteractor: WeatherInteractorInterface {
 
-  func loadWeather() {
-    let group = DispatchGroup()
-    var errorWasOccurred = false
-
-    group.enter()
-    RequestAPI.requestData(CurrentWeatherRequest()) { [weak self] weather in
-      group.leave()
-      errorWasOccurred = weather == nil || errorWasOccurred
-      self?.weatherManager.setCurrentWeather(weather)
-    }
-
-    group.enter()
-    RequestAPI.requestData(WeatherInDaysRequest(days: PeriodSelectorType.week.daysCount)) { weather in
-      group.leave()
-      errorWasOccurred = weather == nil || errorWasOccurred
-      self.weatherManager.setWeekWeather(weather)
-    }
-
-    group.enter()
-    RequestAPI.requestData(WeatherInDaysRequest(days: PeriodSelectorType.twoWeeks.daysCount)) { weather in
-      group.leave()
-      errorWasOccurred = weather == nil || errorWasOccurred
-      self.weatherManager.setTwoWeeksWeather(weather)
-    }
-
-    group.notify(queue: .main) {
-      if errorWasOccurred {
-        self.presenter.errorWasOccurred()
-      }
-      self.presenter.weatherDidLoad()
-    }
-  }
-
   func getWeather(for period: PeriodSelectorType) {
+    if errorWasOccurred {
+      presenter.errorWasOccurred()
+    }
+
     switch period {
     case .current:
       let weather = weatherManager.getCurrentWeather()
@@ -90,6 +62,5 @@ extension WeatherInteractor: WeatherInteractorInterface {
       return []
     }
   }
-
 
 }

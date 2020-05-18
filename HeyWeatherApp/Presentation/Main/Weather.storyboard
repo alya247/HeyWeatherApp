@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather Controller-->
+        <scene sceneID="nJe-vk-QkI">
+            <objects>
+                <viewController storyboardIdentifier="WeatherController" id="SA0-fO-mxo" customClass="WeatherController" customModule="HeyWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1O6-ig-FTJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z71-bn-Y4R" customClass="CurrentWeatherView" customModule="HeyWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="5" y="138" width="404" height="699"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFL-sd-d57" customClass="PeriodSelectorView" customModule="HeyWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="68" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xpQ-h8-N3n"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBm-iR-YqS" customClass="DaysWeatherView" customModule="HeyWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="138" width="414" height="345.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uR-Io-afP" customClass="BarChartView" customModule="HeyWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="15" y="513.5" width="384" height="318.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45271971220000001" green="0.94867176040000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DBm-iR-YqS" firstAttribute="top" secondItem="EFL-sd-d57" secondAttribute="bottom" constant="20" id="0CM-ip-5AS"/>
+                            <constraint firstItem="8uR-Io-afP" firstAttribute="height" secondItem="DBm-iR-YqS" secondAttribute="height" multiplier="0.923077" id="DXn-rX-stf"/>
+                            <constraint firstItem="DBm-iR-YqS" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" id="GXD-RZ-hGC"/>
+                            <constraint firstItem="EFL-sd-d57" firstAttribute="trailing" secondItem="wBP-fg-zJf" secondAttribute="trailing" id="Ie3-5o-eiz"/>
+                            <constraint firstItem="Z71-bn-Y4R" firstAttribute="leading" secondItem="1O6-ig-FTJ" secondAttribute="leading" constant="5" id="Mkk-pP-XqD"/>
+                            <constraint firstItem="wBP-fg-zJf" firstAttribute="bottom" secondItem="8uR-Io-afP" secondAttribute="bottom" constant="30" id="NmC-oi-5Oq"/>
+                            <constraint firstItem="EFL-sd-d57" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" id="TJw-VC-GWv"/>
+                            <constraint firstItem="8uR-Io-afP" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" constant="15" id="Vqy-YW-CnR"/>
+                            <constraint firstItem="wBP-fg-zJf" firstAttribute="trailing" secondItem="Z71-bn-Y4R" secondAttribute="trailing" constant="5" id="XKr-1y-7ZG"/>
+                            <constraint firstItem="wBP-fg-zJf" firstAttribute="bottom" secondItem="Z71-bn-Y4R" secondAttribute="bottom" constant="25" id="XUQ-cK-hdw"/>
+                            <constraint firstItem="wBP-fg-zJf" firstAttribute="trailing" secondItem="8uR-Io-afP" secondAttribute="trailing" constant="15" id="XXF-jt-xiX"/>
+                            <constraint firstItem="EFL-sd-d57" firstAttribute="top" secondItem="wBP-fg-zJf" secondAttribute="top" constant="24" id="Zvc-Vd-uPO"/>
+                            <constraint firstItem="Z71-bn-Y4R" firstAttribute="top" secondItem="EFL-sd-d57" secondAttribute="bottom" constant="20" id="dFm-wW-Zs6"/>
+                            <constraint firstItem="DBm-iR-YqS" firstAttribute="trailing" secondItem="wBP-fg-zJf" secondAttribute="trailing" id="lah-oW-kNv"/>
+                            <constraint firstItem="8uR-Io-afP" firstAttribute="top" secondItem="DBm-iR-YqS" secondAttribute="bottom" priority="250" constant="30" id="pHa-8P-8tz"/>
+                            <constraint firstItem="8uR-Io-afP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DBm-iR-YqS" secondAttribute="bottom" constant="30" id="pRv-9h-MqL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wBP-fg-zJf"/>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="8uR-Io-afP" id="KMQ-9d-LhM"/>
+                        <outlet property="currentWeatherView" destination="Z71-bn-Y4R" id="tFr-0f-c7N"/>
+                        <outlet property="daysWeatherView" destination="DBm-iR-YqS" id="hPg-wG-x6d"/>
+                        <outlet property="periodSelectorView" destination="EFL-sd-d57" id="3VM-sR-Z0T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mts-VC-Tuj" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+</document>
