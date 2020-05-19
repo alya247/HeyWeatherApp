@@ -4,5 +4,7 @@
 target 'HeyWeatherApp' do
   
     pod 'Alamofire'
+    pod 'Swinject'
+    pod 'SwinjectStoryboard'
 
 end

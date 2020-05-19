@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Swinject
 
 class WeatherCoordinator: CommonCoordinator {
 
@@ -22,14 +23,20 @@ class WeatherCoordinator: CommonCoordinator {
   }
 
   func start() {
+    let container = Container()
     weatherController = UIStoryboard(name: "Weather", bundle: nil).instantiateViewController(identifier: "WeatherController")
-    let presenter = WeatherPresenter()
-    let interactor = WeatherInteractor(presenter: presenter,
-                                       weatherManager: weatherManager,
-                                       errorWasOccurred: errorWasOccurred)
-    presenter.view = weatherController
-    weatherController.interactor = interactor
 
+    container.register(WeatherPresenterInterface.self) { _ in
+      let presenter = WeatherPresenter()
+      presenter.view = self.weatherController
+      return presenter
+    }
+
+    container.register(WeatherInteractorInterface.self, factory: { (resolver: Resolver) in
+      return WeatherInteractor(presenter: resolver.resolve(WeatherPresenterInterface.self)!, weatherManager: self.weatherManager, errorWasOccurred: self.errorWasOccurred)
+    })
+
+    weatherController.interactor = container.resolve(WeatherInteractorInterface.self)!
     weatherController.modalPresentationStyle = .fullScreen
     rootController.present(weatherController, animated: false, completion: nil)
   }

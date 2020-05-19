@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Swinject
 
 class LaunchCoordinator: CommonCoordinator {
 
@@ -19,8 +20,15 @@ class LaunchCoordinator: CommonCoordinator {
   }
 
   func start() {
+    let container = Container()
+    container.register(WeatherManager.self) { _ in
+      let weatherManager = WeatherManager()
+      weatherManager.setupLoader()
+      return weatherManager
+    }
+
     launchController = UIStoryboard(name: "Launch", bundle: nil).instantiateViewController(identifier: "LaunchScreenController")
-    launchController.weatherManager = setupWeatherManager()
+    launchController.weatherManager = container.resolve(WeatherManager.self)!
     launchController.delegate = delegate
     launchController.modalPresentationStyle = .fullScreen
     rootController.present(launchController, animated: false, completion: nil)
@@ -30,9 +38,4 @@ class LaunchCoordinator: CommonCoordinator {
     launchController.dismiss(animated: false, completion: nil)
   }
 
-  private func setupWeatherManager() -> WeatherManager {
-    let weatherManager = WeatherManager()
-    weatherManager.setupLoader()
-    return weatherManager
-  }
 }
