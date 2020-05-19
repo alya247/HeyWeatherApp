@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import Swinject
 
 protocol CommonCoordinator: class { }
 
 class AppCoordinator {
 
+  private let container: Container
   private let rootController: UIViewController
   private var childCoordinators = [CommonCoordinator]()
 
   init(rootController: UIViewController) {
     self.rootController = rootController
+    self.container = Container() { RootAssembly().assemble(container: $0) }
   }
 
   func start() {
@@ -27,9 +30,9 @@ class AppCoordinator {
 
 extension AppCoordinator: LaunchScreenInterface {
 
-  func weatherDidLoad(with weatherManager: WeatherManager, errorWasOccurred: Bool) {
+  func weatherDidLoad(errorWasOccurred: Bool) {
     removeLaunchScreen()
-    setWeatherController(with: weatherManager, errorWasOccurred: errorWasOccurred)
+    setWeatherController(errorWasOccurred: errorWasOccurred)
   }
   
 }
@@ -37,14 +40,14 @@ extension AppCoordinator: LaunchScreenInterface {
 extension AppCoordinator {
 
   private func setLaunchScreen() {
-    let launchCoordinator = LaunchCoordinator(rootController: rootController)
+    let launchCoordinator = LaunchCoordinator(rootController: rootController, parentContainer: container)
     childCoordinators.append(launchCoordinator)
     launchCoordinator.delegate = self
     launchCoordinator.start()
   }
 
-  private func setWeatherController(with weatherManager: WeatherManager, errorWasOccurred: Bool) {
-    let weatherCoordinator = WeatherCoordinator(rootController: rootController, weatherManager: weatherManager, errorWasOccurred: errorWasOccurred)
+  private func setWeatherController(errorWasOccurred: Bool) {
+    let weatherCoordinator = WeatherCoordinator(rootController: rootController, errorWasOccurred: errorWasOccurred, parentContainter: container)
     childCoordinators.append(weatherCoordinator)
     weatherCoordinator.start()
   }

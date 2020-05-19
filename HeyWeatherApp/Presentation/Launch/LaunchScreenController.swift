@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LaunchScreenInterface: class {
-  func weatherDidLoad(with weatherManager: WeatherManager, errorWasOccurred: Bool)
+  func weatherDidLoad(errorWasOccurred: Bool)
 }
 
 class LaunchScreenController: UIViewController {
@@ -26,7 +26,7 @@ class LaunchScreenController: UIViewController {
   func loadWeather() {
     weatherManager.loadWeather { [weak self] errorWasOccurred in
       guard let `self` = self else { return }
-      self.delegate?.weatherDidLoad(with: self.weatherManager, errorWasOccurred: errorWasOccurred)
+      self.delegate?.weatherDidLoad(errorWasOccurred: errorWasOccurred)
     }
   }
 

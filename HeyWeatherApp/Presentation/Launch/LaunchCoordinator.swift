@@ -13,22 +13,16 @@ class LaunchCoordinator: CommonCoordinator {
 
   weak var delegate: LaunchScreenInterface?
   private let rootController: UIViewController
+  private let container: Container
   private var launchController: LaunchScreenController!
 
-  init(rootController: UIViewController) {
+  init(rootController: UIViewController, parentContainer: Container) {
     self.rootController = rootController
+    self.container = Container(parent: parentContainer) { LaunchAssembly().assemble(container: $0) }
   }
 
   func start() {
-    let container = Container()
-    container.register(WeatherManager.self) { _ in
-      let weatherManager = WeatherManager()
-      weatherManager.setupLoader()
-      return weatherManager
-    }
-
-    launchController = UIStoryboard(name: "Launch", bundle: nil).instantiateViewController(identifier: "LaunchScreenController")
-    launchController.weatherManager = container.resolve(WeatherManager.self)!
+    launchController = container.autoresolve()
     launchController.delegate = delegate
     launchController.modalPresentationStyle = .fullScreen
     rootController.present(launchController, animated: false, completion: nil)
