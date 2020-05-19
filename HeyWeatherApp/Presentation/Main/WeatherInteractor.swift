@@ -17,8 +17,8 @@ protocol WeatherInteractorInterface: class {
 class WeatherInteractor {
 
   private let presenter: WeatherPresenterInterface
-  private var weatherManager: WeatherManager
   private let errorWasOccurred: Bool
+  private var weatherManager: WeatherManager
 
   init(presenter: WeatherPresenterInterface, weatherManager: WeatherManager = WeatherManager(), errorWasOccurred: Bool = false) {
     self.presenter = presenter

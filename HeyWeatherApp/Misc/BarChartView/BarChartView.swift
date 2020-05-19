@@ -16,21 +16,21 @@ protocol BarChartSelectionInterface: class {
 
 class BarChartView: UIView {
 
-  @IBOutlet private var placeholderView: UIView!
-
   weak var delegate: BarChartSelectionInterface?
 
-  private var values: [BarChartValue] = []
+  @IBOutlet private weak var placeholderView: UIView!
+
   private let spacing: CGFloat = 7
+  private var values: [BarChartValue] = []
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setup()
+    initialSetup()
   }
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    setup()
+    initialSetup()
   }
 
   func apply(values: [BarChartValue]) {
@@ -42,14 +42,6 @@ class BarChartView: UIView {
 }
 
 extension BarChartView {
-
-  private func setup() {
-    let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
-    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
-    addSubview(contentView)
-    contentView.frame = bounds
-    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-  }
 
   private func removeBars() {
     placeholderView.subviews.forEach { $0.removeFromSuperview() }

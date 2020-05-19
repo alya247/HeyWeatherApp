@@ -11,8 +11,8 @@ import Swinject
 
 class LaunchCoordinator: CommonCoordinator {
 
-  private let rootController: UIViewController
   weak var delegate: LaunchScreenInterface?
+  private let rootController: UIViewController
   private var launchController: LaunchScreenController!
 
   init(rootController: UIViewController) {

@@ -8,13 +8,22 @@
 
 import UIKit
 
+extension DateFormatter {
+
+  static var dateFormatter: DateFormatter {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter
+  }
+
+}
+
 extension String {
 
   func convertedTimeZoneTime() -> String? {
     let timeZoneSeconds = TimeZone.current.secondsFromGMT()
 
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
+    let dateFormatter = DateFormatter.dateFormatter
 
     guard let date = dateFormatter.date(from: self),
           let convertedDate = Calendar.current.date(byAdding: .second,

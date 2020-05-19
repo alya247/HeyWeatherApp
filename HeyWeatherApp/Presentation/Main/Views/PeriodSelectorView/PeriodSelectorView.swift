@@ -32,18 +32,18 @@ enum PeriodSelectorType {
 
 class PeriodSelectorView: UIView {
 
-  @IBOutlet private var stackView: UIStackView!
-
   weak var delegate: SelectorDelegate?
+
+  @IBOutlet private weak var stackView: UIStackView!
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setup()
+    initialSetup()
   }
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    setup()
+    initialSetup()
   }
 
   func applySelectors( _ selectors: [PeriodSelectorType], defaultType: PeriodSelectorType = .current) {
@@ -67,14 +67,6 @@ extension PeriodSelectorView: SelectorDelegate {
 // MARK:- Private Methods
 
 extension PeriodSelectorView {
-
-  private func setup() {
-    let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
-    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
-    addSubview(contentView)
-    contentView.frame = bounds
-    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-  }
 
   private func createSelector(_ selector: PeriodSelectorType, isDefault: Bool) {
     let view = SelectorView(frame: .zero)

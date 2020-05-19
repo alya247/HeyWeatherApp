@@ -13,7 +13,7 @@ protocol CommonCoordinator: class { }
 class AppCoordinator {
 
   private let rootController: UIViewController
-  fileprivate var childCoordinators = [CommonCoordinator]()
+  private var childCoordinators = [CommonCoordinator]()
 
   init(rootController: UIViewController) {
     self.rootController = rootController

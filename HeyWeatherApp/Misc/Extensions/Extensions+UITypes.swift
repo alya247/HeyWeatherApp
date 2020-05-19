@@ -40,4 +40,13 @@ extension UIView {
     }
   }
 
+  func initialSetup() {
+    let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
+    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
+    addSubview(contentView)
+    contentView.frame = bounds
+    contentView.backgroundColor = .clear
+    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+  }
+
 }

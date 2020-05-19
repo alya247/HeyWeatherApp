@@ -14,14 +14,14 @@ protocol SelectorDelegate: class {
 
 class SelectorView: UIView {
 
-  @IBOutlet private var titleLabel: UILabel!
-
-  weak var delegate: SelectorDelegate?
   var selectorType: PeriodSelectorType = .current
-  private var isSelected = false
+  weak var delegate: SelectorDelegate?
+
+  @IBOutlet private weak var titleLabel: UILabel!
 
   private let selectedColor: UIColor = .white
   private let deselectedColor: UIColor = UIColor.white.withAlphaComponent(0.4)
+  private var isSelected = false
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -61,14 +61,9 @@ class SelectorView: UIView {
 extension SelectorView {
 
   private func setup() {
-    let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
-    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
-    addSubview(contentView)
-    contentView.frame = bounds
+    initialSetup()
     backgroundColor = deselectedColor
     layer.cornerRadius = 8
-    contentView.backgroundColor = .clear
-    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
   }
 
 }

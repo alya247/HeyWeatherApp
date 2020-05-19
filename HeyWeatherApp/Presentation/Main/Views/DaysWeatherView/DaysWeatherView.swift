@@ -10,15 +10,14 @@ import UIKit
 
 class DaysWeatherView: UIView {
 
-  @IBOutlet private var cityLabel: UILabel!
-  @IBOutlet private var collectionView: UICollectionView!
-
-  private var days: [DayInfo] = []
-  private var periodType: PeriodSelectorType = .week
-  private var selectedIndex: Int?
+  @IBOutlet private weak var cityLabel: UILabel!
+  @IBOutlet private weak var collectionView: UICollectionView!
 
   private let cellSpacing: CGFloat = 5
   private let offset: CGFloat = 10
+  private var days: [DayInfo] = []
+  private var periodType: PeriodSelectorType = .week
+  private var selectedIndex: Int?
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -92,11 +91,7 @@ extension DaysWeatherView: UICollectionViewDelegateFlowLayout {
 extension DaysWeatherView {
 
   private func setup() {
-    let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
-    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
-    addSubview(contentView)
-    contentView.frame = bounds
-    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    initialSetup()
 
     collectionView.register(UINib(nibName: DaysWeatherCell.identifier, bundle: nil),
                             forCellWithReuseIdentifier: DaysWeatherCell.identifier)

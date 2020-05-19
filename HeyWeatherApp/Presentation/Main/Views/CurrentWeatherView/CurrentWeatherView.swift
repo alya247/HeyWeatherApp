@@ -10,24 +10,24 @@ import UIKit
 
 class CurrentWeatherView: UIView {
 
-  @IBOutlet private var temperatureLabel: UILabel!
-  @IBOutlet private var feelTemperatureLabel: UILabel!
-  @IBOutlet private var sunriseLabel: UILabel!
-  @IBOutlet private var sunsetLabel: UILabel!
-  @IBOutlet private var cityLabel: UILabel!
-  @IBOutlet private var windSpeedLabel: UILabel!
-  @IBOutlet private var humidityLabel: UILabel!
-  @IBOutlet private var descriptionLabel: UILabel!
-  @IBOutlet private var iconImageView: UIImageView!
+  @IBOutlet private weak var temperatureLabel: UILabel!
+  @IBOutlet private weak var feelTemperatureLabel: UILabel!
+  @IBOutlet private weak var sunriseLabel: UILabel!
+  @IBOutlet private weak var sunsetLabel: UILabel!
+  @IBOutlet private weak var cityLabel: UILabel!
+  @IBOutlet private weak var windSpeedLabel: UILabel!
+  @IBOutlet private weak var humidityLabel: UILabel!
+  @IBOutlet private weak var descriptionLabel: UILabel!
+  @IBOutlet private weak var iconImageView: UIImageView!
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setup()
+    initialSetup()
   }
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    setup()
+    initialSetup()
   }
 
   func apply(_ weather: WeatherInfo) {
@@ -40,20 +40,6 @@ class CurrentWeatherView: UIView {
     humidityLabel.text = weather.humidity
     descriptionLabel.text = weather.weatherDescription
     iconImageView.image = weather.weatherIcon
-  }
-
-}
-
-// MARK:- Private Methods
-
-extension CurrentWeatherView {
-
-  private func setup() {
-    let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
-    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
-    addSubview(contentView)
-    contentView.frame = bounds
-    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
   }
 
 }

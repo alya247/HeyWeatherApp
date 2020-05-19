@@ -18,12 +18,12 @@ protocol WeatherViewInterface: class {
 
 class WeatherController: UIViewController {
 
-  @IBOutlet private var currentWeatherView: CurrentWeatherView!
-  @IBOutlet private var daysWeatherView: DaysWeatherView!
-  @IBOutlet private var periodSelectorView: PeriodSelectorView!
-  @IBOutlet private var barChartView: BarChartView!
-
   var interactor: WeatherInteractorInterface!
+
+  @IBOutlet private weak var currentWeatherView: CurrentWeatherView!
+  @IBOutlet private weak var daysWeatherView: DaysWeatherView!
+  @IBOutlet private weak var periodSelectorView: PeriodSelectorView!
+  @IBOutlet private weak var barChartView: BarChartView!
 
   override func viewDidLoad() {
     super.viewDidLoad()

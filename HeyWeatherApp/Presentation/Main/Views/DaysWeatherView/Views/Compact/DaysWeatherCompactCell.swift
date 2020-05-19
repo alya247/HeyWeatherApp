@@ -12,8 +12,8 @@ class DaysWeatherCompactCell: UICollectionViewCell {
 
   static let identifier = String(describing: DaysWeatherCompactCell.self)
 
-  @IBOutlet private var temperatureLabel: UILabel!
-  @IBOutlet private var iconImageView: UIImageView!
+  @IBOutlet private weak var temperatureLabel: UILabel!
+  @IBOutlet private weak var iconImageView: UIImageView!
 
   func apply(model: DayInfo, isSelected: Bool) {
     temperatureLabel.text = model.averageTemperature

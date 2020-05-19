@@ -12,10 +12,10 @@ class DaysWeatherCell: UICollectionViewCell {
 
   static let identifier = String(describing: DaysWeatherCell.self)
 
-  @IBOutlet private var maxTemperatureLabel: UILabel!
-  @IBOutlet private var minTemperatureLabel: UILabel!
-  @IBOutlet private var windSpeedLabel: UILabel!
-  @IBOutlet private var iconImageView: UIImageView!
+  @IBOutlet private weak var maxTemperatureLabel: UILabel!
+  @IBOutlet private weak var minTemperatureLabel: UILabel!
+  @IBOutlet private weak var windSpeedLabel: UILabel!
+  @IBOutlet private weak var iconImageView: UIImageView!
 
   func apply(model: DayInfo, isSelected: Bool) {
     maxTemperatureLabel.text = model.maxTemperature
