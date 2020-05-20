@@ -21,15 +21,15 @@
 		FE56D79E2473FCD20037D65C /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D79D2473FCD20037D65C /* MainAssembly.swift */; };
 		FE56D7A02473FD010037D65C /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D79F2473FD010037D65C /* RootAssembly.swift */; };
 		FE56D7A42473FE7D0037D65C /* Resolver+Autoresolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D7A32473FE7D0037D65C /* Resolver+Autoresolve.swift */; };
+		FE56D7A82474068C0037D65C /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D7A62474068C0037D65C /* Autolayout.swift */; };
+		FE56D7A92474068C0037D65C /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D7A72474068C0037D65C /* NiblessView.swift */; };
 		FE694C3724603D7E005B5E44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C3624603D7E005B5E44 /* AppDelegate.swift */; };
 		FE694C3924603D7E005B5E44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C3824603D7E005B5E44 /* SceneDelegate.swift */; };
 		FE694C3B24603D7E005B5E44 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C3A24603D7E005B5E44 /* WeatherController.swift */; };
 		FE694C4024603D82005B5E44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE694C3F24603D82005B5E44 /* Assets.xcassets */; };
 		FE694C4324603D82005B5E44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE694C4124603D82005B5E44 /* LaunchScreen.storyboard */; };
 		FE694C4F24604DF7005B5E44 /* DaysWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C4E24604DF7005B5E44 /* DaysWeatherView.swift */; };
-		FE694C5124604E03005B5E44 /* DaysWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE694C5024604E03005B5E44 /* DaysWeatherView.xib */; };
 		FE694C5424604E61005B5E44 /* DaysWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C5324604E61005B5E44 /* DaysWeatherCell.swift */; };
-		FE694C5624604E68005B5E44 /* DaysWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE694C5524604E68005B5E44 /* DaysWeatherCell.xib */; };
 		FE694C5A24604F05005B5E44 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C5924604F05005B5E44 /* CurrentWeatherView.swift */; };
 		FE694C5C24604F0D005B5E44 /* CurrentWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE694C5B24604F0D005B5E44 /* CurrentWeatherView.xib */; };
 		FE694C5E24604FE3005B5E44 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE694C5D24604FE3005B5E44 /* RequestAPI.swift */; };
@@ -56,6 +56,7 @@
 		FEA594A324617A290069E97D /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A224617A290069E97D /* WeatherManager.swift */; };
 		FEA594A62461828E0069E97D /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A52461828E0069E97D /* BarChartView.swift */; };
 		FEA594A8246182970069E97D /* BarChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA594A7246182970069E97D /* BarChartView.xib */; };
+		FEEFEDB42474E7DB00411D23 /* NiblessCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEFEDB32474E7DB00411D23 /* NiblessCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		FE56D79D2473FCD20037D65C /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		FE56D79F2473FD010037D65C /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		FE56D7A32473FE7D0037D65C /* Resolver+Autoresolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Resolver+Autoresolve.swift"; sourceTree = "<group>"; };
+		FE56D7A62474068C0037D65C /* Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autolayout.swift; sourceTree = "<group>"; };
+		FE56D7A72474068C0037D65C /* NiblessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		FE694C3324603D7E005B5E44 /* HeyWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE694C3624603D7E005B5E44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE694C3824603D7E005B5E44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,9 +86,7 @@
 		FE694C4224603D82005B5E44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE694C4424603D82005B5E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE694C4E24604DF7005B5E44 /* DaysWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysWeatherView.swift; sourceTree = "<group>"; };
-		FE694C5024604E03005B5E44 /* DaysWeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysWeatherView.xib; sourceTree = "<group>"; };
 		FE694C5324604E61005B5E44 /* DaysWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysWeatherCell.swift; sourceTree = "<group>"; };
-		FE694C5524604E68005B5E44 /* DaysWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysWeatherCell.xib; sourceTree = "<group>"; };
 		FE694C5924604F05005B5E44 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		FE694C5B24604F0D005B5E44 /* CurrentWeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentWeatherView.xib; sourceTree = "<group>"; };
 		FE694C5D24604FE3005B5E44 /* RequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		FEA594A224617A290069E97D /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		FEA594A52461828E0069E97D /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		FEA594A7246182970069E97D /* BarChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartView.xib; sourceTree = "<group>"; };
+		FEEFEDB32474E7DB00411D23 /* NiblessCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,16 @@
 			path = Swinject;
 			sourceTree = "<group>";
 		};
+		FE56D7A5247405F10037D65C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FE56D7A62474068C0037D65C /* Autolayout.swift */,
+				FE56D7A72474068C0037D65C /* NiblessView.swift */,
+				FEEFEDB32474E7DB00411D23 /* NiblessCollectionViewCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		FE694C2A24603D7D005B5E44 = {
 			isa = PBXGroup;
 			children = (
@@ -278,7 +290,6 @@
 			children = (
 				FE694C5224604E43005B5E44 /* Views */,
 				FE694C4E24604DF7005B5E44 /* DaysWeatherView.swift */,
-				FE694C5024604E03005B5E44 /* DaysWeatherView.xib */,
 			);
 			path = DaysWeatherView;
 			sourceTree = "<group>";
@@ -288,7 +299,6 @@
 			children = (
 				FE439F2A246150150076285B /* Compact */,
 				FE694C5324604E61005B5E44 /* DaysWeatherCell.swift */,
-				FE694C5524604E68005B5E44 /* DaysWeatherCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +334,7 @@
 		FE694C6A24607D57005B5E44 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				FE56D7A5247405F10037D65C /* UI */,
 				FE56D7A22473FE560037D65C /* Swinject */,
 				FEA594A42461827B0069E97D /* BarChartView */,
 				FE439F2124611FF60076285B /* Common */,
@@ -436,7 +447,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE694C5124604E03005B5E44 /* DaysWeatherView.xib in Resources */,
 				FE7E23412472ACD600353AC0 /* Weather.storyboard in Resources */,
 				FEA594A12461782F0069E97D /* Main.storyboard in Resources */,
 				FE694C4324603D82005B5E44 /* LaunchScreen.storyboard in Resources */,
@@ -444,7 +454,6 @@
 				FE694C4024603D82005B5E44 /* Assets.xcassets in Resources */,
 				FE439F2E246150410076285B /* DaysWeatherCompactCell.xib in Resources */,
 				FE7E23452472B5B900353AC0 /* Launch.storyboard in Resources */,
-				FE694C5624604E68005B5E44 /* DaysWeatherCell.xib in Resources */,
 				FE694C7224607EA5005B5E44 /* PeriodSelectorView.xib in Resources */,
 				FE694C77246081F9005B5E44 /* SelectorView.xib in Resources */,
 				FE694C5C24604F0D005B5E44 /* CurrentWeatherView.xib in Resources */,
@@ -492,9 +501,11 @@
 				FE694C3B24603D7E005B5E44 /* WeatherController.swift in Sources */,
 				FE694C3724603D7E005B5E44 /* AppDelegate.swift in Sources */,
 				FE7E233D2472A0E600353AC0 /* AppCoordinator.swift in Sources */,
+				FE56D7A92474068C0037D65C /* NiblessView.swift in Sources */,
 				FE694C7B2460A369005B5E44 /* WeatherInDaysRequest.swift in Sources */,
 				FE439F23246120080076285B /* WeatherSign.swift in Sources */,
 				FE439F2C246150390076285B /* DaysWeatherCompactCell.swift in Sources */,
+				FE56D7A82474068C0037D65C /* Autolayout.swift in Sources */,
 				FEA594A62461828E0069E97D /* BarChartView.swift in Sources */,
 				FE694C6924606BF6005B5E44 /* WeatherCondition.swift in Sources */,
 				FE439F2024611F600076285B /* WeatherInfo.swift in Sources */,
@@ -502,6 +513,7 @@
 				FE439F32246171630076285B /* Request.swift in Sources */,
 				FE7E23472472B61900353AC0 /* LaunchCoordinator.swift in Sources */,
 				FE694C6D24607D6E005B5E44 /* Extensions+UITypes.swift in Sources */,
+				FEEFEDB42474E7DB00411D23 /* NiblessCollectionViewCell.swift in Sources */,
 				FEA594A324617A290069E97D /* WeatherManager.swift in Sources */,
 				FE694C6524605555005B5E44 /* CurrentWeatherRequest.swift in Sources */,
 				FE694C5A24604F05005B5E44 /* CurrentWeatherView.swift in Sources */,

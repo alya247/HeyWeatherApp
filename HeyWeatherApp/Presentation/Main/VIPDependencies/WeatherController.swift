@@ -21,12 +21,15 @@ class WeatherController: UIViewController {
   var interactor: WeatherInteractorInterface!
 
   @IBOutlet private weak var currentWeatherView: CurrentWeatherView!
-  @IBOutlet private weak var daysWeatherView: DaysWeatherView!
   @IBOutlet private weak var periodSelectorView: PeriodSelectorView!
   @IBOutlet private weak var barChartView: BarChartView!
 
+  private var daysWeatherView: DaysWeatherView!
+
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    setupDaysWeatherView()
 
     periodSelectorView.applySelectors([.current, .week, .twoWeeks])
     periodSelectorView.delegate = self
@@ -93,6 +96,18 @@ extension WeatherController {
     currentWeatherView.isHidden = !isCurrent
     daysWeatherView.isHidden = isCurrent
     barChartView.isHidden = isCurrent
+  }
+
+  private func setupDaysWeatherView() {
+    daysWeatherView = DaysWeatherView()
+    view.addSubview(daysWeatherView)
+    daysWeatherView.layout {
+      $0.leading.equal(to: view.leadingAnchor)
+      $0.trailing.equal(to: view.trailingAnchor)
+      $0.top.equal(to: periodSelectorView.bottomAnchor, offsetBy: 20)
+      $0.bottom.equal(to: barChartView.topAnchor, offsetBy: 30)
+      $0.height.equal(to: 345)
+    }
   }
 
 }

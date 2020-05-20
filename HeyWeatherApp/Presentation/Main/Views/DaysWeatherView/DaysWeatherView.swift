@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DaysWeatherView: UIView {
+class DaysWeatherView: NiblessView {
 
-  @IBOutlet private weak var cityLabel: UILabel!
-  @IBOutlet private weak var collectionView: UICollectionView!
+  private let cityLabel = UILabel()
+  private var collectionView: UICollectionView!
 
   private let cellSpacing: CGFloat = 5
   private let offset: CGFloat = 10
@@ -19,13 +19,8 @@ class DaysWeatherView: UIView {
   private var periodType: PeriodSelectorType = .week
   private var selectedIndex: Int?
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setup()
-  }
-
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
+  override init() {
+    super.init()
     setup()
   }
 
@@ -91,12 +86,42 @@ extension DaysWeatherView: UICollectionViewDelegateFlowLayout {
 extension DaysWeatherView {
 
   private func setup() {
-    initialSetup()
+    setupLabel()
+    setupCollectionView()
+  }
 
-    collectionView.register(UINib(nibName: DaysWeatherCell.identifier, bundle: nil),
-                            forCellWithReuseIdentifier: DaysWeatherCell.identifier)
+  private func setupLabel() {
+    addSubview(cityLabel)
+    cityLabel.layout {
+      $0.trailing.equal(to: trailingAnchor, offsetBy: -20)
+      $0.top.equal(to: topAnchor, offsetBy: 10)
+    }
+    cityLabel.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+    cityLabel.textColor = .black
+  }
+
+  private func setupCollectionView() {
+    let layout = UICollectionViewFlowLayout()
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    layout.minimumLineSpacing = 5
+    layout.minimumInteritemSpacing = 5
+    collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
     collectionView.register(UINib(nibName: DaysWeatherCompactCell.identifier, bundle: nil),
-    forCellWithReuseIdentifier: DaysWeatherCompactCell.identifier)
+                            forCellWithReuseIdentifier: DaysWeatherCompactCell.identifier)
+    collectionView.register(DaysWeatherCell.self, forCellWithReuseIdentifier: DaysWeatherCell.identifier)
+
+    collectionView.delegate = self
+    collectionView.dataSource = self
+    collectionView.backgroundColor = .clear
+
+    addSubview(collectionView)
+    collectionView.layout {
+      $0.leading.equal(to: leadingAnchor)
+      $0.trailing.equal(to: trailingAnchor)
+      $0.top.equal(to: cityLabel.bottomAnchor, offsetBy: 13)
+      $0.bottom.equal(to: bottomAnchor)
+    }
   }
 
 }

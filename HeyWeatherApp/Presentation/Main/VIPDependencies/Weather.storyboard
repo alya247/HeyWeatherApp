@@ -26,20 +26,16 @@
                                     <constraint firstAttribute="height" constant="50" id="xpQ-h8-N3n"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBm-iR-YqS" customClass="DaysWeatherView" customModule="HeyWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="138" width="414" height="345.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uR-Io-afP" customClass="BarChartView" customModule="HeyWeatherApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="513.5" width="384" height="318.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="318.5" id="U3e-LO-2rZ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.45271971220000001" green="0.94867176040000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DBm-iR-YqS" firstAttribute="top" secondItem="EFL-sd-d57" secondAttribute="bottom" constant="20" id="0CM-ip-5AS"/>
-                            <constraint firstItem="8uR-Io-afP" firstAttribute="height" secondItem="DBm-iR-YqS" secondAttribute="height" multiplier="0.923077" id="DXn-rX-stf"/>
-                            <constraint firstItem="DBm-iR-YqS" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" id="GXD-RZ-hGC"/>
                             <constraint firstItem="EFL-sd-d57" firstAttribute="trailing" secondItem="wBP-fg-zJf" secondAttribute="trailing" id="Ie3-5o-eiz"/>
                             <constraint firstItem="Z71-bn-Y4R" firstAttribute="leading" secondItem="1O6-ig-FTJ" secondAttribute="leading" constant="5" id="Mkk-pP-XqD"/>
                             <constraint firstItem="wBP-fg-zJf" firstAttribute="bottom" secondItem="8uR-Io-afP" secondAttribute="bottom" constant="30" id="NmC-oi-5Oq"/>
@@ -50,16 +46,12 @@
                             <constraint firstItem="wBP-fg-zJf" firstAttribute="trailing" secondItem="8uR-Io-afP" secondAttribute="trailing" constant="15" id="XXF-jt-xiX"/>
                             <constraint firstItem="EFL-sd-d57" firstAttribute="top" secondItem="wBP-fg-zJf" secondAttribute="top" constant="24" id="Zvc-Vd-uPO"/>
                             <constraint firstItem="Z71-bn-Y4R" firstAttribute="top" secondItem="EFL-sd-d57" secondAttribute="bottom" constant="20" id="dFm-wW-Zs6"/>
-                            <constraint firstItem="DBm-iR-YqS" firstAttribute="trailing" secondItem="wBP-fg-zJf" secondAttribute="trailing" id="lah-oW-kNv"/>
-                            <constraint firstItem="8uR-Io-afP" firstAttribute="top" secondItem="DBm-iR-YqS" secondAttribute="bottom" priority="250" constant="30" id="pHa-8P-8tz"/>
-                            <constraint firstItem="8uR-Io-afP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DBm-iR-YqS" secondAttribute="bottom" constant="30" id="pRv-9h-MqL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wBP-fg-zJf"/>
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="8uR-Io-afP" id="KMQ-9d-LhM"/>
                         <outlet property="currentWeatherView" destination="Z71-bn-Y4R" id="tFr-0f-c7N"/>
-                        <outlet property="daysWeatherView" destination="DBm-iR-YqS" id="hPg-wG-x6d"/>
                         <outlet property="periodSelectorView" destination="EFL-sd-d57" id="3VM-sR-Z0T"/>
                     </connections>
                 </viewController>
