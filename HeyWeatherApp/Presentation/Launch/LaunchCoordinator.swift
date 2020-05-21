@@ -9,7 +9,7 @@
 import UIKit
 import Swinject
 
-class LaunchCoordinator: CommonCoordinator {
+class LaunchCoordinator: Coordinator {
 
   weak var delegate: LaunchScreenInterface?
   private let rootController: UIViewController

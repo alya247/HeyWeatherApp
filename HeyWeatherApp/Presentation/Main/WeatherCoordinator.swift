@@ -9,7 +9,7 @@
 import UIKit
 import Swinject
 
-class WeatherCoordinator: CommonCoordinator {
+class WeatherCoordinator: Coordinator {
 
   private let rootController: UIViewController
   private let errorWasOccurred: Bool

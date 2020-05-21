@@ -46,13 +46,12 @@ class DaysWeatherView: NiblessView {
 
     model.map { $0.0?.city }.bind(to: cityLabel.rx.text ).disposed(by: bag)
 
-    model.subscribe(onNext: { model in
-      self.selectedIndex = nil
-      self.periodType = model.type
-      self.setCellSize()
-      self.days.onNext(model.model?.days ?? [])
+    model.subscribe(onNext: { [weak self] model in
+      self?.selectedIndex = nil
+      self?.periodType = model.1
+      self?.days.onNext(model.0?.days ?? [])
+      self?.setCellSize()
     }).disposed(by: bag)
-
 
   }
 

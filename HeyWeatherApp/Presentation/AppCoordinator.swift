@@ -9,21 +9,36 @@
 import UIKit
 import Swinject
 
-protocol CommonCoordinator: class { }
+protocol Coordinator: class {
+
+  func start()
+  func dismiss()
+
+}
+
+extension Coordinator {
+
+  func dismiss() { }
+
+}
 
 class AppCoordinator {
 
   private let container: Container
-  private let rootController: UIViewController
-  private var childCoordinators = [CommonCoordinator]()
+  private var rootController: UIViewController!
+  private let window: UIWindow
+  private var childCoordinators = [Coordinator]()
 
-  init(rootController: UIViewController) {
-    self.rootController = rootController
+  init(window: UIWindow) {
+    self.window = window
     self.container = Container() { RootAssembly().assemble(container: $0) }
   }
 
   func start() {
-    setLaunchScreen()
+    window.rootViewController = UIViewController()
+    window.makeKeyAndVisible()
+    rootController = window.rootViewController
+    presentLaunchFlow()
   }
 
 }
@@ -31,31 +46,31 @@ class AppCoordinator {
 extension AppCoordinator: LaunchScreenInterface {
 
   func weatherDidLoad(errorWasOccurred: Bool) {
-    removeLaunchScreen()
-    setWeatherController(errorWasOccurred: errorWasOccurred)
+    removeLaunchFlow()
+    presentWeatherFlow(errorWasOccurred: errorWasOccurred)
   }
   
 }
 
 extension AppCoordinator {
 
-  private func setLaunchScreen() {
+  private func presentLaunchFlow() {
     let launchCoordinator = LaunchCoordinator(rootController: rootController, parentContainer: container)
     childCoordinators.append(launchCoordinator)
     launchCoordinator.delegate = self
     launchCoordinator.start()
   }
 
-  private func setWeatherController(errorWasOccurred: Bool) {
+  private func presentWeatherFlow(errorWasOccurred: Bool) {
     let weatherCoordinator = WeatherCoordinator(rootController: rootController, errorWasOccurred: errorWasOccurred, parentContainter: container)
     childCoordinators.append(weatherCoordinator)
     weatherCoordinator.start()
   }
 
-  private func removeLaunchScreen() {
-    guard let index = childCoordinators.firstIndex(where: { $0 is LaunchCoordinator }), let launch = childCoordinators[index] as? LaunchCoordinator else { return }
+  private func removeLaunchFlow() {
+    guard let launch = childCoordinators.first(where: { $0 is LaunchCoordinator }) else { return }
     launch.dismiss()
-    childCoordinators.remove(at: index)
+    childCoordinators.removeAll { $0 is LaunchCoordinator }
   }
 
 }
