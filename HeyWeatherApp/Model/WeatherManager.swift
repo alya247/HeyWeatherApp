@@ -26,6 +26,7 @@ class WeatherManager {
 
   private var weatherLoader: WeatherLoader!
 
+    //TODO: - вынести в DI
   func setupLoader() {
     weatherLoader = WeatherLoader(weatherManager: self)
   }

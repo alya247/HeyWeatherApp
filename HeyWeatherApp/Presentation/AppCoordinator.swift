@@ -8,7 +8,7 @@
 
 import UIKit
 import Swinject
-
+//TODO: - внести в протокол методы start и dismiss
 protocol CommonCoordinator: class { }
 
 class AppCoordinator {
@@ -38,7 +38,7 @@ extension AppCoordinator: LaunchScreenInterface {
 }
 
 extension AppCoordinator {
-
+  //TODO: - переименовать в presentLaunchFlow. Аналогично для setWeatherController
   private func setLaunchScreen() {
     let launchCoordinator = LaunchCoordinator(rootController: rootController, parentContainer: container)
     childCoordinators.append(launchCoordinator)
