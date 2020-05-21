@@ -14,7 +14,7 @@ protocol WeatherPresenterInterface: class {
 
   var view: WeatherViewInterface! { get set }
   var currentWeather: BehaviorSubject<WeatherInfo?> { get set }
-  var periodWeather: BehaviorSubject<(DaysInfo?, PeriodSelectorType)> { get set }
+  var periodWeather: BehaviorSubject<(model: DaysInfo?, type: PeriodSelectorType)> { get set }
   func errorWasOccurred()
   func presentCurrentWeather(_ weather: WeatherModel?)
   func presentWeekWeather(_ weather: WeatherDaysModel?)
@@ -24,7 +24,7 @@ protocol WeatherPresenterInterface: class {
 class WeatherPresenter {
 
   var currentWeather: BehaviorSubject<WeatherInfo?> = BehaviorSubject<WeatherInfo?>(value: nil)
-  var periodWeather = BehaviorSubject<(DaysInfo?, PeriodSelectorType)>(value: (nil, .week))
+  var periodWeather = BehaviorSubject<(model: DaysInfo?, type: PeriodSelectorType)>(value: (nil, .week))
   unowned var view: WeatherViewInterface!
   
 }

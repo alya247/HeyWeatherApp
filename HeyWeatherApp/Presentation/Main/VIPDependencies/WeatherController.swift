@@ -90,7 +90,7 @@ extension WeatherController {
 
   private func setupObservers() {
     currentWeatherView.bind(to: interactor.currentWeather)
-    daysWeatherView.bind(model: interactor.periodWeather)
+    daysWeatherView.bind(to: interactor.periodWeather)
 
     interactor.barChartValues.observeOn(MainScheduler.instance).subscribe(onNext: { values in
       self.barChartView.apply(values: values)
@@ -105,7 +105,7 @@ extension WeatherController {
       $0.trailing.equal(to: view.trailingAnchor)
       $0.top.equal(to: periodSelectorView.bottomAnchor, offsetBy: 20)
       $0.bottom.equal(to: barChartView.topAnchor, offsetBy: 30)
-      $0.height.equal(to: 345)
+      $0.height.equal(to: 345, priority: UILayoutPriority(rawValue: 750))
     }
   }
 

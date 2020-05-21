@@ -28,20 +28,32 @@ class DaysWeatherView: NiblessView {
     setup()
   }
 
-  func bind(model: Observable<(DaysInfo?, PeriodSelectorType)>) {
-    days.bind(to: collectionView.rx.items(cellIdentifier: DaysWeatherCell.identifier, cellType: DaysWeatherCell.self)) { index, day, cell in
-      cell.apply(model: day, isSelected: index == self.selectedIndex)
+  func bind(to model: Observable<(model: DaysInfo?, type: PeriodSelectorType)>) {
+    days.bind(to: collectionView.rx.items) { (collectionView, index, item) -> UICollectionViewCell in
+      let indexPath = IndexPath(row: index, section: 0)
+      switch self.periodType {
+      case .week:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCell.identifier, for: indexPath) as! DaysWeatherCell
+        cell.apply(model: item, isSelected: index == self.selectedIndex)
+        return cell
+      case .twoWeeks:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCompactCell.identifier, for: indexPath) as! DaysWeatherCompactCell
+        cell.apply(model: item, isSelected: index == self.selectedIndex)
+        return cell
+      default: return UICollectionViewCell()
+      }
     }.disposed(by: bag)
 
     model.map { $0.0?.city }.bind(to: cityLabel.rx.text ).disposed(by: bag)
 
     model.subscribe(onNext: { model in
       self.selectedIndex = nil
-      self.periodType = model.1
-      self.days.onNext(model.0?.days ?? [])
+      self.periodType = model.type
+      self.setCellSize()
+      self.days.onNext(model.model?.days ?? [])
     }).disposed(by: bag)
 
-    setCellSize()
+
   }
 
   private func setCellSize() {

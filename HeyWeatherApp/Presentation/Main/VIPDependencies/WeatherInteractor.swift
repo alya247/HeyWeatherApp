@@ -13,7 +13,7 @@ import RxCocoa
 protocol WeatherInteractorInterface: class {
 
   var currentWeather: Observable<WeatherInfo?> { get }
-  var periodWeather: Observable<(DaysInfo?, PeriodSelectorType)> { get }
+  var periodWeather: Observable<(model: DaysInfo?, type: PeriodSelectorType)> { get }
   var barChartValues: Observable<[BarChartValue]> { get }
   func getWeather(for period: PeriodSelectorType)
 
@@ -25,7 +25,7 @@ class WeatherInteractor {
     return presenter.currentWeather.asObservable()
   }
 
-  var periodWeather: Observable<(DaysInfo?, PeriodSelectorType)> {
+  var periodWeather: Observable<(model: DaysInfo?, type: PeriodSelectorType)> {
     return presenter.periodWeather.asObservable()
   }
 
