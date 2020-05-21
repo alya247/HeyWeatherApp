@@ -18,14 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
     window = UIWindow(windowScene: windowScene)
-    //TODO: - всю логику для window нужно перенести в AppCoordinator, потому что возможен случай когда тебе нужно будет показать какой-то определенный VC на старте
-    window?.rootViewController = UIViewController()
-    window?.makeKeyAndVisible()
-    setupCoordinator(with: window!.rootViewController!)
+    setupCoordinator(with: window!)
   }
 
-  private func setupCoordinator(with rootViewController: UIViewController) {
-    coordinator = AppCoordinator(rootController: rootViewController)
+  private func setupCoordinator(with window: UIWindow) {
+    coordinator = AppCoordinator(window: window)
     coordinator?.start()
   }
 

@@ -92,8 +92,8 @@ extension WeatherController {
     currentWeatherView.bind(to: interactor.currentWeather)
     daysWeatherView.bind(model: interactor.periodWeather)
 
-    interactor.barChartValues.observeOn(MainScheduler.instance).subscribe(onNext: { values in
-      self.barChartView.apply(values: values)
+    interactor.barChartValues.observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] values in
+      self?.barChartView.apply(values: values)
     }).disposed(by: bag)
   }
 

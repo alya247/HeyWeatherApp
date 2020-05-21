@@ -29,16 +29,17 @@ class DaysWeatherView: NiblessView {
   }
 
   func bind(model: Observable<(DaysInfo?, PeriodSelectorType)>) {
-    days.bind(to: collectionView.rx.items(cellIdentifier: DaysWeatherCell.identifier, cellType: DaysWeatherCell.self)) { index, day, cell in
+    days.bind(to: collectionView.rx.items(cellIdentifier: DaysWeatherCell.identifier, cellType: DaysWeatherCell.self)) { [weak self] index, day, cell in
+      guard let `self` = self else { return }
       cell.apply(model: day, isSelected: index == self.selectedIndex)
     }.disposed(by: bag)
 
     model.map { $0.0?.city }.bind(to: cityLabel.rx.text ).disposed(by: bag)
 
-    model.subscribe(onNext: { model in
-      self.selectedIndex = nil
-      self.periodType = model.1
-      self.days.onNext(model.0?.days ?? [])
+    model.subscribe(onNext: { [weak self] model in
+      self?.selectedIndex = nil
+      self?.periodType = model.1
+      self?.days.onNext(model.0?.days ?? [])
     }).disposed(by: bag)
 
     setCellSize()
