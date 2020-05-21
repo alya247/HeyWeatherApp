@@ -1,25 +1,53 @@
 PODS:
-  - Alamofire (5.1.0)
+  - Alamofire (5.2.0)
+  - Differentiator (4.0.1)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - Swinject (2.7.1)
   - SwinjectAutoregistration (2.7.0):
     - Swinject (~> 2.7)
 
 DEPENDENCIES:
   - Alamofire
+  - "NSObject+Rx"
+  - RxCocoa
+  - RxDataSources
   - Swinject
   - SwinjectAutoregistration
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Differentiator
+    - "NSObject+Rx"
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
     - Swinject
     - SwinjectAutoregistration
 
 SPEC CHECKSUMS:
-  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  Alamofire: c1ca147559e730bfb2182c8c7aafbdd90a867987
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
 
-PODFILE CHECKSUM: 82cee33491461c410eaec4ce9850a959fd43aea1
+PODFILE CHECKSUM: 5cd8b3684111e6a576a9dc06d02a833073ece06c
 
 COCOAPODS: 1.9.1

@@ -6,5 +6,8 @@ target 'HeyWeatherApp' do
     pod 'Alamofire'
     pod 'Swinject'
     pod 'SwinjectAutoregistration'
+    pod 'RxCocoa'
+    pod 'NSObject+Rx'
+    pod 'RxDataSources'
 
 end

@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol WeatherViewInterface: class {
 
   func weatherDidLoad()
-  func presentCurrentWeather(_ weather: WeatherInfo)
-  func presentWeatherByDays(_ weather: DaysInfo, type: PeriodSelectorType)
   func presentError()
 }
 
@@ -24,6 +24,7 @@ class WeatherController: UIViewController {
   @IBOutlet private weak var periodSelectorView: PeriodSelectorView!
   @IBOutlet private weak var barChartView: BarChartView!
 
+  private let bag = DisposeBag()
   private var daysWeatherView: DaysWeatherView!
 
   override func viewDidLoad() {
@@ -35,6 +36,7 @@ class WeatherController: UIViewController {
     periodSelectorView.delegate = self
     barChartView.delegate = self
     interactor.getWeather(for: .current)
+    setupObservers()
   }
 
 }
@@ -45,19 +47,6 @@ extension WeatherController: WeatherViewInterface {
 
   func weatherDidLoad() {
     interactor.getWeather(for: .current)
-  }
-
-  func presentCurrentWeather(_ weather: WeatherInfo) {
-    setViews(isCurrent: true)
-    currentWeatherView.apply(weather)
-  }
-
-  func presentWeatherByDays(_ weather: DaysInfo, type: PeriodSelectorType) {
-    setViews(isCurrent: false)
-    daysWeatherView.apply(model: weather, periodType: type)
-
-    let values = interactor.getChartValues(for: type)
-    barChartView.apply(values: values)
   }
 
   func presentError() {
@@ -73,6 +62,7 @@ extension WeatherController: WeatherViewInterface {
 extension WeatherController: SelectorDelegate {
 
   func didSelectPeriod(with type: PeriodSelectorType) {
+    setViews(isCurrent: type == .current)
     interactor.getWeather(for: type)
   }
 
@@ -96,6 +86,15 @@ extension WeatherController {
     currentWeatherView.isHidden = !isCurrent
     daysWeatherView.isHidden = isCurrent
     barChartView.isHidden = isCurrent
+  }
+
+  private func setupObservers() {
+    currentWeatherView.bind(to: interactor.currentWeather)
+    daysWeatherView.bind(model: interactor.periodWeather)
+
+    interactor.barChartValues.observeOn(MainScheduler.instance).subscribe(onNext: { values in
+      self.barChartView.apply(values: values)
+    }).disposed(by: bag)
   }
 
   private func setupDaysWeatherView() {

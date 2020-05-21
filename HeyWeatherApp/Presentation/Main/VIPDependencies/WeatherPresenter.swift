@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol WeatherPresenterInterface: class {
 
   var view: WeatherViewInterface! { get set }
-  func weatherDidLoad()
+  var currentWeather: BehaviorSubject<WeatherInfo?> { get set }
+  var periodWeather: BehaviorSubject<(DaysInfo?, PeriodSelectorType)> { get set }
   func errorWasOccurred()
   func presentCurrentWeather(_ weather: WeatherModel?)
   func presentWeekWeather(_ weather: WeatherDaysModel?)
@@ -20,15 +23,13 @@ protocol WeatherPresenterInterface: class {
 
 class WeatherPresenter {
 
+  var currentWeather: BehaviorSubject<WeatherInfo?> = BehaviorSubject<WeatherInfo?>(value: nil)
+  var periodWeather = BehaviorSubject<(DaysInfo?, PeriodSelectorType)>(value: (nil, .week))
   unowned var view: WeatherViewInterface!
-
+  
 }
 
 extension WeatherPresenter: WeatherPresenterInterface {
-
-  func weatherDidLoad() {
-    view.weatherDidLoad()
-  }
 
   func errorWasOccurred() {
     view.presentError()
@@ -37,16 +38,18 @@ extension WeatherPresenter: WeatherPresenterInterface {
   func presentCurrentWeather(_ weather: WeatherModel?) {
     if let weather = weather {
       let info = WeatherInfo(model: weather)
-      view.presentCurrentWeather(info)
+      currentWeather.onNext(info)
     } else {
       view.presentError()
+      currentWeather.onNext(nil)
     }
+    
   }
 
   func presentWeekWeather(_ weather: WeatherDaysModel?) {
     if let weather = weather {
       let info = DaysInfo(model: weather)
-      view.presentWeatherByDays(info, type: .week)
+      periodWeather.onNext((info, .week))
     } else {
       view.presentError()
     }
@@ -55,7 +58,7 @@ extension WeatherPresenter: WeatherPresenterInterface {
   func presentTwoWeekWeather(_ weather: WeatherDaysModel?) {
     if let weather = weather {
       let info = DaysInfo(model: weather)
-      view.presentWeatherByDays(info, type: .twoWeeks)
+      periodWeather.onNext((info, .twoWeeks))
     } else {
       view.presentError()
     }

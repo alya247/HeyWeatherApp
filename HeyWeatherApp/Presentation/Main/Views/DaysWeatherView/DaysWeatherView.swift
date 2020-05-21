@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class DaysWeatherView: NiblessView {
 
@@ -15,68 +18,47 @@ class DaysWeatherView: NiblessView {
 
   private let cellSpacing: CGFloat = 5
   private let offset: CGFloat = 10
-  private var days: [DayInfo] = []
+  private let bag = DisposeBag()
   private var periodType: PeriodSelectorType = .week
   private var selectedIndex: Int?
+  private var days = BehaviorSubject<[DayInfo]>(value: [])
 
   override init() {
     super.init()
     setup()
   }
 
-  func apply(model: DaysInfo, periodType: PeriodSelectorType) {
-    selectedIndex = nil
-    cityLabel.text = model.city
-    days = model.days
-    self.periodType = periodType
-    collectionView.reloadData()
+  func bind(model: Observable<(DaysInfo?, PeriodSelectorType)>) {
+    days.bind(to: collectionView.rx.items(cellIdentifier: DaysWeatherCell.identifier, cellType: DaysWeatherCell.self)) { index, day, cell in
+      cell.apply(model: day, isSelected: index == self.selectedIndex)
+    }.disposed(by: bag)
+
+    model.map { $0.0?.city }.bind(to: cityLabel.rx.text ).disposed(by: bag)
+
+    model.subscribe(onNext: { model in
+      self.selectedIndex = nil
+      self.periodType = model.1
+      self.days.onNext(model.0?.days ?? [])
+    }).disposed(by: bag)
+
+    setCellSize()
+  }
+
+  private func setCellSize() {
+    guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    layout.minimumLineSpacing = 5
+    layout.minimumInteritemSpacing = 5
+
+    let divider: CGFloat = periodType == .week ? 4 : 6
+    let side: CGFloat = (.screenWidth - (2 * offset) - ((divider - 1) * cellSpacing)) / divider
+    layout.itemSize = CGSize(width: side, height: side)
+    layout.invalidateLayout()
   }
 
   func setSelectedDay(for index: Int) {
     selectedIndex = index
     collectionView.reloadData()
-  }
-
-}
-
-// MARK:- UICollectionViewDataSource
-
-extension DaysWeatherView: UICollectionViewDataSource {
-
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return days.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-    switch periodType {
-    case .week:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCell.identifier, for: indexPath) as! DaysWeatherCell
-      cell.apply(model: days[indexPath.row], isSelected: indexPath.row == selectedIndex)
-      return cell
-
-    case .twoWeeks:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCompactCell.identifier, for: indexPath) as! DaysWeatherCompactCell
-      cell.apply(model: days[indexPath.row], isSelected: indexPath.row == selectedIndex)
-      return cell
-
-    default:
-      return UICollectionViewCell()
-    }
-  }
-
-}
-
-// MARK:- UICollectionViewDelegateFlowLayout
-
-extension DaysWeatherView: UICollectionViewDelegateFlowLayout {
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-    let divider: CGFloat = periodType == .week ? 4 : 6
-    let side: CGFloat = (.screenWidth - (2 * offset) - ((divider - 1) * cellSpacing)) / divider
-
-    return CGSize(width: side, height: side)
   }
 
 }
@@ -102,17 +84,12 @@ extension DaysWeatherView {
 
   private func setupCollectionView() {
     let layout = UICollectionViewFlowLayout()
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    layout.minimumLineSpacing = 5
-    layout.minimumInteritemSpacing = 5
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
     collectionView.register(UINib(nibName: DaysWeatherCompactCell.identifier, bundle: nil),
                             forCellWithReuseIdentifier: DaysWeatherCompactCell.identifier)
     collectionView.register(DaysWeatherCell.self, forCellWithReuseIdentifier: DaysWeatherCell.identifier)
 
-    collectionView.delegate = self
-    collectionView.dataSource = self
     collectionView.backgroundColor = .clear
 
     addSubview(collectionView)
@@ -125,4 +102,3 @@ extension DaysWeatherView {
   }
 
 }
-
