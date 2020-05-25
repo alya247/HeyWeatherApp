@@ -32,7 +32,7 @@ class DaysWeatherCell: NiblessCollectionViewCell {
     minTemperatureLabel.text = model.minTemperature
     windSpeedLabel.text = model.windSpeed
     iconImageView.image = model.weatherIcon
-    contentView.backgroundColor = isSelected ? .orange : .white
+    contentView.backgroundColor = isSelected ? ColorName.appOrange.color : .white
   }
     
 }

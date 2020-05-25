@@ -15,7 +15,7 @@ class MainAssembly: Assembly {
 
   func assemble(container: Container) {
     container.register(WeatherController.self) { resolver in
-      let controller = UIStoryboard(name: "Weather", bundle: nil).instantiateViewController(identifier: "WeatherController") as! WeatherController
+      let controller = StoryboardScene.Weather.weatherController.instantiate()
       let presenter: WeatherPresenterInterface = resolver.autoresolve()
       let interactor: WeatherInteractorInterface = resolver.autoresolve()
       presenter.view = controller

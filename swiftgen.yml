@@ -1,0 +1,15 @@
+ib:
+  inputs: HeyWeatherApp/
+  outputs:
+    - templateName: scenes-swift4
+      output: HeyWeatherApp/Misc/Extensions/SwiftGen/UIStoryboard+SwiftGen.swift
+xcassets:
+  inputs: HeyWeatherApp/Assets.xcassets
+  outputs:
+    templateName: swift4
+    output: HeyWeatherApp/Misc/Extensions/SwiftGen/UIImage+SwiftGen.swift
+colors:
+  inputs: HeyWeatherApp/Misc/Extensions/SwiftGen/ApplicationColors.json
+  outputs:
+    templateName: swift4
+    output: HeyWeatherApp/Misc/Extensions/SwiftGen/UIColor+SwiftGen.swift

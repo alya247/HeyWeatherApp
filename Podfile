@@ -10,5 +10,6 @@ target 'HeyWeatherApp' do
     pod 'RxCocoa'
     pod 'NSObject+Rx'
     pod 'RxDataSources'
+    pod 'SwiftGen', '~> 6.0'
 
 end

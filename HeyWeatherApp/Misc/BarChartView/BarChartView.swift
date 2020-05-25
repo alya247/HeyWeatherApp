@@ -57,7 +57,7 @@ extension BarChartView {
     for (index, value) in values.enumerated() {
       let barView = BarView()
       barView.dayIndex = index
-      barView.backgroundColor = .orange
+      barView.backgroundColor = ColorName.appOrange.color
 
       let barHeight = step * value.max
       let y = placeholderView.bounds.maxY - barHeight

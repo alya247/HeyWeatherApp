@@ -18,7 +18,7 @@ class DaysWeatherCompactCell: UICollectionViewCell {
   func apply(model: DayInfo, isSelected: Bool) {
     temperatureLabel.text = model.averageTemperature
     iconImageView.image = model.weatherIcon
-    contentView.backgroundColor = isSelected ? .orange : .white
+    contentView.backgroundColor = isSelected ? ColorName.appOrange.color : .white
   }
 
 }

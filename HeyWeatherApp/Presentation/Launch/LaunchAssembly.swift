@@ -15,7 +15,7 @@ class LaunchAssembly: Assembly {
 
   func assemble(container: Container) {
     container.register(LaunchScreenController.self) { resolver in
-      let controller = UIStoryboard(name: "Launch", bundle: nil).instantiateViewController(identifier: "LaunchScreenController") as! LaunchScreenController
+      let controller = StoryboardScene.Launch.launchScreenController.instantiate()
       controller.weatherManager = resolver.autoresolve()
       return controller
     }.inObjectScope(.transient)
