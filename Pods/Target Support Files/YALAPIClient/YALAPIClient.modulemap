@@ -1,6 +1,0 @@
-module YALAPIClient {
-  umbrella header "YALAPIClient-umbrella.h"
-
-  export *
-  module * { export * }
-}

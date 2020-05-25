@@ -1,6 +1,0 @@
-module Pods_HeyWeatherApp {
-  umbrella header "Pods-HeyWeatherApp-umbrella.h"
-
-  export *
-  module * { export * }
-}

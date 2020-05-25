@@ -1,1 +1,0 @@
-../../../SwinjectAutoregistration/Sources/SwinjectAutoregistration.h

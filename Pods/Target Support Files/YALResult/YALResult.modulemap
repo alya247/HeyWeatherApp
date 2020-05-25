@@ -1,6 +1,0 @@
-module YALResult {
-  umbrella header "YALResult-umbrella.h"
-
-  export *
-  module * { export * }
-}
