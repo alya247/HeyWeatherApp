@@ -1,8 +1,22 @@
 PODS:
   - Alamofire (4.9.0)
+  - DBClient/Core (1.4.2):
+    - YALResult (= 1.4)
+  - DBClient/CoreData (1.4.2):
+    - DBClient/Core
+    - YALResult (= 1.4)
+  - DBClient/Realm (1.4.2):
+    - DBClient/Core
+    - RealmSwift (~> 3.15.0)
+    - YALResult (= 1.4)
   - Differentiator (4.0.1)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
+  - Realm (3.15.0):
+    - Realm/Headers (= 3.15.0)
+  - Realm/Headers (3.15.0)
+  - RealmSwift (3.15.0):
+    - Realm (= 3.15.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -26,6 +40,9 @@ PODS:
   - YALResult (1.4)
 
 DEPENDENCIES:
+  - DBClient/Core (= 1.4.2)
+  - DBClient/CoreData (= 1.4.2)
+  - DBClient/Realm (= 1.4.2)
   - "NSObject+Rx"
   - RxCocoa
   - RxDataSources
@@ -38,8 +55,11 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DBClient
     - Differentiator
     - "NSObject+Rx"
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxDataSources
     - RxRelay
@@ -52,8 +72,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  DBClient: b3f584194748337c2528634e68f0a3e3651c93d7
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  Realm: 9b834e1be6062f544805252c812348872dc5d4ed
+  RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -64,6 +87,6 @@ SPEC CHECKSUMS:
   YALAPIClient: 85485a86e22d2df8467548626f7ae01261373c68
   YALResult: 26915691cdd19269936336d6f28e1a015c64175e
 
-PODFILE CHECKSUM: 5a019801e59ca85e75e3f005907b0077f07e06b8
+PODFILE CHECKSUM: 4a280e552140cc1d72c9d25a8f7d16de8ab19328
 
 COCOAPODS: 1.9.1

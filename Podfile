@@ -1,5 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
+use_frameworks!
+inhibit_all_warnings!
 
 target 'HeyWeatherApp' do
   
@@ -11,5 +13,8 @@ target 'HeyWeatherApp' do
     pod 'NSObject+Rx'
     pod 'RxDataSources'
     pod 'SwiftGen', '~> 6.0'
+    pod 'DBClient/Core', '1.4.2'
+    pod 'DBClient/CoreData', '1.4.2'
+    pod 'DBClient/Realm', '1.4.2'
 
 end
