@@ -6,31 +6,26 @@
 //  Copyright © 2020 AlyaFilon. All rights reserved.
 //
 
-import Foundation
+import YALAPIClient
+import Alamofire
 
-class WeatherInDaysRequest: Request {
+class WeatherInDaysRequest: APIRequest, SerializationRule {
 
-  typealias ResponseModel = WeatherDaysModel
-
-  var path: String {
-    return "/forecast/daily"
-  }
-
-  var parameters: [String: String] {
-    return ["key": apiKey,
-            "city": "Dnipro",
-            "days": "\(days)"]
-  }
+  let path: String = "/forecast/daily"
+  let parameters: [String: Any]?
 
   private var days: Int = 0
 
   init(days: Int) {
     self.days = days
+    parameters = ["key": RequestAPI.apiKey,
+                  "city": "Dnipro",
+                  "days": "\(days)"]
   }
 
   func serializationRule(for data: Any?) -> [String: Any]? {
     guard let result = data as? [String: Any] else { return nil }
     return result
   }
-  
+
 }

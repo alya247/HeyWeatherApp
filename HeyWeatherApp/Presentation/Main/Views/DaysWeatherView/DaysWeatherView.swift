@@ -49,8 +49,8 @@ class DaysWeatherView: NiblessView {
     model.subscribe(onNext: { [weak self] model in
       self?.selectedIndex = nil
       self?.periodType = model.1
-      self?.days.onNext(model.0?.days ?? [])
       self?.setCellSize()
+      self?.days.onNext(model.0?.days ?? [])
     }).disposed(by: bag)
 
   }

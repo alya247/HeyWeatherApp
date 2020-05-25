@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.2.0)
+  - Alamofire (4.9.0)
   - Differentiator (4.0.1)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
@@ -16,14 +16,22 @@ PODS:
   - Swinject (2.7.1)
   - SwinjectAutoregistration (2.7.0):
     - Swinject (~> 2.7)
+  - YALAPIClient/Alamofire (2.9.1):
+    - Alamofire (= 4.9)
+    - YALAPIClient/Core
+    - YALResult (= 1.4)
+  - YALAPIClient/Core (2.9.1):
+    - YALResult (= 1.4)
+  - YALResult (1.4)
 
 DEPENDENCIES:
-  - Alamofire
   - "NSObject+Rx"
   - RxCocoa
   - RxDataSources
   - Swinject
   - SwinjectAutoregistration
+  - YALAPIClient/Alamofire (= 2.9.1)
+  - YALAPIClient/Core (= 2.9.1)
 
 SPEC REPOS:
   trunk:
@@ -36,9 +44,11 @@ SPEC REPOS:
     - RxSwift
     - Swinject
     - SwinjectAutoregistration
+    - YALAPIClient
+    - YALResult
 
 SPEC CHECKSUMS:
-  Alamofire: c1ca147559e730bfb2182c8c7aafbdd90a867987
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -47,7 +57,9 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
+  YALAPIClient: 85485a86e22d2df8467548626f7ae01261373c68
+  YALResult: 26915691cdd19269936336d6f28e1a015c64175e
 
-PODFILE CHECKSUM: 5cd8b3684111e6a576a9dc06d02a833073ece06c
+PODFILE CHECKSUM: a47609722b9f6c2822f5fe1ff8995ba9209d246d
 
 COCOAPODS: 1.9.1

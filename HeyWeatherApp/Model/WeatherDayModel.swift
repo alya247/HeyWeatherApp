@@ -16,9 +16,9 @@ struct WeatherDayModel: Codable {
   var condition: WeatherCondition?
 
   enum CodingKeys: String, CodingKey {
-    case minTemperature = "min_temp"
-    case maxTemperature = "max_temp"
-    case windSpeed = "wind_spd"
+    case minTemperature = "minTemp"
+    case maxTemperature = "maxTemp"
+    case windSpeed = "windSpd"
     case condition = "weather"
   }
 

@@ -6,19 +6,17 @@
 //  Copyright © 2020 AlyaFilon. All rights reserved.
 //
 
-import Foundation
+import YALAPIClient
+import Alamofire
 
-class CurrentWeatherRequest: Request {
+class CurrentWeatherRequest: APIRequest, SerializationRule {
 
-  typealias ResponseModel = WeatherModel
+  let path: String = "/current"
+  let parameters: [String: Any]?
 
-  var path: String {
-    return "/current"
-  }
-
-  var parameters: [String: String] {
-    return ["key": apiKey,
-            "city": "Dnipro"]
+  init() {
+    parameters = ["key": RequestAPI.apiKey,
+                  "city": "Dnipro"]
   }
 
   func serializationRule(for data: Any?) -> [String: Any]? {

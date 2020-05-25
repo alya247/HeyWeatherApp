@@ -3,7 +3,8 @@
 
 target 'HeyWeatherApp' do
   
-    pod 'Alamofire'
+    pod 'YALAPIClient/Alamofire', '2.9.1'
+    pod 'YALAPIClient/Core', '2.9.1'
     pod 'Swinject'
     pod 'SwinjectAutoregistration'
     pod 'RxCocoa'

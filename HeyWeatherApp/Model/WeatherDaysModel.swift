@@ -15,8 +15,8 @@ struct WeatherDaysModel: Codable {
   var days: [WeatherDayModel] = []
 
   enum CodingKeys: String, CodingKey {
-    case city = "city_name"
-    case countryCode = "country_code"
+    case city = "cityName"
+    case countryCode = "countryCode"
     case days = "data"
   }
 

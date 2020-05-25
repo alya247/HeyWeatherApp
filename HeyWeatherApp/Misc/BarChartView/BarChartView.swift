@@ -50,7 +50,8 @@ extension BarChartView {
   private func createComponent() {
     let placeholderWidth = placeholderView.bounds.width
     let placeholderHeight = placeholderView.bounds.height
-    let step = placeholderHeight / (values.map { $0.max }.max() ?? 1)
+    let maxValue = (values.map { $0.max }.max() ?? 1)
+    let step = placeholderHeight / (maxValue == 0 ? 1 : maxValue)
     let barWidth = (placeholderWidth - CGFloat(values.count - 1) * spacing) / CGFloat(values.count)
 
     for (index, value) in values.enumerated() {
@@ -76,7 +77,8 @@ extension BarChartView {
     minComponent.isUserInteractionEnabled = false
     minComponent.backgroundColor = .lightGray
 
-    let height = bar.bounds.height / value.max * value.min
+    let heightDivider = value.max * value.min == 0 ? 1 : value.max * value.min
+    let height = bar.bounds.height / heightDivider
     let origin = CGPoint(x: 0, y: bar.bounds.maxY - height)
     minComponent.frame = CGRect(origin: origin,
                                 size: CGSize(width: bar.bounds.width, height: height))

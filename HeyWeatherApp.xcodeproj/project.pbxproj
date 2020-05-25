@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D9B5DD1AB32B48BA84294A08 /* libPods-HeyWeatherApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D58237315FF88D8C51385ED2 /* libPods-HeyWeatherApp.a */; };
+		FE4093712476C08F00E50EBD /* CustomWeatherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4093702476C08F00E50EBD /* CustomWeatherParser.swift */; };
 		FE439F2024611F600076285B /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F1F24611F600076285B /* WeatherInfo.swift */; };
 		FE439F23246120080076285B /* WeatherSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F22246120080076285B /* WeatherSign.swift */; };
 		FE439F2524612C870076285B /* Extension+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F2424612C870076285B /* Extension+Types.swift */; };
@@ -16,7 +17,6 @@
 		FE439F2C246150390076285B /* DaysWeatherCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F2B246150390076285B /* DaysWeatherCompactCell.swift */; };
 		FE439F2E246150410076285B /* DaysWeatherCompactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE439F2D246150410076285B /* DaysWeatherCompactCell.xib */; };
 		FE439F3024616AA70076285B /* WeatherDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F2F24616AA70076285B /* WeatherDayModel.swift */; };
-		FE439F32246171630076285B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F31246171630076285B /* Request.swift */; };
 		FE56D79C2473FC9B0037D65C /* LaunchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D79B2473FC9B0037D65C /* LaunchAssembly.swift */; };
 		FE56D79E2473FCD20037D65C /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D79D2473FCD20037D65C /* MainAssembly.swift */; };
 		FE56D7A02473FD010037D65C /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56D79F2473FD010037D65C /* RootAssembly.swift */; };
@@ -63,6 +63,7 @@
 		A4D8378D6EA0DA46D5391B6E /* Pods-HeyWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyWeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-HeyWeatherApp/Pods-HeyWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D296688A86BA6966E86255AD /* Pods-HeyWeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyWeatherApp.release.xcconfig"; path = "Target Support Files/Pods-HeyWeatherApp/Pods-HeyWeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		D58237315FF88D8C51385ED2 /* libPods-HeyWeatherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeyWeatherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE4093702476C08F00E50EBD /* CustomWeatherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeatherParser.swift; sourceTree = "<group>"; };
 		FE439F1F24611F600076285B /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		FE439F22246120080076285B /* WeatherSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSign.swift; sourceTree = "<group>"; };
 		FE439F2424612C870076285B /* Extension+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Types.swift"; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		FE439F2B246150390076285B /* DaysWeatherCompactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysWeatherCompactCell.swift; sourceTree = "<group>"; };
 		FE439F2D246150410076285B /* DaysWeatherCompactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysWeatherCompactCell.xib; sourceTree = "<group>"; };
 		FE439F2F24616AA70076285B /* WeatherDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDayModel.swift; sourceTree = "<group>"; };
-		FE439F31246171630076285B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		FE56D79B2473FC9B0037D65C /* LaunchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAssembly.swift; sourceTree = "<group>"; };
 		FE56D79D2473FCD20037D65C /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		FE56D79F2473FD010037D65C /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
@@ -279,8 +279,8 @@
 			children = (
 				FE694C632460553C005B5E44 /* Requests */,
 				FE694C5D24604FE3005B5E44 /* RequestAPI.swift */,
-				FE439F31246171630076285B /* Request.swift */,
 				FE7E23482472C79400353AC0 /* WeatherLoader.swift */,
+				FE4093702476C08F00E50EBD /* CustomWeatherParser.swift */,
 			);
 			path = APILayer;
 			sourceTree = "<group>";
@@ -496,6 +496,7 @@
 				FE56D79C2473FC9B0037D65C /* LaunchAssembly.swift in Sources */,
 				FE439F2524612C870076285B /* Extension+Types.swift in Sources */,
 				FE694C6024605062005B5E44 /* WeatherPresenter.swift in Sources */,
+				FE4093712476C08F00E50EBD /* CustomWeatherParser.swift in Sources */,
 				FE694C7024607E9B005B5E44 /* PeriodSelectorView.swift in Sources */,
 				FE694C792460A0C5005B5E44 /* WeatherDaysModel.swift in Sources */,
 				FE694C3B24603D7E005B5E44 /* WeatherController.swift in Sources */,
@@ -510,7 +511,6 @@
 				FE694C6924606BF6005B5E44 /* WeatherCondition.swift in Sources */,
 				FE439F2024611F600076285B /* WeatherInfo.swift in Sources */,
 				FE7E233F2472AA9100353AC0 /* WeatherCoordinator.swift in Sources */,
-				FE439F32246171630076285B /* Request.swift in Sources */,
 				FE7E23472472B61900353AC0 /* LaunchCoordinator.swift in Sources */,
 				FE694C6D24607D6E005B5E44 /* Extensions+UITypes.swift in Sources */,
 				FEEFEDB42474E7DB00411D23 /* NiblessCollectionViewCell.swift in Sources */,

@@ -14,20 +14,20 @@ struct WeatherModel: Codable {
   var sunset: String?
   var city: String?
   var countryCode: String?
-  var windSpeed: CGFloat?
-  var temperature: CGFloat?
-  var feelTemperature: CGFloat?
-  var humidity: CGFloat?
+  var windSpeed: Float?
+  var temperature: Float?
+  var feelTemperature: Float?
+  var humidity: Float?
   var condition: WeatherCondition?
 
   enum CodingKeys: String, CodingKey {
     case sunrise
     case sunset
-    case city = "city_name"
-    case countryCode = "country_code"
-    case windSpeed = "wind_spd"
+    case city = "cityName"
+    case countryCode = "countryCode"
+    case windSpeed = "windSpd"
     case temperature = "temp"
-    case feelTemperature = "app_temp"
+    case feelTemperature = "appTemp"
     case humidity = "rh"
     case condition = "weather"
   }

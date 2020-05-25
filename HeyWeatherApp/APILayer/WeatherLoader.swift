@@ -20,28 +20,31 @@ class WeatherLoader {
       let group = DispatchGroup()
       var errorWasOccurred = false
 
-      group.enter()
-      RequestAPI.requestData(CurrentWeatherRequest()) { [weak self] weather in
-        group.leave()
-        errorWasOccurred = weather == nil || errorWasOccurred
-        self?.weatherManager.setCurrentWeather(weather)
-      }
+    group.enter()
+    RequestAPI.requestCurrentWeather() { [weak self] weather in
+      group.leave()
+      guard let value = weather?.value else { return }
+      errorWasOccurred = weather == nil || errorWasOccurred
+      self?.weatherManager.setCurrentWeather(value)
+    }
 
-      group.enter()
-      RequestAPI.requestData(WeatherInDaysRequest(days: PeriodSelectorType.week.daysCount)) { weather in
-        group.leave()
-        errorWasOccurred = weather == nil || errorWasOccurred
-        self.weatherManager.setWeekWeather(weather)
-      }
+    group.enter()
+    RequestAPI.requestWeatherInDays(daysCount: PeriodSelectorType.week.daysCount) { [weak self] weather in
+      group.leave()
+      guard let value = weather?.value else { return }
+      errorWasOccurred = weather == nil || errorWasOccurred
+      self?.weatherManager.setWeekWeather(value)
+    }
 
-      group.enter()
-      RequestAPI.requestData(WeatherInDaysRequest(days: PeriodSelectorType.twoWeeks.daysCount)) { weather in
-        group.leave()
-        errorWasOccurred = weather == nil || errorWasOccurred
-        self.weatherManager.setTwoWeeksWeather(weather)
-      }
+    group.enter()
+    RequestAPI.requestWeatherInDays(daysCount: PeriodSelectorType.twoWeeks.daysCount) { [weak self] weather in
+      group.leave()
+      guard let value = weather?.value else { return }
+      errorWasOccurred = weather == nil || errorWasOccurred
+      self?.weatherManager.setTwoWeeksWeather(value)
+    }
 
-      group.notify(queue: .main) {
+    group.notify(queue: .main) {
         completion(errorWasOccurred)
       }
     }
