@@ -22,6 +22,7 @@ class RootAssembly: Assembly {
       .initCompleted { resolver, manager in
       manager.weatherLoader = resolver.autoresolve()
     }.inObjectScope(.container)
+
   }
 
 }
