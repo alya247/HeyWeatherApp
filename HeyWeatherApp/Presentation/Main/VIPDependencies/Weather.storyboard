@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z71-bn-Y4R" customClass="CurrentWeatherView" customModule="HeyWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="5" y="138" width="404" height="699"/>
+                                <rect key="frame" x="5" y="183" width="404" height="654"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFL-sd-d57" customClass="PeriodSelectorView" customModule="HeyWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xpQ-h8-N3n"/>
@@ -33,29 +33,58 @@
                                     <constraint firstAttribute="height" constant="318.5" id="U3e-LO-2rZ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="b6S-cr-jVi">
+                                <rect key="frame" x="15" y="98" width="384" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.45271971220000001" green="0.94867176040000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wBP-fg-zJf" firstAttribute="trailing" secondItem="b6S-cr-jVi" secondAttribute="trailing" constant="15" id="2rk-aH-EbB"/>
                             <constraint firstItem="EFL-sd-d57" firstAttribute="trailing" secondItem="wBP-fg-zJf" secondAttribute="trailing" id="Ie3-5o-eiz"/>
                             <constraint firstItem="Z71-bn-Y4R" firstAttribute="leading" secondItem="1O6-ig-FTJ" secondAttribute="leading" constant="5" id="Mkk-pP-XqD"/>
                             <constraint firstItem="wBP-fg-zJf" firstAttribute="bottom" secondItem="8uR-Io-afP" secondAttribute="bottom" constant="30" id="NmC-oi-5Oq"/>
+                            <constraint firstItem="b6S-cr-jVi" firstAttribute="top" secondItem="wBP-fg-zJf" secondAttribute="top" constant="10" id="RnG-6x-zPh"/>
                             <constraint firstItem="EFL-sd-d57" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" id="TJw-VC-GWv"/>
                             <constraint firstItem="8uR-Io-afP" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" constant="15" id="Vqy-YW-CnR"/>
                             <constraint firstItem="wBP-fg-zJf" firstAttribute="trailing" secondItem="Z71-bn-Y4R" secondAttribute="trailing" constant="5" id="XKr-1y-7ZG"/>
                             <constraint firstItem="wBP-fg-zJf" firstAttribute="bottom" secondItem="Z71-bn-Y4R" secondAttribute="bottom" constant="25" id="XUQ-cK-hdw"/>
                             <constraint firstItem="wBP-fg-zJf" firstAttribute="trailing" secondItem="8uR-Io-afP" secondAttribute="trailing" constant="15" id="XXF-jt-xiX"/>
-                            <constraint firstItem="EFL-sd-d57" firstAttribute="top" secondItem="wBP-fg-zJf" secondAttribute="top" constant="24" id="Zvc-Vd-uPO"/>
                             <constraint firstItem="Z71-bn-Y4R" firstAttribute="top" secondItem="EFL-sd-d57" secondAttribute="bottom" constant="20" id="dFm-wW-Zs6"/>
+                            <constraint firstItem="EFL-sd-d57" firstAttribute="top" secondItem="b6S-cr-jVi" secondAttribute="bottom" constant="15" id="kOx-Ju-9O6"/>
+                            <constraint firstItem="b6S-cr-jVi" firstAttribute="leading" secondItem="wBP-fg-zJf" secondAttribute="leading" constant="15" id="vid-fr-eEC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wBP-fg-zJf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="M3s-OJ-UHB"/>
                     <connections>
                         <outlet property="barChartView" destination="8uR-Io-afP" id="KMQ-9d-LhM"/>
+                        <outlet property="coordinateLabel" destination="b6S-cr-jVi" id="OZW-ZW-XHx"/>
                         <outlet property="currentWeatherView" destination="Z71-bn-Y4R" id="tFr-0f-c7N"/>
                         <outlet property="periodSelectorView" destination="EFL-sd-d57" id="3VM-sR-Z0T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mts-VC-Tuj" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="95.758928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ebp-Xp-9nV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pAG-cf-qrK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dAx-4B-qjv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SA0-fO-mxo" kind="relationship" relationship="rootViewController" id="o8a-zx-aO8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9C-Ic-hdV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </scene>

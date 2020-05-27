@@ -16,11 +16,12 @@ class WeatherInDaysRequest: APIRequest, SerializationRule {
 
   private var days: Int = 0
 
-  init(days: Int) {
+  init(days: Int, coordinate: Coordinate) {
     self.days = days
     parameters = ["key": RequestAPI.apiKey,
-                  "city": "Dnipro",
-                  "days": "\(days)"]
+                  "days": "\(days)",
+                  "lat": "\(coordinate.lat)",
+                  "lon": "\(coordinate.lon)"]
   }
 
   func serializationRule(for data: Any?) -> [String: Any]? {

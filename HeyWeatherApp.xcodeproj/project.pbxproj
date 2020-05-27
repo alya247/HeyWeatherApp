@@ -66,6 +66,11 @@
 		FEA14F7F247BE4F8005FE3FC /* DayWeather+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F77247BE4F8005FE3FC /* DayWeather+CoreDataProperties.swift */; };
 		FEA14F80247BE4F8005FE3FC /* DaysWeather+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F78247BE4F8005FE3FC /* DaysWeather+CoreDataClass.swift */; };
 		FEA14F81247BE4F8005FE3FC /* Weather+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F79247BE4F8005FE3FC /* Weather+CoreDataClass.swift */; };
+		FEA14F85247D13D2005FE3FC /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F84247D13D2005FE3FC /* MapController.swift */; };
+		FEA14F87247D13E7005FE3FC /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA14F86247D13E7005FE3FC /* Map.storyboard */; };
+		FEA14F89247D1444005FE3FC /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F88247D1444005FE3FC /* MapCoordinator.swift */; };
+		FEA14F8C247D3C22005FE3FC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F8B247D3C22005FE3FC /* LocationManager.swift */; };
+		FEA14F8E247D43E1005FE3FC /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F8D247D43E1005FE3FC /* MapAssembly.swift */; };
 		FEA594A12461782F0069E97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA5949F2461782F0069E97D /* Main.storyboard */; };
 		FEA594A324617A290069E97D /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A224617A290069E97D /* WeatherManager.swift */; };
 		FEA594A62461828E0069E97D /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A52461828E0069E97D /* BarChartView.swift */; };
@@ -138,6 +143,11 @@
 		FEA14F77247BE4F8005FE3FC /* DayWeather+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DayWeather+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FEA14F78247BE4F8005FE3FC /* DaysWeather+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DaysWeather+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FEA14F79247BE4F8005FE3FC /* Weather+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Weather+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FEA14F84247D13D2005FE3FC /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		FEA14F86247D13E7005FE3FC /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		FEA14F88247D1444005FE3FC /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		FEA14F8B247D3C22005FE3FC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FEA14F8D247D43E1005FE3FC /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
 		FEA594A02461782F0069E97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FEA594A224617A290069E97D /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		FEA594A52461828E0069E97D /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
@@ -275,6 +285,7 @@
 				FE694C4C24604406005B5E44 /* APILayer */,
 				FE694C4B24603DCC005B5E44 /* Presentation */,
 				FE694C4A24603DC3005B5E44 /* Model */,
+				FEA14F8A247D3C05005FE3FC /* LocationManager */,
 			);
 			path = HeyWeatherApp;
 			sourceTree = "<group>";
@@ -296,6 +307,7 @@
 		FE694C4B24603DCC005B5E44 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FEA14F83247D13B5005FE3FC /* Map */,
 				FE439F342461740F0076285B /* Launch */,
 				FE439F33246174090076285B /* Main */,
 				FE7E233C2472A0E600353AC0 /* AppCoordinator.swift */,
@@ -447,6 +459,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FEA14F83247D13B5005FE3FC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				FEA14F84247D13D2005FE3FC /* MapController.swift */,
+				FEA14F86247D13E7005FE3FC /* Map.storyboard */,
+				FEA14F88247D1444005FE3FC /* MapCoordinator.swift */,
+				FEA14F8D247D43E1005FE3FC /* MapAssembly.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		FEA14F8A247D3C05005FE3FC /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				FEA14F8B247D3C22005FE3FC /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
 		FEA594A42461827B0069E97D /* BarChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +562,7 @@
 				FE694C4024603D82005B5E44 /* Assets.xcassets in Resources */,
 				FE439F2E246150410076285B /* DaysWeatherCompactCell.xib in Resources */,
 				FE7E23452472B5B900353AC0 /* Launch.storyboard in Resources */,
+				FEA14F87247D13E7005FE3FC /* Map.storyboard in Resources */,
 				FE694C7224607EA5005B5E44 /* PeriodSelectorView.xib in Resources */,
 				FE694C77246081F9005B5E44 /* SelectorView.xib in Resources */,
 				FE694C5C24604F0D005B5E44 /* CurrentWeatherView.xib in Resources */,
@@ -598,7 +630,9 @@
 				FE694C7024607E9B005B5E44 /* PeriodSelectorView.swift in Sources */,
 				FE694C792460A0C5005B5E44 /* WeatherDaysModel.swift in Sources */,
 				FE694C3B24603D7E005B5E44 /* WeatherController.swift in Sources */,
+				FEA14F8E247D43E1005FE3FC /* MapAssembly.swift in Sources */,
 				FEA14F7C247BE4F8005FE3FC /* DaysWeather+CoreDataProperties.swift in Sources */,
+				FEA14F89247D1444005FE3FC /* MapCoordinator.swift in Sources */,
 				FE694C3724603D7E005B5E44 /* AppDelegate.swift in Sources */,
 				FEA14F81247BE4F8005FE3FC /* Weather+CoreDataClass.swift in Sources */,
 				FE7E233D2472A0E600353AC0 /* AppCoordinator.swift in Sources */,
@@ -637,7 +671,9 @@
 				FE694C6224605267005B5E44 /* WeatherInteractor.swift in Sources */,
 				FEA14F7D247BE4F8005FE3FC /* Condition+CoreDataClass.swift in Sources */,
 				FE694C6724606A93005B5E44 /* WeatherModel.swift in Sources */,
+				FEA14F8C247D3C22005FE3FC /* LocationManager.swift in Sources */,
 				FE694C74246080DD005B5E44 /* SelectorView.swift in Sources */,
+				FEA14F85247D13D2005FE3FC /* MapController.swift in Sources */,
 				FE56D7A42473FE7D0037D65C /* Resolver+Autoresolve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

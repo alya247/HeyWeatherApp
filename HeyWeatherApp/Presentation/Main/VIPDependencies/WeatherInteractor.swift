@@ -15,7 +15,9 @@ protocol WeatherInteractorInterface: class {
   var currentWeather: Observable<WeatherInfo?> { get }
   var periodWeather: Observable<(model: DaysInfo?, type: PeriodSelectorType)> { get }
   var barChartValues: Observable<[BarChartValue]> { get }
+  var coordinate: Observable<String?> { get }
   func getWeather(for period: PeriodSelectorType)
+  func reloadWeatherIfNeeded()
 
 }
 
@@ -31,6 +33,10 @@ class WeatherInteractor {
 
   var barChartValues: Observable<[BarChartValue]> {
     return chartValues.asObservable()
+  }
+
+  var coordinate: Observable<String?> {
+    return weatherManager.locationManager.coordinateSubject.asObservable()
   }
 
   private let presenter: WeatherPresenterInterface
@@ -68,6 +74,13 @@ extension WeatherInteractor: WeatherInteractorInterface {
       let weather = weatherManager.getTwoWeeksWeather()
       presenter.presentTwoWeekWeather(weather)
       chartValues.onNext(weatherManager.twoWeekChartValues)
+    }
+  }
+
+  func reloadWeatherIfNeeded() {
+    guard weatherManager.shouldReloadWeather else { return }
+    weatherManager.reloadWeather { _ in
+      self.getWeather(for: .current)
     }
   }
 

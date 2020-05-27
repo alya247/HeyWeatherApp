@@ -25,9 +25,30 @@ class WeatherManager: PersistenceHolder {
   private var twoWeeksWeather: WeatherDaysModel?
 
   var weatherLoader: WeatherLoader!
+  var locationManager: LocationManager!
+  var shouldReloadWeather: Bool {
+    return locationManager.shouldReloadWeather
+  }
 
   func loadWeather(completion: @escaping ((Bool) -> ())) {
-    weatherLoader.loadWeather(completion: completion)
+    locationManager.userCoordinateHandler = { [weak self] coordinate in
+      guard let coordinate = coordinate else {
+        completion(true)
+        return
+      }
+      let convertedCoordinate = Coordinate(lat: Double(coordinate.latitude), lon: Double(coordinate.longitude))
+      self?.weatherLoader.loadWeather(coordinate: convertedCoordinate, completion: completion)
+    }
+
+  }
+
+  func reloadWeather(completion: @escaping ((Bool) -> ())) {
+    guard let coordinate = locationManager.selectedCoordinate else {
+      completion(true)
+      return
+    }
+    let c = Coordinate(lat: Double(coordinate.latitude), lon: Double(coordinate.longitude))
+    weatherLoader.loadWeather(coordinate: c, completion: completion)
   }
 
   // MARK:- Setters

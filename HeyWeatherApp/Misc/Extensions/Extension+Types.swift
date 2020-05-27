@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 extension DateFormatter {
 
@@ -42,6 +43,14 @@ extension CGFloat {
 
   static var screenHeight: CGFloat {
     return UIScreen.main.bounds.height
+  }
+
+}
+
+extension CLLocationCoordinate2D {
+
+  var convertedCoordinate: String {
+    return "lat: \(latitude), lon: \(longitude)"
   }
 
 }

@@ -14,9 +14,10 @@ class CurrentWeatherRequest: APIRequest, SerializationRule {
   let path: String = "/current"
   let parameters: [String: Any]?
 
-  init() {
+  init(coordinate: Coordinate) {
     parameters = ["key": RequestAPI.apiKey,
-                  "city": "Dnipro"]
+                  "lat": "\(coordinate.lat)",
+                  "lon": "\(coordinate.lon)"]
   }
 
   func serializationRule(for data: Any?) -> [String: Any]? {

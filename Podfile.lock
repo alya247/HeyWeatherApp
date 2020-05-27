@@ -27,6 +27,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SVProgressHUD (2.2.5)
   - SwiftGen (6.1.0)
   - Swinject (2.7.1)
   - SwinjectAutoregistration (2.7.0):
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - "NSObject+Rx"
   - RxCocoa
   - RxDataSources
+  - SVProgressHUD
   - SwiftGen (~> 6.0)
   - Swinject
   - SwinjectAutoregistration
@@ -64,6 +66,7 @@ SPEC REPOS:
     - RxDataSources
     - RxRelay
     - RxSwift
+    - SVProgressHUD
     - SwiftGen
     - Swinject
     - SwinjectAutoregistration
@@ -81,12 +84,13 @@ SPEC CHECKSUMS:
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
   YALAPIClient: 85485a86e22d2df8467548626f7ae01261373c68
   YALResult: 26915691cdd19269936336d6f28e1a015c64175e
 
-PODFILE CHECKSUM: 4a280e552140cc1d72c9d25a8f7d16de8ab19328
+PODFILE CHECKSUM: c1cb111951b9bc77b3ffc38a916e81f638f4f0c8
 
 COCOAPODS: 1.9.1

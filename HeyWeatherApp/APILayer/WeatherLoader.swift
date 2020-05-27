@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Coordinate = (lat: Double, lon: Double)
+
 class WeatherLoader {
 
   unowned private var weatherManager: WeatherManager
@@ -16,12 +18,12 @@ class WeatherLoader {
     self.weatherManager = weatherManager
   }
 
-  func loadWeather(completion: @escaping ((Bool) -> ())) {
+  func loadWeather(coordinate: Coordinate, completion: @escaping ((Bool) -> ())) {
       let group = DispatchGroup()
       var errorWasOccurred = false
 
     group.enter()
-    RequestAPI.requestCurrentWeather() { [weak self] weather in
+    RequestAPI.requestCurrentWeather(coordinate: coordinate) { [weak self] weather in
       group.leave()
       guard let value = weather?.value else { return }
       errorWasOccurred = weather == nil || errorWasOccurred
@@ -29,7 +31,7 @@ class WeatherLoader {
     }
 
     group.enter()
-    RequestAPI.requestWeatherInDays(daysCount: PeriodSelectorType.week.daysCount) { [weak self] weather in
+    RequestAPI.requestWeatherInDays(daysCount: PeriodSelectorType.week.daysCount, coordinate: coordinate) { [weak self] weather in
       group.leave()
       guard let value = weather?.value else { return }
       errorWasOccurred = weather == nil || errorWasOccurred
@@ -37,7 +39,7 @@ class WeatherLoader {
     }
 
     group.enter()
-    RequestAPI.requestWeatherInDays(daysCount: PeriodSelectorType.twoWeeks.daysCount) { [weak self] weather in
+    RequestAPI.requestWeatherInDays(daysCount: PeriodSelectorType.twoWeeks.daysCount, coordinate: coordinate) { [weak self] weather in
       group.leave()
       guard let value = weather?.value else { return }
       errorWasOccurred = weather == nil || errorWasOccurred

@@ -20,8 +20,8 @@ class RequestAPI {
     return client
   }
 
-  static func requestCurrentWeather(completion: @escaping ((Result<WeatherModel>?) -> Void)) {
-    let request = CurrentWeatherRequest()
+  static func requestCurrentWeather(coordinate: Coordinate, completion: @escaping ((Result<WeatherModel>?) -> Void)) {
+    let request = CurrentWeatherRequest(coordinate: coordinate)
     let parser = CustomWeatherParser<WeatherModel>(serializationRule: request.serializationRule)
 
     apiClient.execute(request: request, parser: parser, completion: { result in
@@ -36,8 +36,8 @@ class RequestAPI {
 
   }
 
-  static func requestWeatherInDays(daysCount: Int, completion: @escaping ((Result<WeatherDaysModel>?) -> Void)) {
-    let request = WeatherInDaysRequest(days: daysCount)
+  static func requestWeatherInDays(daysCount: Int, coordinate: Coordinate, completion: @escaping ((Result<WeatherDaysModel>?) -> Void)) {
+    let request = WeatherInDaysRequest(days: daysCount, coordinate: coordinate)
     let parser = CustomWeatherParser<WeatherDaysModel>(serializationRule: request.serializationRule)
 
     apiClient.execute(request: request, parser: parser, completion: { result in

@@ -16,5 +16,6 @@ target 'HeyWeatherApp' do
     pod 'DBClient/Core', '1.4.2'
     pod 'DBClient/CoreData', '1.4.2'
     pod 'DBClient/Realm', '1.4.2'
+    pod 'SVProgressHUD'
 
 end

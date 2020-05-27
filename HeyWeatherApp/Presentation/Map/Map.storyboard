@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map Controller-->
+        <scene sceneID="2nK-XW-61X">
+            <objects>
+                <viewController storyboardIdentifier="MapController" id="lg5-MB-jVZ" customClass="MapController" customModule="HeyWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f9E-fY-3I5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eu3-Mc-MuF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FDi-gP-t3f" firstAttribute="trailing" secondItem="Eu3-Mc-MuF" secondAttribute="trailing" id="8YH-0B-NDN"/>
+                            <constraint firstItem="Eu3-Mc-MuF" firstAttribute="leading" secondItem="FDi-gP-t3f" secondAttribute="leading" id="CPo-zE-Dsc"/>
+                            <constraint firstItem="Eu3-Mc-MuF" firstAttribute="top" secondItem="f9E-fY-3I5" secondAttribute="top" id="DJC-ii-bAJ"/>
+                            <constraint firstAttribute="bottom" secondItem="Eu3-Mc-MuF" secondAttribute="bottom" id="Uym-SA-g3S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FDi-gP-t3f"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="Eu3-Mc-MuF" id="7ED-pB-FOs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kqm-sa-kgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="99"/>
+        </scene>
+    </scenes>
+</document>

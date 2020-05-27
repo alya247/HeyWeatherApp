@@ -27,6 +27,11 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: Main.self)
   }
+  internal enum Map: StoryboardType {
+    internal static let storyboardName = "Map"
+
+    internal static let mapController = SceneType<MapController>(storyboard: Map.self, identifier: "MapController")
+  }
   internal enum Weather: StoryboardType {
     internal static let storyboardName = "Weather"
 
