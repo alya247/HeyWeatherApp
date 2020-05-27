@@ -15,6 +15,7 @@ protocol WeatherPresenterInterface: class {
   var view: WeatherViewInterface! { get set }
   var currentWeather: BehaviorSubject<WeatherInfo?> { get set }
   var periodWeather: BehaviorSubject<(model: DaysInfo?, type: PeriodSelectorType)> { get set }
+  func weatherDidLoad()
   func errorWasOccurred()
   func presentCurrentWeather(_ weather: WeatherModel?)
   func presentWeekWeather(_ weather: WeatherDaysModel?)
@@ -30,6 +31,10 @@ class WeatherPresenter {
 }
 
 extension WeatherPresenter: WeatherPresenterInterface {
+
+  func weatherDidLoad() {
+    view.weatherDidLoad()
+  }
 
   func errorWasOccurred() {
     view.presentError()

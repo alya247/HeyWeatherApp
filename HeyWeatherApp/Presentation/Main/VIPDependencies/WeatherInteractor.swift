@@ -79,8 +79,8 @@ extension WeatherInteractor: WeatherInteractorInterface {
 
   func reloadWeatherIfNeeded() {
     guard weatherManager.shouldReloadWeather else { return }
-    weatherManager.reloadWeather { _ in
-      self.getWeather(for: .current)
+    weatherManager.reloadWeather { [weak self] _ in
+      self?.presenter.weatherDidLoad()
     }
   }
 

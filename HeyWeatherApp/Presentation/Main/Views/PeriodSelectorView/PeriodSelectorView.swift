@@ -32,6 +32,7 @@ enum PeriodSelectorType {
 
 class PeriodSelectorView: UIView {
 
+  var currentType: PeriodSelectorType = .current
   weak var delegate: SelectorDelegate?
 
   @IBOutlet private weak var stackView: UIStackView!
@@ -59,6 +60,7 @@ class PeriodSelectorView: UIView {
 extension PeriodSelectorView: SelectorDelegate {
 
   func didSelectPeriod(with type: PeriodSelectorType) {
+    currentType = type
     delegate?.didSelectPeriod(with: type)
     deselectSelectors(type)
   }

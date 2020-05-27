@@ -56,7 +56,7 @@ class WeatherController: UIViewController {
 extension WeatherController: WeatherViewInterface {
 
   func weatherDidLoad() {
-    interactor.getWeather(for: .current)
+    interactor.getWeather(for: periodSelectorView.currentType)
   }
 
   func presentError() {
