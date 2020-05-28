@@ -33,7 +33,7 @@ public class WeatherManager: PersistenceHolder {
   public init() { }
 
   public func loadWeather(completion: @escaping ((Bool) -> ())) {
-    locationManager.userCoordinateHandler = { [weak self] coordinate in
+    locationManager.requestLocation { [weak self] coordinate in
       guard let coordinate = coordinate else {
         completion(true)
         return
@@ -41,7 +41,6 @@ public class WeatherManager: PersistenceHolder {
       let convertedCoordinate = Coordinate(lat: Double(coordinate.latitude), lon: Double(coordinate.longitude))
       self?.weatherLoader.loadWeather(coordinate: convertedCoordinate, completion: completion)
     }
-
   }
 
   public func reloadWeather(completion: @escaping ((Bool) -> ())) {
@@ -120,6 +119,7 @@ extension WeatherManager {
     case current = "currentWeather.json"
     case week = "weekWeather.json"
     case twoWeeks = "twoWeeksWeather.json"
+    case selectedLocation = "selectedLocation.json"
   }
 
 }

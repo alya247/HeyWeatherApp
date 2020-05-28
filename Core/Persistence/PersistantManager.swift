@@ -22,8 +22,10 @@ protocol PersistenceHolder {
   var storeType: StoreType { get }
   func saveCurrent(weather: WeatherModel, fileName: String)
   func saveDays(weather: WeatherDaysModel, fileName: String)
+  func saveSelectedLocation(_ location: SelectedLocation, fileName: String)
   func getCurrentWeather(fileName: String) -> WeatherModel?
   func getPeriodWeather(fileName: String) -> WeatherDaysModel?
+  func getSelectedLocation(fileName: String) -> SelectedLocation?
 
 }
 
@@ -61,6 +63,18 @@ extension PersistenceHolder {
     }
   }
 
+  func saveSelectedLocation(_ location: SelectedLocation, fileName: String) {
+    switch storeType {
+    case .coreDataClient: break
+
+    case .realmClient: break
+
+    case .fileClient:
+      let client = FileManagerClient()
+      client.preserve(location, as: fileName)
+    }
+  }
+
   func getCurrentWeather(fileName: String) -> WeatherModel? {
     switch storeType {
     case .coreDataClient:
@@ -92,6 +106,18 @@ extension PersistenceHolder {
         let client = FileManagerClient()
         return client.read(fileName, as: WeatherDaysModel.self)
       }
+  }
+
+  func getSelectedLocation(fileName: String) -> SelectedLocation? {
+    switch storeType {
+    case .coreDataClient: return nil
+
+    case .realmClient: return nil
+
+    case .fileClient:
+      let client = FileManagerClient()
+      return client.read(fileName, as: SelectedLocation.self)
+    }
   }
 
 }

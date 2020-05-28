@@ -61,6 +61,7 @@
 		FEA594A12461782F0069E97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA5949F2461782F0069E97D /* Main.storyboard */; };
 		FEA594A62461828E0069E97D /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A52461828E0069E97D /* BarChartView.swift */; };
 		FEA594A8246182970069E97D /* BarChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA594A7246182970069E97D /* BarChartView.xib */; };
+		FEBCB3F9247FF15A00746765 /* SelectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCB3F8247FF15A00746765 /* SelectedLocation.swift */; };
 		FECDBC95247F9F94005DD9B9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDBC94247F9F94005DD9B9 /* Core.framework */; };
 		FECDBCA5247FA61A005DD9B9 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FECDBC94247F9F94005DD9B9 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FECDBCAF247FA84A005DD9B9 /* UI.h in Headers */ = {isa = PBXBuildFile; fileRef = FECDBCAD247FA84A005DD9B9 /* UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -201,6 +202,7 @@
 		FEA594A02461782F0069E97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FEA594A52461828E0069E97D /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		FEA594A7246182970069E97D /* BarChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartView.xib; sourceTree = "<group>"; };
+		FEBCB3F8247FF15A00746765 /* SelectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLocation.swift; sourceTree = "<group>"; };
 		FECDBC94247F9F94005DD9B9 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECDBCAB247FA84A005DD9B9 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECDBCAD247FA84A005DD9B9 /* UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				FECDBD0A247FAFDC005DD9B9 /* WeatherManager.swift */,
 				FECDBD0C247FB049005DD9B9 /* PeriodSelectorType.swift */,
 				FECDBD0E247FB0A8005DD9B9 /* BarChartValue.swift */,
+				FEBCB3F8247FF15A00746765 /* SelectedLocation.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1000,6 +1003,7 @@
 				FECDBCF0247FAD0A005DD9B9 /* WeatherDaysModel.swift in Sources */,
 				FECDBCEF247FAD0A005DD9B9 /* WeatherDayModel.swift in Sources */,
 				FECDBCF4247FAE44005DD9B9 /* FileManagerClient.swift in Sources */,
+				FEBCB3F9247FF15A00746765 /* SelectedLocation.swift in Sources */,
 				FECDBD05247FAE68005DD9B9 /* DaysWeather+CoreDataClass.swift in Sources */,
 				FECDBD03247FAE68005DD9B9 /* DaysWeather+CoreDataProperties.swift in Sources */,
 				FECDBCE0247FABD0005DD9B9 /* RequestAPI.swift in Sources */,

@@ -18,7 +18,13 @@ class MapController: UIViewController, UIGestureRecognizerDelegate {
   weak var delegate: MapNavigatable?
 
   private var clLocationManager = CLLocationManager()
-  private var selectedCoordinate: CLLocationCoordinate2D?
+  private var selectedCoordinate: CLLocationCoordinate2D? {
+    didSet {
+      guard let location = selectedCoordinate else { return }
+      locationManager.saveSelectedLocation(lat: Double(location.latitude),
+                                           lon: Double(location.longitude))
+    }
+  }
   private var coordinate: CLLocationCoordinate2D? {
     return locationManager.selectedCoordinate == nil ? locationManager.userCoordinate
                                                      : locationManager.selectedCoordinate
