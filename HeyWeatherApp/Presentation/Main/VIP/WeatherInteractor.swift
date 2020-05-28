@@ -18,6 +18,7 @@ protocol WeatherInteractorInterface: class {
   var coordinate: Observable<String?> { get }
   func getWeather(for period: PeriodSelectorType)
   func reloadWeatherIfNeeded()
+  func logOut()
 
 }
 
@@ -41,13 +42,18 @@ class WeatherInteractor {
 
   private let presenter: WeatherPresenterInterface
   private let errorWasOccurred: Bool
+  private let userSessionController: UserSessionController
   private var weatherManager: WeatherManager
   private var chartValues = BehaviorSubject<[BarChartValue]>(value: [])
 
-  init(presenter: WeatherPresenterInterface, weatherManager: WeatherManager = WeatherManager(), errorWasOccurred: Bool = false) {
+  init(presenter: WeatherPresenterInterface,
+       weatherManager: WeatherManager = WeatherManager(),
+       errorWasOccurred: Bool = false,
+       userSessionController: UserSessionController) {
     self.presenter = presenter
     self.weatherManager = weatherManager
     self.errorWasOccurred = errorWasOccurred
+    self.userSessionController = userSessionController
   }
 
 }
@@ -82,6 +88,11 @@ extension WeatherInteractor: WeatherInteractorInterface {
     weatherManager.reloadWeather { [weak self] _ in
       self?.presenter.weatherDidLoad()
     }
+  }
+
+  func logOut() {
+    userSessionController.closeSession()
+    presenter.userDidLogOut()
   }
 
 }

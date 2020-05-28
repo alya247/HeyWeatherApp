@@ -24,7 +24,13 @@ class RootAssembly: Assembly {
       manager.locationManager = resolver.autoresolve()
     }.inObjectScope(.container)
 
-    container.register(LocationManager.self) { _ in LocationManager() }.inObjectScope(.container)
+    container.register(LocationManager.self) { _ in
+      LocationManager()
+    }.inObjectScope(.container)
+
+    container.register(UserSessionController.self) { _ in
+      UserSessionController()
+    }.inObjectScope(.container)
 
   }
 

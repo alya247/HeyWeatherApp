@@ -71,10 +71,22 @@
 		FEA14F89247D1444005FE3FC /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F88247D1444005FE3FC /* MapCoordinator.swift */; };
 		FEA14F8C247D3C22005FE3FC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F8B247D3C22005FE3FC /* LocationManager.swift */; };
 		FEA14F8E247D43E1005FE3FC /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F8D247D43E1005FE3FC /* MapAssembly.swift */; };
+		FEA14F92247E6ABD005FE3FC /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F91247E6ABD005FE3FC /* AuthController.swift */; };
+		FEA14F94247E6ACF005FE3FC /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA14F93247E6ACF005FE3FC /* Auth.storyboard */; };
+		FEA14F96247E6AF9005FE3FC /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F95247E6AF9005FE3FC /* AuthPresenter.swift */; };
+		FEA14F98247E6B13005FE3FC /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F97247E6B13005FE3FC /* AuthInteractor.swift */; };
+		FEA14F9B247E6B5A005FE3FC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F9A247E6B5A005FE3FC /* AuthCoordinator.swift */; };
+		FEA14F9D247E6B8B005FE3FC /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA14F9C247E6B8B005FE3FC /* AuthAssembly.swift */; };
 		FEA594A12461782F0069E97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA5949F2461782F0069E97D /* Main.storyboard */; };
 		FEA594A324617A290069E97D /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A224617A290069E97D /* WeatherManager.swift */; };
 		FEA594A62461828E0069E97D /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A52461828E0069E97D /* BarChartView.swift */; };
 		FEA594A8246182970069E97D /* BarChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA594A7246182970069E97D /* BarChartView.xib */; };
+		FEE58B17247E8D75007F0BB5 /* UserSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE58B13247E8D74007F0BB5 /* UserSessionController.swift */; };
+		FEE58B18247E8D75007F0BB5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE58B14247E8D74007F0BB5 /* UserSession.swift */; };
+		FEE58B19247E8D75007F0BB5 /* UserSessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE58B15247E8D74007F0BB5 /* UserSessionInfo.swift */; };
+		FEE58B1E247E8E80007F0BB5 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE58B1C247E8E80007F0BB5 /* KeychainStorage.swift */; };
+		FEE58B1F247E8E80007F0BB5 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE58B1D247E8E80007F0BB5 /* KeyValueStorage.swift */; };
+		FEE58B21247EA08B007F0BB5 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE58B20247EA08B007F0BB5 /* UserCredentials.swift */; };
 		FEEFEDB42474E7DB00411D23 /* NiblessCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEFEDB32474E7DB00411D23 /* NiblessCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -148,10 +160,22 @@
 		FEA14F88247D1444005FE3FC /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		FEA14F8B247D3C22005FE3FC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FEA14F8D247D43E1005FE3FC /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
+		FEA14F91247E6ABD005FE3FC /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		FEA14F93247E6ACF005FE3FC /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		FEA14F95247E6AF9005FE3FC /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		FEA14F97247E6B13005FE3FC /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		FEA14F9A247E6B5A005FE3FC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		FEA14F9C247E6B8B005FE3FC /* AuthAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
 		FEA594A02461782F0069E97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FEA594A224617A290069E97D /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		FEA594A52461828E0069E97D /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		FEA594A7246182970069E97D /* BarChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartView.xib; sourceTree = "<group>"; };
+		FEE58B13247E8D74007F0BB5 /* UserSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionController.swift; sourceTree = "<group>"; };
+		FEE58B14247E8D74007F0BB5 /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		FEE58B15247E8D74007F0BB5 /* UserSessionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionInfo.swift; sourceTree = "<group>"; };
+		FEE58B1C247E8E80007F0BB5 /* KeychainStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		FEE58B1D247E8E80007F0BB5 /* KeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
+		FEE58B20247EA08B007F0BB5 /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
 		FEEFEDB32474E7DB00411D23 /* NiblessCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,7 +230,7 @@
 		FE439F33246174090076285B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				FE56D7A12473FE0B0037D65C /* VIPDependencies */,
+				FE56D7A12473FE0B0037D65C /* VIP */,
 				FE694C5724604EDC005B5E44 /* Views */,
 				FE7E233E2472AA9100353AC0 /* WeatherCoordinator.swift */,
 				FE56D79D2473FCD20037D65C /* MainAssembly.swift */,
@@ -226,7 +250,7 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
-		FE56D7A12473FE0B0037D65C /* VIPDependencies */ = {
+		FE56D7A12473FE0B0037D65C /* VIP */ = {
 			isa = PBXGroup;
 			children = (
 				FE694C3A24603D7E005B5E44 /* WeatherController.swift */,
@@ -235,7 +259,7 @@
 				FEA5949F2461782F0069E97D /* Main.storyboard */,
 				FE7E23402472ACD600353AC0 /* Weather.storyboard */,
 			);
-			path = VIPDependencies;
+			path = VIP;
 			sourceTree = "<group>";
 		};
 		FE56D7A22473FE560037D65C /* Swinject */ = {
@@ -286,6 +310,7 @@
 				FE694C4B24603DCC005B5E44 /* Presentation */,
 				FE694C4A24603DC3005B5E44 /* Model */,
 				FEA14F8A247D3C05005FE3FC /* LocationManager */,
+				FEE58B12247E87A8007F0BB5 /* UserSession */,
 			);
 			path = HeyWeatherApp;
 			sourceTree = "<group>";
@@ -307,6 +332,7 @@
 		FE694C4B24603DCC005B5E44 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FEA14F90247E68D4005FE3FC /* Auth */,
 				FEA14F83247D13B5005FE3FC /* Map */,
 				FE439F342461740F0076285B /* Launch */,
 				FE439F33246174090076285B /* Main */,
@@ -376,6 +402,7 @@
 		FE694C6A24607D57005B5E44 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				FEE58B1B247E8E53007F0BB5 /* Keychain */,
 				FE56D7A5247405F10037D65C /* UI */,
 				FE56D7A22473FE560037D65C /* Swinject */,
 				FEA594A42461827B0069E97D /* BarChartView */,
@@ -478,6 +505,27 @@
 			path = LocationManager;
 			sourceTree = "<group>";
 		};
+		FEA14F90247E68D4005FE3FC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FEA14F99247E6B39005FE3FC /* VIP */,
+				FEA14F9A247E6B5A005FE3FC /* AuthCoordinator.swift */,
+				FEA14F9C247E6B8B005FE3FC /* AuthAssembly.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		FEA14F99247E6B39005FE3FC /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				FEA14F91247E6ABD005FE3FC /* AuthController.swift */,
+				FEA14F93247E6ACF005FE3FC /* Auth.storyboard */,
+				FEA14F95247E6AF9005FE3FC /* AuthPresenter.swift */,
+				FEA14F97247E6B13005FE3FC /* AuthInteractor.swift */,
+			);
+			path = VIP;
+			sourceTree = "<group>";
+		};
 		FEA594A42461827B0069E97D /* BarChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +533,26 @@
 				FEA594A52461828E0069E97D /* BarChartView.swift */,
 			);
 			path = BarChartView;
+			sourceTree = "<group>";
+		};
+		FEE58B12247E87A8007F0BB5 /* UserSession */ = {
+			isa = PBXGroup;
+			children = (
+				FEE58B14247E8D74007F0BB5 /* UserSession.swift */,
+				FEE58B13247E8D74007F0BB5 /* UserSessionController.swift */,
+				FEE58B15247E8D74007F0BB5 /* UserSessionInfo.swift */,
+				FEE58B20247EA08B007F0BB5 /* UserCredentials.swift */,
+			);
+			path = UserSession;
+			sourceTree = "<group>";
+		};
+		FEE58B1B247E8E53007F0BB5 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				FEE58B1C247E8E80007F0BB5 /* KeychainStorage.swift */,
+				FEE58B1D247E8E80007F0BB5 /* KeyValueStorage.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		FF90A21B8D40764A82B3743A /* Frameworks */ = {
@@ -561,6 +629,7 @@
 				FEA594A8246182970069E97D /* BarChartView.xib in Resources */,
 				FE694C4024603D82005B5E44 /* Assets.xcassets in Resources */,
 				FE439F2E246150410076285B /* DaysWeatherCompactCell.xib in Resources */,
+				FEA14F94247E6ACF005FE3FC /* Auth.storyboard in Resources */,
 				FE7E23452472B5B900353AC0 /* Launch.storyboard in Resources */,
 				FEA14F87247D13E7005FE3FC /* Map.storyboard in Resources */,
 				FE694C7224607EA5005B5E44 /* PeriodSelectorView.xib in Resources */,
@@ -620,6 +689,7 @@
 			files = (
 				FE694C4F24604DF7005B5E44 /* DaysWeatherView.swift in Sources */,
 				FE56D79C2473FC9B0037D65C /* LaunchAssembly.swift in Sources */,
+				FEE58B21247EA08B007F0BB5 /* UserCredentials.swift in Sources */,
 				FE439F2524612C870076285B /* Extension+Types.swift in Sources */,
 				FE694C6024605062005B5E44 /* WeatherPresenter.swift in Sources */,
 				FEA14F5C247BD74D005FE3FC /* FileManagerClient.swift in Sources */,
@@ -627,11 +697,13 @@
 				FE4093712476C08F00E50EBD /* CustomWeatherParser.swift in Sources */,
 				FEA14F7E247BE4F8005FE3FC /* Condition+CoreDataProperties.swift in Sources */,
 				FEA14F7B247BE4F8005FE3FC /* DayWeather+CoreDataClass.swift in Sources */,
+				FEA14F9B247E6B5A005FE3FC /* AuthCoordinator.swift in Sources */,
 				FE694C7024607E9B005B5E44 /* PeriodSelectorView.swift in Sources */,
 				FE694C792460A0C5005B5E44 /* WeatherDaysModel.swift in Sources */,
 				FE694C3B24603D7E005B5E44 /* WeatherController.swift in Sources */,
 				FEA14F8E247D43E1005FE3FC /* MapAssembly.swift in Sources */,
 				FEA14F7C247BE4F8005FE3FC /* DaysWeather+CoreDataProperties.swift in Sources */,
+				FEE58B1E247E8E80007F0BB5 /* KeychainStorage.swift in Sources */,
 				FEA14F89247D1444005FE3FC /* MapCoordinator.swift in Sources */,
 				FE694C3724603D7E005B5E44 /* AppDelegate.swift in Sources */,
 				FEA14F81247BE4F8005FE3FC /* Weather+CoreDataClass.swift in Sources */,
@@ -643,15 +715,18 @@
 				FE56D7A82474068C0037D65C /* Autolayout.swift in Sources */,
 				FEA594A62461828E0069E97D /* BarChartView.swift in Sources */,
 				FE694C6924606BF6005B5E44 /* WeatherCondition.swift in Sources */,
+				FEA14F92247E6ABD005FE3FC /* AuthController.swift in Sources */,
 				FE439F2024611F600076285B /* WeatherInfo.swift in Sources */,
 				FE7E233F2472AA9100353AC0 /* WeatherCoordinator.swift in Sources */,
 				FE7E23472472B61900353AC0 /* LaunchCoordinator.swift in Sources */,
+				FEE58B1F247E8E80007F0BB5 /* KeyValueStorage.swift in Sources */,
 				FEA14F58247BD562005FE3FC /* PersistantManager.swift in Sources */,
 				FE694C6D24607D6E005B5E44 /* Extensions+UITypes.swift in Sources */,
 				FEA14F80247BE4F8005FE3FC /* DaysWeather+CoreDataClass.swift in Sources */,
 				FEA14F7A247BE4F8005FE3FC /* Weather+CoreDataProperties.swift in Sources */,
 				FEEFEDB42474E7DB00411D23 /* NiblessCollectionViewCell.swift in Sources */,
 				FEA594A324617A290069E97D /* WeatherManager.swift in Sources */,
+				FEE58B17247E8D75007F0BB5 /* UserSessionController.swift in Sources */,
 				FE694C6524605555005B5E44 /* CurrentWeatherRequest.swift in Sources */,
 				FE694C5A24604F05005B5E44 /* CurrentWeatherView.swift in Sources */,
 				FE7E23492472C79400353AC0 /* WeatherLoader.swift in Sources */,
@@ -661,8 +736,11 @@
 				FEA14F60247BDCEB005FE3FC /* Model.xcdatamodeld in Sources */,
 				FE439F29246133D10076285B /* DaysInfo.swift in Sources */,
 				FE694C5E24604FE3005B5E44 /* RequestAPI.swift in Sources */,
+				FEA14F9D247E6B8B005FE3FC /* AuthAssembly.swift in Sources */,
+				FEE58B18247E8D75007F0BB5 /* UserSession.swift in Sources */,
 				FE8B2201247BB33B00DBBF4D /* UIStoryboard+SwiftGen.swift in Sources */,
 				FE56D79E2473FCD20037D65C /* MainAssembly.swift in Sources */,
+				FEE58B19247E8D75007F0BB5 /* UserSessionInfo.swift in Sources */,
 				FE56D7A02473FD010037D65C /* RootAssembly.swift in Sources */,
 				FEA14F7F247BE4F8005FE3FC /* DayWeather+CoreDataProperties.swift in Sources */,
 				FE694C5424604E61005B5E44 /* DaysWeatherCell.swift in Sources */,
@@ -671,7 +749,9 @@
 				FE694C6224605267005B5E44 /* WeatherInteractor.swift in Sources */,
 				FEA14F7D247BE4F8005FE3FC /* Condition+CoreDataClass.swift in Sources */,
 				FE694C6724606A93005B5E44 /* WeatherModel.swift in Sources */,
+				FEA14F96247E6AF9005FE3FC /* AuthPresenter.swift in Sources */,
 				FEA14F8C247D3C22005FE3FC /* LocationManager.swift in Sources */,
+				FEA14F98247E6B13005FE3FC /* AuthInteractor.swift in Sources */,
 				FE694C74246080DD005B5E44 /* SelectorView.swift in Sources */,
 				FEA14F85247D13D2005FE3FC /* MapController.swift in Sources */,
 				FE56D7A42473FE7D0037D65C /* Resolver+Autoresolve.swift in Sources */,

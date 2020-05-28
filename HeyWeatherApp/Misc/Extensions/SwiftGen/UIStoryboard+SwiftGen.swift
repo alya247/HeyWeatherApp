@@ -12,6 +12,11 @@ import UIKit
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardScene {
+  internal enum Auth: StoryboardType {
+    internal static let storyboardName = "Auth"
+
+    internal static let authController = SceneType<AuthController>(storyboard: Auth.self, identifier: "AuthController")
+  }
   internal enum Launch: StoryboardType {
     internal static let storyboardName = "Launch"
 

@@ -10,6 +10,7 @@ PODS:
     - RealmSwift (~> 3.15.0)
     - YALResult (= 1.4)
   - Differentiator (4.0.1)
+  - KeychainAccess (4.2.0)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
   - Realm (3.15.0):
@@ -27,7 +28,6 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - SVProgressHUD (2.2.5)
   - SwiftGen (6.1.0)
   - Swinject (2.7.1)
   - SwinjectAutoregistration (2.7.0):
@@ -44,10 +44,10 @@ DEPENDENCIES:
   - DBClient/Core (= 1.4.2)
   - DBClient/CoreData (= 1.4.2)
   - DBClient/Realm (= 1.4.2)
+  - KeychainAccess
   - "NSObject+Rx"
   - RxCocoa
   - RxDataSources
-  - SVProgressHUD
   - SwiftGen (~> 6.0)
   - Swinject
   - SwinjectAutoregistration
@@ -59,6 +59,7 @@ SPEC REPOS:
     - Alamofire
     - DBClient
     - Differentiator
+    - KeychainAccess
     - "NSObject+Rx"
     - Realm
     - RealmSwift
@@ -66,7 +67,6 @@ SPEC REPOS:
     - RxDataSources
     - RxRelay
     - RxSwift
-    - SVProgressHUD
     - SwiftGen
     - Swinject
     - SwinjectAutoregistration
@@ -77,6 +77,7 @@ SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   DBClient: b3f584194748337c2528634e68f0a3e3651c93d7
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   Realm: 9b834e1be6062f544805252c812348872dc5d4ed
   RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
@@ -84,13 +85,12 @@ SPEC CHECKSUMS:
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
   YALAPIClient: 85485a86e22d2df8467548626f7ae01261373c68
   YALResult: 26915691cdd19269936336d6f28e1a015c64175e
 
-PODFILE CHECKSUM: c1cb111951b9bc77b3ffc38a916e81f638f4f0c8
+PODFILE CHECKSUM: dfeb61a2881747e9d4593d5b1614e39e59d19ea6
 
 COCOAPODS: 1.9.1

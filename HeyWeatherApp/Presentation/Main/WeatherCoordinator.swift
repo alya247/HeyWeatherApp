@@ -11,9 +11,12 @@ import Swinject
 
 protocol WeatherNavigatable: class {
   func presentMap()
+  func userDidLogOut()
 }
 
 class WeatherCoordinator: Coordinator {
+
+  weak var delegate: AppNavigatable?
 
   private let rootController: UIViewController
   private let errorWasOccurred: Bool
@@ -31,9 +34,13 @@ class WeatherCoordinator: Coordinator {
     weatherController = container.autoresolve()
     weatherController.delegate = self
 
-    let n = UINavigationController(rootViewController: weatherController)
-    n.modalPresentationStyle = .fullScreen
-    rootController.present(n, animated: false, completion: nil)
+    let navigationController = UINavigationController(rootViewController: weatherController)
+    navigationController.modalPresentationStyle = .fullScreen
+    rootController.present(navigationController, animated: false, completion: nil)
+  }
+
+  func dismiss() {
+    weatherController.dismiss(animated: false, completion: nil)
   }
 
 }
@@ -44,6 +51,10 @@ extension WeatherCoordinator: WeatherNavigatable {
     let coordinator = MapCoordinator(rootController: weatherController.navigationController!, parentContainter: container)
     childCoordinators.append(coordinator)
     coordinator.start()
+  }
+
+  func userDidLogOut() {
+    delegate?.logOut()
   }
 
 }

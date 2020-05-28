@@ -14,6 +14,7 @@ protocol WeatherViewInterface: class {
 
   func weatherDidLoad()
   func presentError()
+  func userDidLogOut()
 }
 
 class WeatherController: UIViewController {
@@ -34,6 +35,7 @@ class WeatherController: UIViewController {
     super.viewDidLoad()
 
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(openMap))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
 
     setupDaysWeatherView()
 
@@ -63,6 +65,10 @@ extension WeatherController: WeatherViewInterface {
     let alert = UIAlertController(title: "Error;(", message: "No internet connection. Old data might be showed", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     present(alert, animated: true, completion: nil)
+  }
+
+  func userDidLogOut() {
+    delegate?.userDidLogOut()
   }
   
 }
@@ -125,6 +131,10 @@ extension WeatherController {
 
   @objc private func openMap() {
     delegate?.presentMap()
+  }
+
+  @objc private func logOut() {
+    interactor.logOut()
   }
 
 }

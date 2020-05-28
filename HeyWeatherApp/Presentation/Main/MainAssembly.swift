@@ -30,7 +30,8 @@ class MainAssembly: Assembly {
     container.register(WeatherInteractorInterface.self) { resolver in
       return WeatherInteractor(presenter: resolver.autoresolve(),
                                weatherManager: resolver.autoresolve(),
-                               errorWasOccurred: false)
+                               errorWasOccurred: false,
+                               userSessionController: resolver.autoresolve())
     }.inObjectScope(.container)
   }
 
