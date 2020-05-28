@@ -8,6 +8,7 @@
 
 import UIKit
 import Swinject
+import Core
 
 protocol Coordinator: class {
 

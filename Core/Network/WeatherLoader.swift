@@ -10,11 +10,11 @@ import Foundation
 
 typealias Coordinate = (lat: Double, lon: Double)
 
-class WeatherLoader {
+public class WeatherLoader {
 
   unowned private var weatherManager: WeatherManager
 
-  init(weatherManager: WeatherManager) {
+  public init(weatherManager: WeatherManager) {
     self.weatherManager = weatherManager
   }
 

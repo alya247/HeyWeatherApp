@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import UI
 
 class DaysWeatherView: NiblessView {
 
@@ -19,7 +20,7 @@ class DaysWeatherView: NiblessView {
   private let cellSpacing: CGFloat = 5
   private let offset: CGFloat = 10
   private let bag = DisposeBag()
-  private var periodType: PeriodSelectorType = .week
+  private var periodType: PeriodType = .week
   private var selectedIndex: Int?
   private var days = BehaviorSubject<[DayInfo]>(value: [])
 
@@ -28,7 +29,7 @@ class DaysWeatherView: NiblessView {
     setup()
   }
 
-  func bind(to model: Observable<(model: DaysInfo?, type: PeriodSelectorType)>) {
+  func bind(to model: Observable<(model: DaysInfo?, type: PeriodType)>) {
     days.bind(to: collectionView.rx.items) { (collectionView, index, item) -> UICollectionViewCell in
       let indexPath = IndexPath(row: index, section: 0)
       switch self.periodType {

@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import CoreLocation
+import Core
 
 class MapController: UIViewController, UIGestureRecognizerDelegate {
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Core
 
 protocol LaunchScreenInterface: class {
   func weatherDidLoad(errorWasOccurred: Bool)

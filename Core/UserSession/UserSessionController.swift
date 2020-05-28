@@ -42,7 +42,7 @@ public class UserSessionController {
     
     // MARK: Session management
     
-    func openSession(userSessionInfo: UserSessionInfo) {
+    public func openSession(userSessionInfo: UserSessionInfo) {
         userSessionIdentifier = userSessionInfo.id
         userSession.open(sessionInfo: userSessionInfo)
     }

@@ -11,17 +11,17 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
-class LocationManager: NSObject {
+public class LocationManager: NSObject {
 
-  let coordinateSubject = BehaviorSubject<String?>(value: nil)
-  var userCoordinateHandler: ((CLLocationCoordinate2D?) -> Void)?
-  var userCoordinate: CLLocationCoordinate2D? {
+  public let coordinateSubject = BehaviorSubject<String?>(value: nil)
+  public var userCoordinateHandler: ((CLLocationCoordinate2D?) -> Void)?
+  public var userCoordinate: CLLocationCoordinate2D? {
     didSet {
       userCoordinateHandler?(userCoordinate)
       coordinateSubject.onNext(userCoordinate?.convertedCoordinate)
     }
   }
-  var selectedCoordinate: CLLocationCoordinate2D? {
+  public var selectedCoordinate: CLLocationCoordinate2D? {
     didSet {
       coordinateSubject.onNext(selectedCoordinate?.convertedCoordinate)
     }
@@ -31,14 +31,14 @@ class LocationManager: NSObject {
   }
   private let locationManager: CLLocationManager
 
-  override init() {
+  override public init() {
     locationManager = CLLocationManager()
     super.init()
 
     setupUserLocation()
   }
 
-  func setSelectedCoordinate(_ coordinate: CLLocationCoordinate2D) {
+  public func setSelectedCoordinate(_ coordinate: CLLocationCoordinate2D) {
     selectedCoordinate = coordinate
   }
 
@@ -59,9 +59,17 @@ class LocationManager: NSObject {
 
 extension LocationManager: CLLocationManagerDelegate {
 
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
     userCoordinate = locValue
+  }
+
+}
+
+extension CLLocationCoordinate2D {
+
+  var convertedCoordinate: String {
+    return "lat: \(latitude), lon: \(longitude)"
   }
 
 }

@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias BarChartValue = (max: CGFloat, min: CGFloat)
-
 protocol BarChartSelectionInterface: class {
   func didSelectBar(for index: Int)
 }
@@ -21,7 +19,7 @@ class BarChartView: UIView {
   @IBOutlet private weak var placeholderView: UIView!
 
   private let spacing: CGFloat = 7
-  private var values: [BarChartValue] = []
+  private var values: [BarChartValues] = []
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -33,7 +31,7 @@ class BarChartView: UIView {
     initialSetup()
   }
 
-  func apply(values: [BarChartValue]) {
+  func apply(values: [BarChartValues]) {
     removeBars()
     self.values = values
     createComponent()
@@ -72,7 +70,7 @@ extension BarChartView {
     }
   }
 
-  private func createMinComponent(in bar: BarView, value: BarChartValue) {
+  private func createMinComponent(in bar: BarView, value: BarChartValues) {
     let minComponent = UIView()
     minComponent.isUserInteractionEnabled = false
     minComponent.backgroundColor = .lightGray

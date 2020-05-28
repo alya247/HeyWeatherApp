@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import UI
 
 protocol WeatherViewInterface: class {
 
@@ -77,7 +78,7 @@ extension WeatherController: WeatherViewInterface {
 
 extension WeatherController: SelectorDelegate {
 
-  func didSelectPeriod(with type: PeriodSelectorType) {
+  func didSelectPeriod(with type: PeriodType) {
     setViews(isCurrent: type == .current)
     interactor.getWeather(for: type)
   }

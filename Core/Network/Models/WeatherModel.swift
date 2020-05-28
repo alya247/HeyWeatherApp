@@ -10,18 +10,18 @@ import UIKit
 import DBClient
 import CoreData
 
-struct WeatherModel: Codable {
+public struct WeatherModel: Codable {
 
-  var id: String = IdetificatorsProvider.current.rawValue
-  var sunrise: String?
-  var sunset: String?
-  var city: String?
-  var countryCode: String?
-  var windSpeed: Double?
-  var temperature: Double?
-  var feelTemperature: Double?
-  var humidity: Double?
-  var condition: WeatherCondition?
+  public var id: String = IdetificatorsProvider.current.rawValue
+  public var sunrise: String?
+  public var sunset: String?
+  public var city: String?
+  public var countryCode: String?
+  public var windSpeed: Double?
+  public var temperature: Double?
+  public var feelTemperature: Double?
+  public var humidity: Double?
+  public var condition: WeatherCondition?
 
   init(entity: Weather) {
     self.id = entity.id
@@ -54,11 +54,11 @@ struct WeatherModel: Codable {
 
 extension WeatherModel: Stored {
 
-  static var primaryKeyName: String? {
+  public static var primaryKeyName: String? {
     return "id"
   }
 
-  var valueOfPrimaryKey: CVarArg? {
+  public var valueOfPrimaryKey: CVarArg? {
     return id
   }
 
@@ -68,18 +68,18 @@ extension WeatherModel: Stored {
 
 extension WeatherModel: CoreDataModelConvertible {
 
-  static func managedObjectClass() -> NSManagedObject.Type {
+  public static func managedObjectClass() -> NSManagedObject.Type {
     return Weather.self
   }
 
-  static func from(_ managedObject: NSManagedObject) -> Stored {
+  public static func from(_ managedObject: NSManagedObject) -> Stored {
     guard let weather = managedObject as? Weather else {
         fatalError("can't create Condition object from object \(managedObject)")
     }
     return WeatherModel(entity: weather)
   }
 
-  func upsertManagedObject(in context: NSManagedObjectContext, existedInstance: NSManagedObject?) -> NSManagedObject {
+  public func upsertManagedObject(in context: NSManagedObjectContext, existedInstance: NSManagedObject?) -> NSManagedObject {
     var weather: Weather
     var condition: Condition?
     if let result = existedInstance as? Weather, let conditionResult = result.condition {
@@ -109,11 +109,11 @@ extension WeatherModel: CoreDataModelConvertible {
     return weather
   }
 
-  static var entityName: String {
+  public static var entityName: String {
     return String(describing: Weather.self)
   }
 
-  func isPrimaryValueEqualTo(value: Any) -> Bool {
+  public func isPrimaryValueEqualTo(value: Any) -> Bool {
     if let value = value as? String {
         return value == id
     }

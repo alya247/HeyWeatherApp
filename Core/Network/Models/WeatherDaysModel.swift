@@ -10,12 +10,12 @@ import UIKit
 import DBClient
 import CoreData
 
-struct WeatherDaysModel: Codable {
+public struct WeatherDaysModel: Codable {
 
-  var id: String = IdetificatorsProvider.week.rawValue
-  var city: String?
-  var countryCode: String?
-  var days: [WeatherDayModel] = []
+  public var id: String = IdetificatorsProvider.week.rawValue
+  public var city: String?
+  public var countryCode: String?
+  public var days: [WeatherDayModel] = []
 
   init(entity: DaysWeather) {
     self.id = entity.id
@@ -38,11 +38,11 @@ struct WeatherDaysModel: Codable {
 
 extension WeatherDaysModel: Stored {
 
-  static var primaryKeyName: String? {
+  public static var primaryKeyName: String? {
     return "id"
   }
 
-  var valueOfPrimaryKey: CVarArg? {
+  public var valueOfPrimaryKey: CVarArg? {
     return id
   }
 
@@ -52,18 +52,18 @@ extension WeatherDaysModel: Stored {
 
 extension WeatherDaysModel: CoreDataModelConvertible {
 
-  static func managedObjectClass() -> NSManagedObject.Type {
+  public static func managedObjectClass() -> NSManagedObject.Type {
     return DaysWeather.self
   }
 
-  static func from(_ managedObject: NSManagedObject) -> Stored {
+  public static func from(_ managedObject: NSManagedObject) -> Stored {
     guard let weather = managedObject as? DaysWeather else {
         fatalError("can't create Condition object from object \(managedObject)")
     }
     return WeatherDaysModel(entity: weather)
   }
 
-  func upsertManagedObject(in context: NSManagedObjectContext, existedInstance: NSManagedObject?) -> NSManagedObject {
+  public func upsertManagedObject(in context: NSManagedObjectContext, existedInstance: NSManagedObject?) -> NSManagedObject {
     var weather: DaysWeather
     var days: NSSet?
     var conditions: NSSet?
@@ -111,11 +111,11 @@ extension WeatherDaysModel: CoreDataModelConvertible {
     return weather
   }
 
-  static var entityName: String {
+  public static var entityName: String {
     return String(describing: DaysWeather.self)
   }
 
-  func isPrimaryValueEqualTo(value: Any) -> Bool {
+  public func isPrimaryValueEqualTo(value: Any) -> Bool {
     if let value = value as? String {
         return value == id
     }

@@ -9,14 +9,17 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Core
+
+typealias BarChartValues = BarChartValue
 
 protocol WeatherInteractorInterface: class {
 
   var currentWeather: Observable<WeatherInfo?> { get }
-  var periodWeather: Observable<(model: DaysInfo?, type: PeriodSelectorType)> { get }
-  var barChartValues: Observable<[BarChartValue]> { get }
+  var periodWeather: Observable<(model: DaysInfo?, type: PeriodType)> { get }
+  var barChartValues: Observable<[BarChartValues]> { get }
   var coordinate: Observable<String?> { get }
-  func getWeather(for period: PeriodSelectorType)
+  func getWeather(for period: PeriodType)
   func reloadWeatherIfNeeded()
   func logOut()
 
@@ -28,11 +31,11 @@ class WeatherInteractor {
     return presenter.currentWeather.asObservable()
   }
 
-  var periodWeather: Observable<(model: DaysInfo?, type: PeriodSelectorType)> {
+  var periodWeather: Observable<(model: DaysInfo?, type: PeriodType)> {
     return presenter.periodWeather.asObservable()
   }
 
-  var barChartValues: Observable<[BarChartValue]> {
+  var barChartValues: Observable<[BarChartValues]> {
     return chartValues.asObservable()
   }
 
@@ -44,7 +47,7 @@ class WeatherInteractor {
   private let errorWasOccurred: Bool
   private let userSessionController: UserSessionController
   private var weatherManager: WeatherManager
-  private var chartValues = BehaviorSubject<[BarChartValue]>(value: [])
+  private var chartValues = BehaviorSubject<[BarChartValues]>(value: [])
 
   init(presenter: WeatherPresenterInterface,
        weatherManager: WeatherManager = WeatherManager(),
@@ -60,7 +63,7 @@ class WeatherInteractor {
 
 extension WeatherInteractor: WeatherInteractorInterface {
 
-  func getWeather(for period: PeriodSelectorType) {
+  func getWeather(for period: PeriodType) {
     if errorWasOccurred {
       presenter.errorWasOccurred()
     }

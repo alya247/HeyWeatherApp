@@ -10,11 +10,11 @@ import Foundation
 import DBClient
 import CoreData
 
-struct WeatherCondition: Codable {
+public struct WeatherCondition: Codable {
 
-  var id: String = IdetificatorsProvider.condition.rawValue + "\(arc4random())"
-  var iconCode: String
-  var description: String
+  public var id: String = IdetificatorsProvider.condition.rawValue + "\(arc4random())"
+  public var iconCode: String
+  public var description: String
 
   init(entity: Condition?) {
     self.id = entity?.id ?? ""
@@ -33,11 +33,11 @@ struct WeatherCondition: Codable {
 
 extension WeatherCondition: Stored {
 
-  static var primaryKeyName: String? {
+  public static var primaryKeyName: String? {
     return "id"
   }
 
-  var valueOfPrimaryKey: CVarArg? {
+  public var valueOfPrimaryKey: CVarArg? {
     return id
   }
 
@@ -47,18 +47,18 @@ extension WeatherCondition: Stored {
 
 extension WeatherCondition: CoreDataModelConvertible {
 
-  static func managedObjectClass() -> NSManagedObject.Type {
+  public static func managedObjectClass() -> NSManagedObject.Type {
     return Condition.self
   }
 
-  static func from(_ managedObject: NSManagedObject) -> Stored {
+  public static func from(_ managedObject: NSManagedObject) -> Stored {
     guard let condition = managedObject as? Condition else {
         fatalError("can't create Condition object from object \(managedObject)")
     }
     return WeatherCondition(entity: condition)
   }
 
-  func upsertManagedObject(in context: NSManagedObjectContext, existedInstance: NSManagedObject?) -> NSManagedObject {
+  public func upsertManagedObject(in context: NSManagedObjectContext, existedInstance: NSManagedObject?) -> NSManagedObject {
     var condition: Condition
     if let result = existedInstance as? Condition {
         condition = result
@@ -73,11 +73,11 @@ extension WeatherCondition: CoreDataModelConvertible {
     return condition
   }
 
-  static var entityName: String {
+  public static var entityName: String {
     return String(describing: Condition.self)
   }
 
-  func isPrimaryValueEqualTo(value: Any) -> Bool {
+  public func isPrimaryValueEqualTo(value: Any) -> Bool {
     if let value = value as? String {
         return value == id
     }

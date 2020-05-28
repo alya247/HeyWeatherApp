@@ -9,12 +9,13 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Core
 
 protocol WeatherPresenterInterface: class {
 
   var view: WeatherViewInterface! { get set }
   var currentWeather: BehaviorSubject<WeatherInfo?> { get set }
-  var periodWeather: BehaviorSubject<(model: DaysInfo?, type: PeriodSelectorType)> { get set }
+  var periodWeather: BehaviorSubject<(model: DaysInfo?, type: PeriodType)> { get set }
   func weatherDidLoad()
   func errorWasOccurred()
   func presentCurrentWeather(_ weather: WeatherModel?)
@@ -26,7 +27,7 @@ protocol WeatherPresenterInterface: class {
 class WeatherPresenter {
 
   var currentWeather: BehaviorSubject<WeatherInfo?> = BehaviorSubject<WeatherInfo?>(value: nil)
-  var periodWeather = BehaviorSubject<(model: DaysInfo?, type: PeriodSelectorType)>(value: (nil, .week))
+  var periodWeather = BehaviorSubject<(model: DaysInfo?, type: PeriodType)>(value: (nil, .week))
   unowned var view: WeatherViewInterface!
   
 }

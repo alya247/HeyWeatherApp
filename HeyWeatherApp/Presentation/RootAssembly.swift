@@ -8,6 +8,7 @@
 
 import Foundation
 import Swinject
+import Core
 
 class RootAssembly: Assembly {
 

@@ -8,31 +8,9 @@
 
 import UIKit
 
-enum PeriodSelectorType {
-  case current
-  case week
-  case twoWeeks
-
-  var title: String {
-    switch self {
-    case .current: return "Current"
-    case .week: return "Week"
-    case .twoWeeks: return "Two weeks"
-    }
-  }
-
-  var daysCount: Int {
-    switch self {
-    case .current: return 1
-    case .week: return 7
-    case .twoWeeks: return 14
-    }
-  }
-}
-
 class PeriodSelectorView: UIView {
 
-  var currentType: PeriodSelectorType = .current
+  var currentType: PeriodType = .current
   weak var delegate: SelectorDelegate?
 
   @IBOutlet private weak var stackView: UIStackView!
@@ -47,7 +25,7 @@ class PeriodSelectorView: UIView {
     initialSetup()
   }
 
-  func applySelectors( _ selectors: [PeriodSelectorType], defaultType: PeriodSelectorType = .current) {
+  func applySelectors( _ selectors: [PeriodType], defaultType: PeriodType = .current) {
     for selector in selectors {
       createSelector(selector, isDefault: selector == defaultType)
     }
@@ -59,7 +37,7 @@ class PeriodSelectorView: UIView {
 
 extension PeriodSelectorView: SelectorDelegate {
 
-  func didSelectPeriod(with type: PeriodSelectorType) {
+  func didSelectPeriod(with type: PeriodType) {
     currentType = type
     delegate?.didSelectPeriod(with: type)
     deselectSelectors(type)
@@ -70,7 +48,7 @@ extension PeriodSelectorView: SelectorDelegate {
 
 extension PeriodSelectorView {
 
-  private func createSelector(_ selector: PeriodSelectorType, isDefault: Bool) {
+  private func createSelector(_ selector: PeriodType, isDefault: Bool) {
     let view = SelectorView(frame: .zero)
     view.apply(type: selector)
     view.delegate = self
@@ -80,7 +58,7 @@ extension PeriodSelectorView {
     stackView.addArrangedSubview(view)
   }
 
-  private func deselectSelectors(_ selectedType: PeriodSelectorType) {
+  private func deselectSelectors(_ selectedType: PeriodType) {
     for view in stackView.arrangedSubviews {
       guard let selectorView = view as? SelectorView, selectorView.selectorType != selectedType else { continue }
       selectorView.deselect()

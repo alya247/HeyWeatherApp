@@ -9,12 +9,12 @@
 import UIKit
 
 protocol SelectorDelegate: class {
-  func didSelectPeriod(with type: PeriodSelectorType)
+  func didSelectPeriod(with type: PeriodType)
 }
 
 class SelectorView: UIView {
 
-  var selectorType: PeriodSelectorType = .current
+  var selectorType: PeriodType = .current
   weak var delegate: SelectorDelegate?
 
   @IBOutlet private weak var titleLabel: UILabel!
@@ -40,7 +40,7 @@ class SelectorView: UIView {
     delegate?.didSelectPeriod(with: selectorType)
   }
 
-  func apply(type: PeriodSelectorType) {
+  func apply(type: PeriodType) {
     titleLabel.text = type.title.uppercased()
     selectorType = type
   }

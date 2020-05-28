@@ -8,14 +8,14 @@
 
 import UIKit
 
-class WeatherManager: PersistenceHolder {
+public class WeatherManager: PersistenceHolder {
 
-  lazy var weekChartValues: [BarChartValue] = {
+  public lazy var weekChartValues: [BarChartValue] = {
     let weather = getWeekWeather()
     return weather?.days.map { BarChartValue(max: CGFloat($0.maxTemperature ?? 0), min: CGFloat($0.minTemperature ?? 0)) } ?? []
   }()
 
-  lazy var twoWeekChartValues: [BarChartValue] = {
+  public lazy var twoWeekChartValues: [BarChartValue] = {
     let weather = getTwoWeeksWeather()
     return weather?.days.map { BarChartValue(max: CGFloat($0.maxTemperature ?? 0), min: CGFloat($0.minTemperature ?? 0)) } ?? []
   }()
@@ -24,13 +24,15 @@ class WeatherManager: PersistenceHolder {
   private var weekWeather: WeatherDaysModel?
   private var twoWeeksWeather: WeatherDaysModel?
 
-  var weatherLoader: WeatherLoader!
-  var locationManager: LocationManager!
-  var shouldReloadWeather: Bool {
+  public var weatherLoader: WeatherLoader!
+  public var locationManager: LocationManager!
+  public var shouldReloadWeather: Bool {
     return locationManager.shouldReloadWeather
   }
 
-  func loadWeather(completion: @escaping ((Bool) -> ())) {
+  public init() { }
+
+  public func loadWeather(completion: @escaping ((Bool) -> ())) {
     locationManager.userCoordinateHandler = { [weak self] coordinate in
       guard let coordinate = coordinate else {
         completion(true)
@@ -42,7 +44,7 @@ class WeatherManager: PersistenceHolder {
 
   }
 
-  func reloadWeather(completion: @escaping ((Bool) -> ())) {
+  public func reloadWeather(completion: @escaping ((Bool) -> ())) {
     guard let coordinate = locationManager.selectedCoordinate else {
       completion(true)
       return
@@ -70,7 +72,7 @@ class WeatherManager: PersistenceHolder {
 
   // MARK:- Getters
 
-  func getCurrentWeather() -> WeatherModel? {
+  public func getCurrentWeather() -> WeatherModel? {
     if let weather = currentWeather {
       return weather
     } else {
@@ -78,7 +80,7 @@ class WeatherManager: PersistenceHolder {
     }
   }
 
-  func getWeekWeather() -> WeatherDaysModel? {
+  public func getWeekWeather() -> WeatherDaysModel? {
     if let weather = weekWeather {
       return weather
     } else {
@@ -86,7 +88,7 @@ class WeatherManager: PersistenceHolder {
     }
   }
 
-  func getTwoWeeksWeather() -> WeatherDaysModel? {
+  public func getTwoWeeksWeather() -> WeatherDaysModel? {
     if let weather = twoWeeksWeather {
       return weather
     } else {
