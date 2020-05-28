@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERj-s7-Dox">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERj-s7-Dox">
                     <rect key="frame" x="5" y="10" width="404" height="343"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8v-07-gUN">
@@ -34,7 +34,7 @@
                                 <constraint firstAttribute="height" constant="1" id="zON-Uc-dcU"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuS-7m-Wi9">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuS-7m-Wi9">
                             <rect key="frame" x="23" y="28" width="353" height="242"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>

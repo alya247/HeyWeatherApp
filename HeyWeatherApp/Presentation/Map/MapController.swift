@@ -44,7 +44,7 @@ extension MapController {
     if CLLocationManager.locationServicesEnabled() {
       clLocationManager.delegate = self
       clLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-      clLocationManager.startUpdatingLocation()
+      clLocationManager.requestLocation()
     }
   }
 
@@ -82,7 +82,10 @@ extension MapController: CLLocationManagerDelegate {
     let annotation = MKPointAnnotation()
     annotation.coordinate = coordinateToShow
     mapView.addAnnotation(annotation)
+  }
 
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    print(error)
   }
 
 }

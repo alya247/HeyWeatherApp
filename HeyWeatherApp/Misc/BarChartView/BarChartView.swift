@@ -54,6 +54,7 @@ extension BarChartView {
 
     for (index, value) in values.enumerated() {
       let barView = BarView()
+      barView.clipsToBounds = true
       barView.dayIndex = index
       barView.backgroundColor = ColorName.appOrange.color
 
@@ -75,9 +76,10 @@ extension BarChartView {
     minComponent.isUserInteractionEnabled = false
     minComponent.backgroundColor = .lightGray
 
-    let heightDivider = value.max * value.min == 0 ? 1 : value.max * value.min
+    let heightDivider = value.max * value.min <= 0 ? 1 : value.max * value.min
     let height = bar.bounds.height / heightDivider
-    let origin = CGPoint(x: 0, y: bar.bounds.maxY - height)
+    let y = bar.frame.maxY - height > bar.frame.maxY ? bar.frame.maxY - 2 : bar.frame.maxY - height
+    let origin = CGPoint(x: 0, y: y)
     minComponent.frame = CGRect(origin: origin,
                                 size: CGSize(width: bar.bounds.width, height: height))
     bar.addSubview(minComponent)

@@ -49,7 +49,7 @@ public class LocationManager: NSObject {
     if CLLocationManager.locationServicesEnabled() {
       locationManager.delegate = self
       locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-      locationManager.startUpdatingLocation()
+      locationManager.requestLocation()
     }
   }
 
@@ -62,6 +62,10 @@ extension LocationManager: CLLocationManagerDelegate {
   public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
     userCoordinate = locValue
+  }
+
+  public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    print(error)
   }
 
 }
