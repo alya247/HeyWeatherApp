@@ -19,6 +19,7 @@ protocol WeatherInteractorInterface: class {
   var periodWeather: Observable<(model: DaysInfo?, type: PeriodType)> { get }
   var barChartValues: Observable<[BarChartValues]> { get }
   var coordinate: Observable<String?> { get }
+  func loadWeather()
   func getWeather(for period: PeriodType)
   func reloadWeatherIfNeeded()
   func logOut()
@@ -62,6 +63,16 @@ class WeatherInteractor {
 }
 
 extension WeatherInteractor: WeatherInteractorInterface {
+
+  func loadWeather() {
+    weatherManager.loadWeather { [weak self] errorWasOccurred in
+      guard errorWasOccurred else {
+        self?.presenter.errorWasOccurred()
+        return
+      }
+      self?.presenter.weatherDidLoad()
+    }
+  }
 
   func getWeather(for period: PeriodType) {
     if errorWasOccurred {

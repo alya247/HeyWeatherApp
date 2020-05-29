@@ -43,8 +43,9 @@ class WeatherController: UIViewController {
     periodSelectorView.applySelectors([.current, .week, .twoWeeks])
     periodSelectorView.delegate = self
     barChartView.delegate = self
-    interactor.getWeather(for: .current)
     setupObservers()
+    interactor.getWeather(for: .current)
+    interactor.loadWeather()
   }
 
   override func viewDidAppear(_ animated: Bool) {

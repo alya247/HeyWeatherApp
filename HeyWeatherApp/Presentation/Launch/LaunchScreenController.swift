@@ -10,7 +10,7 @@ import UIKit
 import Core
 
 protocol LaunchScreenInterface: class {
-  func weatherDidLoad(errorWasOccurred: Bool)
+  func presentHome()
 }
 
 class LaunchScreenController: UIViewController {
@@ -20,14 +20,12 @@ class LaunchScreenController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    loadWeather()
+    performanceTimer()
   }
 
-  func loadWeather() {
-    weatherManager.loadWeather { [weak self] errorWasOccurred in
-      guard let `self` = self else { return }
-      self.delegate?.weatherDidLoad(errorWasOccurred: errorWasOccurred)
+  func performanceTimer() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+      self?.delegate?.presentHome()
     }
   }
 

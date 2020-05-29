@@ -54,11 +54,11 @@ class AppCoordinator {
 
 extension AppCoordinator: LaunchScreenInterface {
 
-  func weatherDidLoad(errorWasOccurred: Bool) {
+  func presentHome() {
     removeLaunchFlow()
 
     if isUserSignedIn {
-      presentWeatherFlow(errorWasOccurred: errorWasOccurred)
+      presentWeatherFlow()
     } else {
       presentAuthFlow()
     }
@@ -70,7 +70,7 @@ extension AppCoordinator: AuthNavigatable {
 
   func signIn() {
     removeAuthFlow()
-    presentWeatherFlow(errorWasOccurred: false)
+    presentWeatherFlow()
   }
 
 }
@@ -103,9 +103,8 @@ extension AppCoordinator {
 
   // MARK: - Weather
 
-  private func presentWeatherFlow(errorWasOccurred: Bool) {
+  private func presentWeatherFlow() {
     let weatherCoordinator = WeatherCoordinator(rootController: rootController,
-                                                errorWasOccurred: errorWasOccurred,
                                                 parentContainter: container)
     weatherCoordinator.delegate = self
     childCoordinators.append(weatherCoordinator)

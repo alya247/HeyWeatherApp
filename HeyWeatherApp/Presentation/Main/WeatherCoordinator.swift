@@ -19,14 +19,12 @@ class WeatherCoordinator: Coordinator {
   weak var delegate: AppNavigatable?
 
   private let rootController: UIViewController
-  private let errorWasOccurred: Bool
   private var container: Container
   private var weatherController: WeatherController!
   private var childCoordinators = [Coordinator]()
 
-  init(rootController: UIViewController, errorWasOccurred: Bool, parentContainter: Container) {
+  init(rootController: UIViewController, parentContainter: Container) {
     self.rootController = rootController
-    self.errorWasOccurred = errorWasOccurred
     self.container = Container(parent: parentContainter) { MainAssembly().assemble(container: $0) }
   }
 
