@@ -35,8 +35,8 @@ class WeatherController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(openMap))
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.search, style: .plain, target: self, action: #selector(openMap))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.logOut, style: .plain, target: self, action: #selector(logOut))
 
     setupDaysWeatherView()
 

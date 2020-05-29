@@ -10,3 +10,4 @@ import Foundation
 import Core
 
 typealias PeriodType = PeriodSelectorType
+

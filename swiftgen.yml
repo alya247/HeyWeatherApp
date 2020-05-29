@@ -13,3 +13,8 @@ colors:
   outputs:
     templateName: swift4
     output: HeyWeatherApp/Misc/Extensions/SwiftGen/UIColor+SwiftGen.swift
+strings:
+  inputs: HeyWeatherApp/Resource/en.lproj/Localizable.strings
+  outputs:
+    templateName: structured-swift4
+    output: HeyWeatherApp/Misc/Extensions/SwiftGen/Localization+SwiftGen.swift

@@ -1,0 +1,21 @@
+"email" = "Email";
+
+"password" = "Password";
+
+"signIn" = "SignIn";
+
+"logOut" = "LogOut";
+
+"search" = "Search";
+
+"done" = "Done";
+
+"current" = "Current";
+
+"week" = "Week";
+
+"twoWeeks" = "Two Weeks";
+
+"minTemperature" = "Min Temperature";
+
+"maxTemperature" = "Max Temperature";

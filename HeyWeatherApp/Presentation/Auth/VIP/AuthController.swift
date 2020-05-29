@@ -24,6 +24,9 @@ class AuthController: UIViewController {
 
   @IBOutlet private weak var emailTextField: UITextField!
   @IBOutlet private weak var passwordTextField: UITextField!
+  @IBOutlet private weak var emailLabel: UILabel!
+  @IBOutlet private weak var passwordLabel: UILabel!
+  @IBOutlet private weak var signInButton: UIButton!
 
   var interactor: AuthInteractorInterface!
   weak var delegate: AuthNavigatable?
@@ -36,6 +39,7 @@ class AuthController: UIViewController {
     super.viewDidLoad()
 
     setupObservers()
+    setupLocalization()
   }
   
 }
@@ -74,6 +78,12 @@ extension AuthController {
     passwordTextField.rx.text.subscribe(onNext: { [weak self] text in
       self?.password = text
     }).disposed(by: bag)
+  }
+
+  private func setupLocalization() {
+    emailLabel.text = L10n.email
+    passwordLabel.text = L10n.password
+    signInButton.setTitle(L10n.signIn, for: .normal)
   }
 
 }

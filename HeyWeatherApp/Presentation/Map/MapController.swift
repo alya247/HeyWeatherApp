@@ -33,7 +33,7 @@ class MapController: UIViewController, UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(searchWeather))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.done, style: .plain, target: self, action: #selector(searchWeather))
 
     let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleLocationTap(_ :)))
     gestureRecognizer.delegate = self

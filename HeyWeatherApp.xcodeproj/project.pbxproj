@@ -61,6 +61,8 @@
 		FEA594A12461782F0069E97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA5949F2461782F0069E97D /* Main.storyboard */; };
 		FEA594A62461828E0069E97D /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA594A52461828E0069E97D /* BarChartView.swift */; };
 		FEA594A8246182970069E97D /* BarChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA594A7246182970069E97D /* BarChartView.xib */; };
+		FEBB6ADB248101F800C441D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEBB6ADD248101F800C441D5 /* Localizable.strings */; };
+		FEBB6AE8248106A100C441D5 /* Localization+SwiftGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB6AE7248106A100C441D5 /* Localization+SwiftGen.swift */; };
 		FEBCB3F9247FF15A00746765 /* SelectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCB3F8247FF15A00746765 /* SelectedLocation.swift */; };
 		FECDBC95247F9F94005DD9B9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDBC94247F9F94005DD9B9 /* Core.framework */; };
 		FECDBCA5247FA61A005DD9B9 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FECDBC94247F9F94005DD9B9 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -202,6 +204,11 @@
 		FEA594A02461782F0069E97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FEA594A52461828E0069E97D /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		FEA594A7246182970069E97D /* BarChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartView.xib; sourceTree = "<group>"; };
+		FEBB6AD6248101AA00C441D5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FEBB6AD7248101AB00C441D5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		FEBB6ADC248101F800C441D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FEBB6ADE248101FD00C441D5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FEBB6AE7248106A100C441D5 /* Localization+SwiftGen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Localization+SwiftGen.swift"; sourceTree = "<group>"; };
 		FEBCB3F8247FF15A00746765 /* SelectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLocation.swift; sourceTree = "<group>"; };
 		FECDBC94247F9F94005DD9B9 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECDBCAB247FA84A005DD9B9 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -390,6 +397,7 @@
 				FE694C6A24607D57005B5E44 /* Misc */,
 				FE694C4B24603DCC005B5E44 /* Presentation */,
 				FE694C4A24603DC3005B5E44 /* Model */,
+				FEBB6AD8248101B400C441D5 /* Resource */,
 			);
 			path = HeyWeatherApp;
 			sourceTree = "<group>";
@@ -498,6 +506,7 @@
 		FE8B21FE247BA89E00DBBF4D /* SwiftGen */ = {
 			isa = PBXGroup;
 			children = (
+				FEBB6AE7248106A100C441D5 /* Localization+SwiftGen.swift */,
 				FE8B2205247BBA7F00DBBF4D /* UIColor+SwiftGen.swift */,
 				FE8B2203247BBA3B00DBBF4D /* UIImage+SwiftGen.swift */,
 				FE8B2200247BB33B00DBBF4D /* UIStoryboard+SwiftGen.swift */,
@@ -545,6 +554,14 @@
 				FEA594A52461828E0069E97D /* BarChartView.swift */,
 			);
 			path = BarChartView;
+			sourceTree = "<group>";
+		};
+		FEBB6AD8248101B400C441D5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FEBB6ADD248101F800C441D5 /* Localizable.strings */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		FECDBCAC247FA84A005DD9B9 /* UI */ = {
@@ -807,6 +824,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FE694C2A24603D7D005B5E44;
 			productRefGroup = FE694C3424603D7E005B5E44 /* Products */;
@@ -834,6 +852,7 @@
 				FEA14F94247E6ACF005FE3FC /* Auth.storyboard in Resources */,
 				FE7E23452472B5B900353AC0 /* Launch.storyboard in Resources */,
 				FEA14F87247D13E7005FE3FC /* Map.storyboard in Resources */,
+				FEBB6ADB248101F800C441D5 /* Localizable.strings in Resources */,
 				FE694C7224607EA5005B5E44 /* PeriodSelectorView.xib in Resources */,
 				FE694C77246081F9005B5E44 /* SelectorView.xib in Resources */,
 				FE694C5C24604F0D005B5E44 /* CurrentWeatherView.xib in Resources */,
@@ -957,6 +976,7 @@
 				FE56D7A92474068C0037D65C /* NiblessView.swift in Sources */,
 				FE439F23246120080076285B /* WeatherSign.swift in Sources */,
 				FE439F2C246150390076285B /* DaysWeatherCompactCell.swift in Sources */,
+				FEBB6AE8248106A100C441D5 /* Localization+SwiftGen.swift in Sources */,
 				FEA594A62461828E0069E97D /* BarChartView.swift in Sources */,
 				FEA14F92247E6ABD005FE3FC /* AuthController.swift in Sources */,
 				FE439F2024611F600076285B /* WeatherInfo.swift in Sources */,
@@ -1051,6 +1071,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FE694C4224603D82005B5E44 /* Base */,
+				FEBB6AD6248101AA00C441D5 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1059,8 +1080,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				FEA594A02461782F0069E97D /* Base */,
+				FEBB6AD7248101AB00C441D5 /* ru */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FEBB6ADD248101F800C441D5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEBB6ADC248101F800C441D5 /* en */,
+				FEBB6ADE248101FD00C441D5 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1070,6 +1101,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1130,6 +1162,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
