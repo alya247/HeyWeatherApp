@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-
 extension DaysWeather {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<DaysWeather> {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<DaysWeather> {
         return NSFetchRequest<DaysWeather>(entityName: "DaysWeather")
     }
 

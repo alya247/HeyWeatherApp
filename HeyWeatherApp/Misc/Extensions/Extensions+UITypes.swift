@@ -10,8 +10,7 @@ import UIKit
 
 extension UIView {
 
-  @IBInspectable
-  var cornerRadius: CGFloat {
+  @IBInspectable var cornerRadius: CGFloat {
     get {
       return layer.cornerRadius
     }
@@ -20,8 +19,7 @@ extension UIView {
     }
   }
 
-  @IBInspectable
-  var borderWidth: CGFloat {
+  @IBInspectable var borderWidth: CGFloat {
     get {
       return layer.borderWidth
     }
@@ -30,8 +28,7 @@ extension UIView {
     }
   }
 
-  @IBInspectable
-  var borderColor: UIColor {
+  @IBInspectable var borderColor: UIColor {
     get {
       return UIColor(cgColor: self.layer.borderColor!)
     }
@@ -42,7 +39,7 @@ extension UIView {
 
   func initialSetup() {
     let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
-    let contentView = nib.instantiate(withOwner: self, options: nil).first! as! UIView
+    guard let contentView = nib.instantiate(withOwner: self, options: nil).first! as? UIView else { return }
     addSubview(contentView)
     contentView.frame = bounds
     contentView.backgroundColor = .clear

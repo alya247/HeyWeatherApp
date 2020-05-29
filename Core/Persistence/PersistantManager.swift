@@ -93,19 +93,19 @@ extension PersistenceHolder {
 
   func getPeriodWeather(fileName: String) -> WeatherDaysModel? {
     switch storeType {
-      case .coreDataClient:
-        let client = CoreDataDBClient(forModel: "Model")
-        let predicate = NSPredicate(format: "id == %@", IdetificatorsProvider.week.rawValue)
-        let request = FetchRequest<WeatherDaysModel>(predicate: predicate)
-        let result = client.execute(request)
-        return result.value?.first
+    case .coreDataClient:
+      let client = CoreDataDBClient(forModel: "Model")
+      let predicate = NSPredicate(format: "id == %@", IdetificatorsProvider.week.rawValue)
+      let request = FetchRequest<WeatherDaysModel>(predicate: predicate)
+      let result = client.execute(request)
+      return result.value?.first
 
-      case .realmClient: return nil
+    case .realmClient: return nil
 
-      case .fileClient:
-        let client = FileManagerClient()
-        return client.read(fileName, as: WeatherDaysModel.self)
-      }
+    case .fileClient:
+      let client = FileManagerClient()
+      return client.read(fileName, as: WeatherDaysModel.self)
+    }
   }
 
   func getSelectedLocation(fileName: String) -> SelectedLocation? {

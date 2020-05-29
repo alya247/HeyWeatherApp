@@ -16,7 +16,7 @@ class RequestAPI {
   static private let version = "v2.0"
 
   static var apiClient: NetworkClient {
-    let client = APIClient(requestExecutor: AlamofireRequestExecutor(baseURL: URL(string: apiURL + version)!), deserializer: JSONDeserializer())
+  let client = APIClient(requestExecutor: AlamofireRequestExecutor(baseURL: URL(string: apiURL + version)!), deserializer: JSONDeserializer())
     return client
   }
 
@@ -36,7 +36,7 @@ class RequestAPI {
 
   }
 
-  static func requestWeatherInDays(daysCount: Int, coordinate: Coordinate, completion: @escaping ((Result<WeatherDaysModel>?) -> Void)) {
+static func requestWeatherInDays(daysCount: Int, coordinate: Coordinate, completion: @escaping ((Result<WeatherDaysModel>?) -> Void)) {
     let request = WeatherInDaysRequest(days: daysCount, coordinate: coordinate)
     let parser = CustomWeatherParser<WeatherDaysModel>(serializationRule: request.serializationRule)
 
@@ -51,5 +51,5 @@ class RequestAPI {
     })
 
   }
-  
+
 }

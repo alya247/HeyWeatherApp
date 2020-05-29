@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-
 extension Condition {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Condition> {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<Condition> {
         return NSFetchRequest<Condition>(entityName: "Condition")
     }
 

@@ -111,11 +111,15 @@ extension UserSession {
   private func saveUserCredentials() {
     guard let userId = userId else { return }
 
-    let data = try! JSONEncoder().encode(sessionInfo?.userCredentials)
-    //swiftlint:enable force_try
-    let credentialsString = String(data: data, encoding: .utf8)!
-    credentialsStorage.set(credentialsString, forKey: UserSession.userCredentialsStorageKey(for: userId))
-    credentialsStorage.saveChanges()
+    do {
+      let data = try JSONEncoder().encode(sessionInfo?.userCredentials)
+      //swiftlint:enable force_try
+      let credentialsString = String(data: data, encoding: .utf8)!
+      credentialsStorage.set(credentialsString, forKey: UserSession.userCredentialsStorageKey(for: userId))
+      credentialsStorage.saveChanges()
+    } catch {
+      print("saveUserCredentials error")
+    }
   }
 
   private func removeUserCredentials() {
@@ -149,7 +153,7 @@ extension UserSession: AccessCredentialsProvider {
       return ""
     }
     set {
-      guard let _ = newValue else {
+      guard newValue != nil else {
         assertionFailure("need value")
         return
       }
@@ -161,7 +165,7 @@ extension UserSession: AccessCredentialsProvider {
       return ""
     }
     set {
-      guard let _ = newValue else {
+      guard newValue != nil else {
         assertionFailure("need value")
         return
       }

@@ -25,12 +25,12 @@ class AuthAssembly: Assembly {
     }.inObjectScope(.transient)
 
     container.register(AuthPresenterInterface.self) { _ in
-      return AuthPresenter()
+      AuthPresenter()
     }.inObjectScope(.container)
 
     container.register(AuthInteractorInterface.self) { resolver in
-      return AuthInteractor(presenter: resolver.autoresolve(),
-                            userSessionController: resolver.autoresolve())
+      AuthInteractor(presenter: resolver.autoresolve(),
+                     userSessionController: resolver.autoresolve())
     }.inObjectScope(.container)
 
   }

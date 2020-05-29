@@ -58,7 +58,7 @@ extension WeatherDaysModel: CoreDataModelConvertible {
 
   public static func from(_ managedObject: NSManagedObject) -> Stored {
     guard let weather = managedObject as? DaysWeather else {
-        fatalError("can't create Condition object from object \(managedObject)")
+        fatalError("can't create DaysWeather object from object \(managedObject)")
     }
     return WeatherDaysModel(entity: weather)
   }
@@ -72,17 +72,22 @@ extension WeatherDaysModel: CoreDataModelConvertible {
       weather = result
       days = result.days
     } else {
-      weather = NSEntityDescription.insertNewObject(forEntityName: WeatherDaysModel.entityName,
-                                                    into: context) as! DaysWeather
+      guard let entityWeather = NSEntityDescription.insertNewObject(forEntityName: WeatherDaysModel.entityName,
+                                                                    into: context) as? DaysWeather else {
+        fatalError()
+      }
+      weather = entityWeather
       var entityDays = [DayWeather]()
       var entityConditions = [Condition]()
       for _ in 0..<self.days.count {
-        let entityDay = NSEntityDescription.insertNewObject(forEntityName: WeatherDayModel.entityName,
-                                                            into: context) as! DayWeather
-        let entityCondition = NSEntityDescription.insertNewObject(forEntityName: WeatherCondition.entityName,
-                                                                  into: context) as! Condition
-        entityDays.append(entityDay)
-        entityConditions.append(entityCondition)
+        if let entityDay = NSEntityDescription.insertNewObject(forEntityName: WeatherDayModel.entityName,
+                                                            into: context) as? DayWeather,
+          let entityCondition = NSEntityDescription.insertNewObject(forEntityName: WeatherCondition.entityName,
+                                                                  into: context) as? Condition {
+          entityDays.append(entityDay)
+          entityConditions.append(entityCondition)
+        }
+
       }
       days = NSSet(array: entityDays)
       conditions = NSSet(array: entityConditions)
@@ -92,7 +97,9 @@ extension WeatherDaysModel: CoreDataModelConvertible {
     weather.city = city
     weather.countryCode = countryCode
 
-    if let weatherDays = days?.allObjects as? [DayWeather], let weatherConditions = conditions?.allObjects as? [Condition], weatherDays.count == self.days.count {
+    if let weatherDays = days?.allObjects as? [DayWeather],
+       let weatherConditions = conditions?.allObjects as? [Condition],
+       weatherDays.count == self.days.count {
       for (index, day) in weatherDays.enumerated() {
         let weatherDay = self.days[index]
         day.id = IdetificatorsProvider.day.rawValue + "\(arc4random())"

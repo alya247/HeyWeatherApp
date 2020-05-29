@@ -33,7 +33,7 @@ class PeriodSelectorView: UIView {
 
 }
 
-// MARK:- SelectorDelegate
+// MARK: - SelectorDelegate
 
 extension PeriodSelectorView: SelectorDelegate {
 
@@ -44,7 +44,7 @@ extension PeriodSelectorView: SelectorDelegate {
   }
 }
 
-// MARK:- Private Methods
+// MARK: - Private Methods
 
 extension PeriodSelectorView {
 

@@ -24,14 +24,14 @@ class MainAssembly: Assembly {
     }.inObjectScope(.transient)
 
     container.register(WeatherPresenterInterface.self) { _ in
-      return WeatherPresenter()
+      WeatherPresenter()
     }.inObjectScope(.container)
 
     container.register(WeatherInteractorInterface.self) { resolver in
-      return WeatherInteractor(presenter: resolver.autoresolve(),
-                               weatherManager: resolver.autoresolve(),
-                               errorWasOccurred: false,
-                               userSessionController: resolver.autoresolve())
+      WeatherInteractor(presenter: resolver.autoresolve(),
+                        weatherManager: resolver.autoresolve(),
+                        errorWasOccurred: false,
+                        userSessionController: resolver.autoresolve())
     }.inObjectScope(.container)
   }
 

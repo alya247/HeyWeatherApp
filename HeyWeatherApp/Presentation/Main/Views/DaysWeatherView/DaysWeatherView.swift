@@ -34,11 +34,13 @@ class DaysWeatherView: NiblessView {
       let indexPath = IndexPath(row: index, section: 0)
       switch self.periodType {
       case .week:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCell.identifier, for: indexPath) as! DaysWeatherCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCell.identifier,
+                                                      for: indexPath) as! DaysWeatherCell
         cell.apply(model: item, isSelected: index == self.selectedIndex)
         return cell
       case .twoWeeks:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCompactCell.identifier, for: indexPath) as! DaysWeatherCompactCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysWeatherCompactCell.identifier,
+                                                      for: indexPath) as! DaysWeatherCompactCell
         cell.apply(model: item, isSelected: index == self.selectedIndex)
         return cell
       default: return UICollectionViewCell()
@@ -75,7 +77,7 @@ class DaysWeatherView: NiblessView {
 
 }
 
-// MARK:- Private Methods
+// MARK: - Private Methods
 
 extension DaysWeatherView {
 

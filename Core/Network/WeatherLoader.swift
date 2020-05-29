@@ -18,7 +18,7 @@ public class WeatherLoader {
     self.weatherManager = weatherManager
   }
 
-  func loadWeather(coordinate: Coordinate, completion: @escaping ((Bool) -> ())) {
+  func loadWeather(coordinate: Coordinate, completion: @escaping ((Bool) -> Void)) {
       let group = DispatchGroup()
       var errorWasOccurred = false
 
@@ -48,7 +48,7 @@ public class WeatherLoader {
 
     group.notify(queue: .main) {
         completion(errorWasOccurred)
-      }
     }
+  }
 
 }

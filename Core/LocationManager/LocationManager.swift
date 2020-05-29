@@ -33,8 +33,6 @@ public class LocationManager: NSObject, PersistenceHolder {
   override public init() {
     locationManager = CLLocationManager()
     super.init()
-
-
   }
 
   public func requestLocation(completion: ((CLLocationCoordinate2D?) -> Void)?) {

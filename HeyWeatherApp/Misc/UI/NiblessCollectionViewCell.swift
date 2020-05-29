@@ -22,5 +22,5 @@ class NiblessCollectionViewCell: UICollectionViewCell {
   required init?(coder aDecoder: NSCoder) {
     fatalError("Init is not implemented")
   }
-  
+
 }

@@ -63,8 +63,10 @@ extension WeatherCondition: CoreDataModelConvertible {
     if let result = existedInstance as? Condition {
         condition = result
     } else {
-        condition = NSEntityDescription.insertNewObject(forEntityName: WeatherCondition.entityName,
-                                                        into: context) as! Condition
+      guard let entityCondition = NSEntityDescription.insertNewObject(forEntityName: WeatherCondition.entityName, into: context) as? Condition else {
+        fatalError()
+      }
+        condition = entityCondition
     }
     condition.id = IdetificatorsProvider.condition.rawValue + "\(arc4random())"
     condition.iconCode = iconCode

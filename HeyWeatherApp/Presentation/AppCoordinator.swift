@@ -39,7 +39,7 @@ class AppCoordinator {
 
   init(window: UIWindow) {
     self.window = window
-    self.container = Container() { RootAssembly().assemble(container: $0) }
+    self.container = Container { RootAssembly().assemble(container: $0) }
     self.userSessionController = container.autoresolve()
   }
 

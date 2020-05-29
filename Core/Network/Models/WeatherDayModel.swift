@@ -71,10 +71,13 @@ extension WeatherDayModel: CoreDataModelConvertible {
       weather = result
       condition = conditionResult
     } else {
-      weather = NSEntityDescription.insertNewObject(forEntityName: WeatherDayModel.entityName,
-                                                    into: context) as! DayWeather
+      guard let entityWeather = NSEntityDescription.insertNewObject(forEntityName: WeatherDayModel.entityName,
+                                                                    into: context) as? DayWeather else {
+        fatalError()
+      }
+      weather = entityWeather
       condition = NSEntityDescription.insertNewObject(forEntityName: WeatherCondition.entityName,
-                                                      into: context) as! Condition
+                                                      into: context) as? Condition
     }
     weather.id = IdetificatorsProvider.day.rawValue + "\(arc4random())"
     weather.minTemperature = minTemperature ?? 0

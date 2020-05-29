@@ -54,7 +54,8 @@ extension MapController {
     }
   }
 
-  @objc private func handleLocationTap(_ gestureRecognizer: UITapGestureRecognizer) {
+  @objc
+  private func handleLocationTap(_ gestureRecognizer: UITapGestureRecognizer) {
     mapView.removeAnnotations(mapView.annotations)
 
     let location = gestureRecognizer.location(in: mapView)
@@ -67,7 +68,8 @@ extension MapController {
     selectedCoordinate = coordinate
   }
 
-  @objc private func searchWeather() {
+  @objc
+  private func searchWeather() {
     if let coordinate = selectedCoordinate {
       locationManager.setSelectedCoordinate(coordinate)
     }

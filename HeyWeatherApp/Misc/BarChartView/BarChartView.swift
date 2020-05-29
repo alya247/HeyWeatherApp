@@ -90,7 +90,8 @@ extension BarChartView {
     bar.addGestureRecognizer(tap)
   }
 
-  @objc private func barDidSelected(_ sender: UITapGestureRecognizer) {
+  @objc
+  private func barDidSelected(_ sender: UITapGestureRecognizer) {
     guard let bar = sender.view as? BarView else { return }
     delegate?.didSelectBar(for: bar.dayIndex)
   }

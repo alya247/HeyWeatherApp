@@ -32,7 +32,7 @@ public class WeatherManager: PersistenceHolder {
 
   public init() { }
 
-  public func loadWeather(completion: @escaping ((Bool) -> ())) {
+  public func loadWeather(completion: @escaping ((Bool) -> Void)) {
     locationManager.requestLocation { [weak self] coordinate in
       guard let coordinate = coordinate else {
         completion(true)
@@ -43,16 +43,17 @@ public class WeatherManager: PersistenceHolder {
     }
   }
 
-  public func reloadWeather(completion: @escaping ((Bool) -> ())) {
+  public func reloadWeather(completion: @escaping ((Bool) -> Void)) {
     guard let coordinate = locationManager.selectedCoordinate else {
       completion(true)
       return
     }
-    let c = Coordinate(lat: Double(coordinate.latitude), lon: Double(coordinate.longitude))
-    weatherLoader.loadWeather(coordinate: c, completion: completion)
+    let convertedCoordinate = Coordinate(lat: Double(coordinate.latitude),
+                                         lon: Double(coordinate.longitude))
+    weatherLoader.loadWeather(coordinate: convertedCoordinate, completion: completion)
   }
 
-  // MARK:- Setters
+  // MARK: - Setters
 
   func setCurrentWeather(_ weather: WeatherModel?) {
     currentWeather = weather
@@ -69,7 +70,7 @@ public class WeatherManager: PersistenceHolder {
     saveDaysWeather(weather, fileName: PreserveKeyComponent.twoWeeks.rawValue)
   }
 
-  // MARK:- Getters
+  // MARK: - Getters
 
   public func getCurrentWeather() -> WeatherModel? {
     if let weather = currentWeather {
@@ -97,7 +98,7 @@ public class WeatherManager: PersistenceHolder {
 
 }
 
-// MARK:- Private Methods
+// MARK: - Private Methods
 
 extension WeatherManager {
 

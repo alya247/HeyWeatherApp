@@ -130,11 +130,13 @@ extension WeatherController {
     }
   }
 
-  @objc private func openMap() {
+  @objc
+  private func openMap() {
     delegate?.presentMap()
   }
 
-  @objc private func logOut() {
+  @objc
+  private func logOut() {
     interactor.logOut()
   }
 
