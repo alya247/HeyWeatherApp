@@ -15,7 +15,6 @@ protocol WeatherViewInterface: class {
 
   func weatherDidLoad()
   func presentError()
-  func userDidLogOut()
 }
 
 class WeatherController: UIViewController {
@@ -26,8 +25,6 @@ class WeatherController: UIViewController {
   @IBOutlet private weak var currentWeatherView: CurrentWeatherView!
   @IBOutlet private weak var periodSelectorView: PeriodSelectorView!
   @IBOutlet private weak var barChartView: BarChartView!
-
-  weak var delegate: WeatherNavigatable?
 
   private let bag = DisposeBag()
   private var daysWeatherView: DaysWeatherView!
@@ -69,10 +66,6 @@ extension WeatherController: WeatherViewInterface {
     present(alert, animated: true, completion: nil)
   }
 
-  func userDidLogOut() {
-    delegate?.userDidLogOut()
-  }
-  
 }
 
 // MARK: - SelectorDelegate
@@ -133,7 +126,7 @@ extension WeatherController {
 
   @objc
   private func openMap() {
-    delegate?.presentMap()
+    interactor.openSearchMap()
   }
 
   @objc

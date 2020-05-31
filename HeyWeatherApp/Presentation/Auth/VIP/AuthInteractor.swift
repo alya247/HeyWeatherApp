@@ -15,14 +15,16 @@ protocol AuthInteractorInterface: class {
 
 }
 
-class AuthInteractor {
+class AuthInteractor: NavigationNode {
 
   private let presenter: AuthPresenterInterface
   private let userSessionController: UserSessionController
 
-  init(presenter: AuthPresenterInterface, userSessionController: UserSessionController) {
+  init(parentNode: NavigationNode, presenter: AuthPresenterInterface, userSessionController: UserSessionController) {
     self.presenter = presenter
     self.userSessionController = userSessionController
+
+    super.init(parent: parentNode)
   }
 
 }
@@ -31,9 +33,10 @@ extension AuthInteractor: AuthInteractorInterface {
 
   func signIn(email: String?, password: String?) {
     guard let userSessionInfo = presenter.createUserSessionInfo(email: email, password: password) else { return }
-    
     userSessionController.openSession(userSessionInfo: userSessionInfo)
-    presenter.signInDidCompleted(with: userSessionController.userSession.state)
+
+    guard presenter.isSignInSuccess(with: userSessionController.userSession.state) else { return  }
+    raise(event: LoginEvent.login)
   }
 
 }

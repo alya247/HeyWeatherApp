@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0E8EF33C0ACA75A885A07DCB /* Pods_Shared_HeyWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F7EF1F8A9FB68C068DC5D1 /* Pods_Shared_HeyWeatherApp.framework */; };
 		995CC80E603ED80A1A1193B3 /* Pods_Shared_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9BB5F8324948E498258E31 /* Pods_Shared_Core.framework */; };
+		FE0EBE2424812D5B002A841C /* NavigationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EBE2324812D5B002A841C /* NavigationNode.swift */; };
 		FE209C3C247FC8D200DC1888 /* PeriodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE209C3B247FC8D200DC1888 /* PeriodType.swift */; };
 		FE209C3E247FD1C300DC1888 /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE209C3D247FD1C300DC1888 /* Autolayout.swift */; };
+		FE3F8DA52484204D009AA7DA /* LaunchScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3F8DA42484204D009AA7DA /* LaunchScreenInteractor.swift */; };
 		FE439F2024611F600076285B /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F1F24611F600076285B /* WeatherInfo.swift */; };
 		FE439F23246120080076285B /* WeatherSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F22246120080076285B /* WeatherSign.swift */; };
 		FE439F2524612C870076285B /* Extension+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE439F2424612C870076285B /* Extension+Types.swift */; };
@@ -149,8 +151,10 @@
 		A4D8378D6EA0DA46D5391B6E /* Pods-HeyWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyWeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-HeyWeatherApp/Pods-HeyWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CCF6988D77BB459C1EA8909A /* Pods-Shared-HeyWeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-HeyWeatherApp.release.xcconfig"; path = "Target Support Files/Pods-Shared-HeyWeatherApp/Pods-Shared-HeyWeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		D296688A86BA6966E86255AD /* Pods-HeyWeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyWeatherApp.release.xcconfig"; path = "Target Support Files/Pods-HeyWeatherApp/Pods-HeyWeatherApp.release.xcconfig"; sourceTree = "<group>"; };
+		FE0EBE2324812D5B002A841C /* NavigationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationNode.swift; sourceTree = "<group>"; };
 		FE209C3B247FC8D200DC1888 /* PeriodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodType.swift; sourceTree = "<group>"; };
 		FE209C3D247FD1C300DC1888 /* Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autolayout.swift; sourceTree = "<group>"; };
+		FE3F8DA42484204D009AA7DA /* LaunchScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenInteractor.swift; sourceTree = "<group>"; };
 		FE439F1F24611F600076285B /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		FE439F22246120080076285B /* WeatherSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSign.swift; sourceTree = "<group>"; };
 		FE439F2424612C870076285B /* Extension+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Types.swift"; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 			children = (
 				FE439F22246120080076285B /* WeatherSign.swift */,
 				FE209C3B247FC8D200DC1888 /* PeriodType.swift */,
+				FE0EBE2324812D5B002A841C /* NavigationNode.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				FE7E23442472B5B900353AC0 /* Launch.storyboard */,
 				FE7E23462472B61900353AC0 /* LaunchCoordinator.swift */,
 				FE56D79B2473FC9B0037D65C /* LaunchAssembly.swift */,
+				FE3F8DA42484204D009AA7DA /* LaunchScreenInteractor.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -967,7 +973,9 @@
 				FE694C6024605062005B5E44 /* WeatherPresenter.swift in Sources */,
 				FE8B2204247BBA3B00DBBF4D /* UIImage+SwiftGen.swift in Sources */,
 				FEA14F9B247E6B5A005FE3FC /* AuthCoordinator.swift in Sources */,
+				FE3F8DA52484204D009AA7DA /* LaunchScreenInteractor.swift in Sources */,
 				FE694C7024607E9B005B5E44 /* PeriodSelectorView.swift in Sources */,
+				FE0EBE2424812D5B002A841C /* NavigationNode.swift in Sources */,
 				FE694C3B24603D7E005B5E44 /* WeatherController.swift in Sources */,
 				FEA14F8E247D43E1005FE3FC /* MapAssembly.swift in Sources */,
 				FEA14F89247D1444005FE3FC /* MapCoordinator.swift in Sources */,

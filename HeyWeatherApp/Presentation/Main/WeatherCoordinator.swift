@@ -9,50 +9,40 @@
 import UIKit
 import Swinject
 
-protocol WeatherNavigatable: class {
-  func presentMap()
-  func userDidLogOut()
-}
+class WeatherCoordinator: NavigationNode, Coordinator {
 
-class WeatherCoordinator: Coordinator {
-
-  weak var delegate: AppNavigatable?
-
-  private let rootController: UIViewController
   private var container: Container
   private var weatherController: WeatherController!
   private var childCoordinators = [Coordinator]()
 
-  init(rootController: UIViewController, parentContainter: Container) {
-    self.rootController = rootController
-    self.container = Container(parent: parentContainter) { MainAssembly().assemble(container: $0) }
+  init(parentNode: NavigationNode, parentContainer: Container) {
+    self.container = Container(parent: parentContainer) { MainAssembly().assemble(container: $0) }
+    super.init(parent: parentNode)
+
+    setupHandlers()
   }
 
-  func start() {
-    weatherController = container.autoresolve()
-    weatherController.delegate = self
-
-    let navigationController = UINavigationController(rootViewController: weatherController)
-    navigationController.modalPresentationStyle = .fullScreen
-    rootController.present(navigationController, animated: false, completion: nil)
+  func createFlow() -> UIViewController {
+    let node: NavigationNode = self
+    weatherController = container.autoresolve(argument: node)
+    return UINavigationController(rootViewController: weatherController)
   }
 
-  func dismiss() {
-    weatherController.dismiss(animated: false, completion: nil)
+  private func setupHandlers() {
+    addHandler { [weak self] (event: WeatherEvent) in
+      switch event {
+      case .logOut:
+        self?.raise(event: MainEvent.logOut)
+      case .search:
+        self?.presentMap()
+      }
+    }
   }
 
-}
-
-extension WeatherCoordinator: WeatherNavigatable {
-
-  func presentMap() {
+  private func presentMap() {
     let coordinator = MapCoordinator(rootController: weatherController.navigationController!, parentContainter: container)
     childCoordinators.append(coordinator)
     coordinator.start()
-  }
-
-  func userDidLogOut() {
-    delegate?.logOut()
   }
 
 }

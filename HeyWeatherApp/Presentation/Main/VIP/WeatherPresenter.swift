@@ -21,7 +21,6 @@ protocol WeatherPresenterInterface: class {
   func presentCurrentWeather(_ weather: WeatherModel?)
   func presentWeekWeather(_ weather: WeatherDaysModel?)
   func presentTwoWeekWeather(_ weather: WeatherDaysModel?)
-  func userDidLogOut()
 }
 
 class WeatherPresenter {
@@ -69,10 +68,6 @@ extension WeatherPresenter: WeatherPresenterInterface {
     } else {
       view.presentError()
     }
-  }
-
-  func userDidLogOut() {
-    view.userDidLogOut()
   }
 
 }

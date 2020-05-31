@@ -14,21 +14,21 @@ class MainAssembly: Assembly {
   init() {}
 
   func assemble(container: Container) {
-    container.register(WeatherController.self) { resolver in
+    container.register(WeatherController.self) { (resolver, node: NavigationNode) in
       let controller = StoryboardScene.Weather.weatherController.instantiate()
       let presenter: WeatherPresenterInterface = resolver.autoresolve()
-      let interactor: WeatherInteractorInterface = resolver.autoresolve()
+      let interactor: WeatherInteractorInterface = resolver.autoresolve(argument: node)
       presenter.view = controller
       controller.interactor = interactor
       return controller
-    }.inObjectScope(.transient)
+    }.inObjectScope(.container)
 
     container.register(WeatherPresenterInterface.self) { _ in
       WeatherPresenter()
     }.inObjectScope(.container)
 
-    container.register(WeatherInteractorInterface.self) { resolver in
-      WeatherInteractor(presenter: resolver.autoresolve(),
+    container.register(WeatherInteractorInterface.self) { (resolver, node: NavigationNode) in
+      WeatherInteractor(parentNode: node, presenter: resolver.autoresolve(),
                         weatherManager: resolver.autoresolve(),
                         errorWasOccurred: false,
                         userSessionController: resolver.autoresolve())

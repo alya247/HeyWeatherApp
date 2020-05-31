@@ -9,14 +9,10 @@
 import UIKit
 import Core
 
-protocol LaunchScreenInterface: class {
-  func presentHome()
-}
-
 class LaunchScreenController: UIViewController {
 
   var weatherManager: WeatherManager!
-  weak var delegate: LaunchScreenInterface?
+  var interactor: LaunchScreenInteractorInterface!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,7 +21,7 @@ class LaunchScreenController: UIViewController {
 
   func performanceTimer() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-      self?.delegate?.presentHome()
+      self?.interactor.presentHome()
     }
   }
 

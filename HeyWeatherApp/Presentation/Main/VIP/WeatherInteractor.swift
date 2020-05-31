@@ -13,6 +13,11 @@ import Core
 
 typealias BarChartValues = BarChartValue
 
+enum WeatherEvent: NavigationEvent {
+  case logOut
+  case search
+}
+
 protocol WeatherInteractorInterface: class {
 
   var currentWeather: Observable<WeatherInfo?> { get }
@@ -22,11 +27,12 @@ protocol WeatherInteractorInterface: class {
   func loadWeather()
   func getWeather(for period: PeriodType)
   func reloadWeatherIfNeeded()
+  func openSearchMap()
   func logOut()
 
 }
 
-class WeatherInteractor {
+class WeatherInteractor: NavigationNode {
 
   var currentWeather: Observable<WeatherInfo?> {
     return presenter.currentWeather.asObservable()
@@ -50,7 +56,8 @@ class WeatherInteractor {
   private var weatherManager: WeatherManager
   private var chartValues = BehaviorSubject<[BarChartValues]>(value: [])
 
-  init(presenter: WeatherPresenterInterface,
+  init(parentNode: NavigationNode,
+       presenter: WeatherPresenterInterface,
        weatherManager: WeatherManager = WeatherManager(),
        errorWasOccurred: Bool = false,
        userSessionController: UserSessionController) {
@@ -58,6 +65,8 @@ class WeatherInteractor {
     self.weatherManager = weatherManager
     self.errorWasOccurred = errorWasOccurred
     self.userSessionController = userSessionController
+
+    super.init(parent: parentNode)
   }
 
 }
@@ -104,9 +113,13 @@ extension WeatherInteractor: WeatherInteractorInterface {
     }
   }
 
+  func openSearchMap() {
+    raise(event: WeatherEvent.search)
+  }
+
   func logOut() {
     userSessionController.closeSession()
-    presenter.userDidLogOut()
+    raise(event: WeatherEvent.logOut)
   }
 
 }

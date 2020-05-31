@@ -18,14 +18,23 @@ protocol Coordinator: class {
 }
 
 extension Coordinator {
+  func start() { }
   func dismiss() { }
 }
 
-protocol AppNavigatable: class {
-  func logOut()
+enum LaunchFlowEvent: NavigationEvent {
+  case didLoad
 }
 
-class AppCoordinator {
+enum MainEvent: NavigationEvent {
+  case logOut
+}
+
+enum AuthEvent: NavigationEvent {
+  case login
+}
+
+class AppCoordinator: NavigationNode {
 
   private let container: Container
   private let userSessionController: UserSessionController
@@ -41,6 +50,10 @@ class AppCoordinator {
     self.window = window
     self.container = Container { RootAssembly().assemble(container: $0) }
     self.userSessionController = container.autoresolve()
+
+    super.init(parent: nil)
+
+    setupHandlers()
   }
 
   func start() {
@@ -52,84 +65,80 @@ class AppCoordinator {
 
 }
 
-extension AppCoordinator: LaunchScreenInterface {
+extension AppCoordinator {
 
-  func presentHome() {
-    removeLaunchFlow()
+  private func setupHandlers() {
+    addHandler { [weak self] (event: LaunchFlowEvent) in
+      self?.handleLaunch(event)
+    }
+    addHandler { [weak self] (event: AuthEvent) in
+      self?.handleAuth(event)
+    }
+    addHandler { [weak self] (event: MainEvent) in
+      self?.handleMain(event)
+    }
+  }
 
+  private func handleLaunch(_ event: LaunchFlowEvent) {
+    switch event {
+    case .didLoad:
+      presentHome()
+    }
+  }
+
+  private func handleAuth(_ event: AuthEvent) {
+    switch event {
+    case .login:
+      presentWeatherFlow()
+    }
+  }
+
+  private func handleMain(_ event: MainEvent) {
+    switch event {
+    case .logOut:
+      presentAuthFlow()
+    }
+  }
+
+  private func presentHome() {
     if isUserSignedIn {
       presentWeatherFlow()
     } else {
       presentAuthFlow()
     }
   }
-  
-}
-
-extension AppCoordinator: AuthNavigatable {
-
-  func signIn() {
-    removeAuthFlow()
-    presentWeatherFlow()
-  }
-
-}
-
-extension AppCoordinator: AppNavigatable {
-
-  func logOut() {
-    removeWeatherFlow()
-    presentAuthFlow()
-  }
-
-}
-
-extension AppCoordinator {
 
   // MARK: - Launch
 
   private func presentLaunchFlow() {
-    let launchCoordinator = LaunchCoordinator(rootController: rootController, parentContainer: container)
-    childCoordinators.append(launchCoordinator)
-    launchCoordinator.delegate = self
-    launchCoordinator.start()
+    let node: NavigationNode = self
+    let coordinator: LaunchCoordinator = container.autoresolve(argument: node)
+    setWindowRootViewController(with: coordinator.createFlow())
   }
 
   private func removeLaunchFlow() {
-    guard let launch = childCoordinators.first(where: { $0 is LaunchCoordinator }) else { return }
-    launch.dismiss()
     childCoordinators.removeAll { $0 is LaunchCoordinator }
   }
 
   // MARK: - Weather
 
   private func presentWeatherFlow() {
-    let weatherCoordinator = WeatherCoordinator(rootController: rootController,
-                                                parentContainter: container)
-    weatherCoordinator.delegate = self
-    childCoordinators.append(weatherCoordinator)
-    weatherCoordinator.start()
-  }
-
-  private func removeWeatherFlow() {
-    guard let weather = childCoordinators.first(where: { $0 is WeatherCoordinator }) else { return }
-    weather.dismiss()
-    childCoordinators.removeAll { $0 is WeatherCoordinator }
+    let node: NavigationNode = self
+    let coordinator: WeatherCoordinator = container.autoresolve(argument: node)
+    setWindowRootViewController(with: coordinator.createFlow())
   }
 
   // MARK: - Auth
 
   private func presentAuthFlow() {
-    let authCoordinator = AuthCoordinator(rootController: rootController, parentContainter: container)
-    authCoordinator.delegate = self
-    childCoordinators.append(authCoordinator)
-    authCoordinator.start()
+    let node: NavigationNode = self
+    let coordinator: AuthCoordinator = container.autoresolve(argument: node)
+    setWindowRootViewController(with: coordinator.createFlow())
   }
 
-  private func removeAuthFlow() {
-    guard let auth = childCoordinators.first(where: { $0 is AuthCoordinator }) else { return }
-    auth.dismiss()
-    childCoordinators.removeAll { $0 is AuthCoordinator }
+  private func setWindowRootViewController(with viewController: UIViewController) {
+      window.rootViewController = viewController
+      window.makeKeyAndVisible()
   }
 
 }

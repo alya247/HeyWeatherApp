@@ -13,7 +13,7 @@ protocol AuthPresenterInterface: class {
 
   var view: AuthViewInterface! { get set }
   func createUserSessionInfo(email: String?, password: String?) -> UserSessionInfo?
-  func signInDidCompleted(with state: UserSession.State)
+  func isSignInSuccess(with state: UserSession.State) -> Bool
   
 }
 
@@ -33,12 +33,13 @@ extension AuthPresenter: AuthPresenterInterface {
     return UserSessionInfo(userCredentials: UserCredentials(email: email, password: password))
   }
 
-  func signInDidCompleted(with state: UserSession.State) {
+  func isSignInSuccess(with state: UserSession.State) -> Bool {
     if state == .opened {
-      view.signInSuccess()
+      return true
     } else {
       view.signInDidFail()
+      return false
     }
   }
-  
+
 }

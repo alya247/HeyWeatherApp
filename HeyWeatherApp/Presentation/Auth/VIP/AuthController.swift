@@ -10,13 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol AuthNavigatable: class {
-  func signIn()
-}
-
 protocol AuthViewInterface: class {
 
-  func signInSuccess()
   func signInDidFail()
 }
 
@@ -29,7 +24,6 @@ class AuthController: UIViewController {
   @IBOutlet private weak var signInButton: UIButton!
 
   var interactor: AuthInteractorInterface!
-  weak var delegate: AuthNavigatable?
   private let bag = DisposeBag()
 
   private var email: String?
@@ -45,10 +39,6 @@ class AuthController: UIViewController {
 }
 
 extension AuthController: AuthViewInterface {
-
-  func signInSuccess() {
-    delegate?.signIn()
-  }
 
   func signInDidFail() {
     let alert = UIAlertController(title: "Error;(", message: "Sign In did fail", preferredStyle: .alert)

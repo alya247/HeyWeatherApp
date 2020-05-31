@@ -9,27 +9,31 @@
 import UIKit
 import Swinject
 
-class LaunchCoordinator: Coordinator {
+class LaunchCoordinator: NavigationNode, Coordinator {
 
-  weak var delegate: LaunchScreenInterface?
-  private let rootController: UIViewController
   private let container: Container
-  private var launchController: LaunchScreenController!
 
-  init(rootController: UIViewController, parentContainer: Container) {
-    self.rootController = rootController
+  init(parentNode: NavigationNode, parentContainer: Container) {
     self.container = Container(parent: parentContainer) { LaunchAssembly().assemble(container: $0) }
+    super.init(parent: parentNode)
+
+    setupHandlers()
   }
 
-  func start() {
-    launchController = container.autoresolve()
-    launchController.delegate = delegate
-    launchController.modalPresentationStyle = .fullScreen
-    rootController.present(launchController, animated: false, completion: nil)
+  func createFlow() -> UIViewController {
+    let node: NavigationNode = self
+    let controller: LaunchScreenController = container.autoresolve(argument: node)
+    controller.modalPresentationStyle = .fullScreen
+    return controller
   }
 
-  func dismiss() {
-    launchController.dismiss(animated: false, completion: nil)
+  private func setupHandlers() {
+    addHandler { [weak self] (event: LaunchEvent) in
+      switch event {
+      case .didLoad:
+        self?.raise(event: LaunchFlowEvent.didLoad)
+      }
+    }
   }
 
 }

@@ -14,10 +14,16 @@ class LaunchAssembly: Assembly {
   init() {}
 
   func assemble(container: Container) {
-    container.register(LaunchScreenController.self) { _ in
+    container.register(LaunchScreenController.self) { (resolver, node: NavigationNode) in
       let controller = StoryboardScene.Launch.launchScreenController.instantiate()
+      let interactor: LaunchScreenInteractorInterface = resolver.autoresolve(argument: node)
+      controller.interactor = interactor
       return controller
     }.inObjectScope(.transient)
+
+    container.register(LaunchScreenInteractorInterface.self) { (_, node: NavigationNode) in
+      LaunchScreenInteractor(parentNode: node)
+    }.inObjectScope(.container)
   }
 
 }

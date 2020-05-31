@@ -15,23 +15,25 @@ class AuthAssembly: Assembly {
   init() {}
 
   func assemble(container: Container) {
-    container.register(AuthController.self) { resolver in
+    container.register(AuthController.self) { (resolver, node: NavigationNode) in
       let controller = StoryboardScene.Auth.authController.instantiate()
       let presenter: AuthPresenterInterface = resolver.autoresolve()
-      let interactor: AuthInteractorInterface = resolver.autoresolve()
+      let interactor: AuthInteractorInterface = resolver.autoresolve(argument: node)
       presenter.view = controller
       controller.interactor = interactor
+
       return controller
     }.inObjectScope(.transient)
 
     container.register(AuthPresenterInterface.self) { _ in
       AuthPresenter()
-    }.inObjectScope(.container)
+    }.inObjectScope(.transient)
 
-    container.register(AuthInteractorInterface.self) { resolver in
-      AuthInteractor(presenter: resolver.autoresolve(),
+    container.register(AuthInteractorInterface.self) { (resolver, node: NavigationNode) in
+      AuthInteractor(parentNode: node,
+                     presenter: resolver.autoresolve(),
                      userSessionController: resolver.autoresolve())
-    }.inObjectScope(.container)
+    }.inObjectScope(.transient)
 
   }
 

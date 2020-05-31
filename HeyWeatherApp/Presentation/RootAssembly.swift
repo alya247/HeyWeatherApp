@@ -32,6 +32,20 @@ class RootAssembly: Assembly {
       UserSessionController()
     }.inObjectScope(.container)
 
+    container.register(LaunchCoordinator.self) { [unowned container] (_, parent: NavigationNode) in
+      LaunchCoordinator(parentNode: parent, parentContainer: container)
+    }.inObjectScope(.transient)
+
+    container.register(AuthCoordinator.self) { [unowned container] (_, parent: NavigationNode) in
+      AuthCoordinator(parentNode: parent,
+                      parentContainer: container)
+    }.inObjectScope(.transient)
+
+    container.register(WeatherCoordinator.self) { [unowned container] (_, parent: NavigationNode) in
+      WeatherCoordinator(parentNode: parent,
+                         parentContainer: container)
+    }.inObjectScope(.transient)
+
   }
 
 }

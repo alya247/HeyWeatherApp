@@ -9,29 +9,41 @@
 import Foundation
 import Swinject
 
-class AuthCoordinator: Coordinator {
+enum LoginEvent: NavigationEvent {
+    case login
+}
 
-  weak var delegate: AuthNavigatable?
+class AuthCoordinator: NavigationNode, Coordinator {
 
-  private let rootController: UIViewController
   private var container: Container
   private var authController: AuthController!
   private var childCoordinators = [Coordinator]()
 
-  init(rootController: UIViewController, parentContainter: Container) {
-    self.rootController = rootController
-    self.container = Container(parent: parentContainter) { AuthAssembly().assemble(container: $0) }
+  init(parentNode: NavigationNode, parentContainer: Container) {
+    self.container = Container(parent: parentContainer) { AuthAssembly().assemble(container: $0) }
+
+    super.init(parent: parentNode)
+
+    setupHandlers()
   }
 
-  func start() {
-    authController = container.autoresolve()
-    authController.delegate = delegate
-    authController.modalPresentationStyle = .fullScreen
-    rootController.present(authController, animated: false, completion: nil)
+  func createFlow() -> UIViewController {
+    let node: NavigationNode = self
+    let controller: AuthController = container.autoresolve(argument: node)
+    return controller
   }
 
-  func dismiss() {
-    authController.dismiss(animated: false, completion: nil)
+  private func setupHandlers() {
+    addHandler { [weak self] (event: LoginEvent) in
+      self?.handleEvent(event)
+    }
+  }
+
+  private func handleEvent(_ event: LoginEvent) {
+    switch event {
+    case .login:
+      raise(event: AuthEvent.login)
+    }
   }
 
 }
